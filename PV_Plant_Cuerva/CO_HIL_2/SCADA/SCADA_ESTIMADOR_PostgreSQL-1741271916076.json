@@ -1,0 +1,4161 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": false,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 3,
+  "links": [],
+  "liveNow": true,
+  "panels": [
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "eee8vc2vj8cg0d"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisGridShow": true,
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "decimals": 3,
+          "fieldMinMax": false,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "watt"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 13,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "timezone": [
+          ""
+        ],
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.3.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "eee8vc2vj8cg0d"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "select Date_Time, \r\nPOI_P AS \"POI_P\",\r\nCT1_P AS \"SS1_P\",\r\nCT2_P AS \"SS2_P\"\r\nfrom DB_CSL_BROKER_INPUT",
+          "refId": "Medidas",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "eee8vc2vj8cg0d"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "select Date_Time, \r\nP_POI_POI AS \"POI_P_EST\",\r\nP_SS1_SS2 AS \"SS1_P_EST\",\r\nP_SS2_POI AS \"SS2_P_EST\"\r\nfrom DB_CSL_BROKER_OUTPUT",
+          "refId": "Estimador",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Active Power",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "eee8vc2vj8cg0d"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "decimals": 3,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "voltampreact"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 11,
+        "x": 13,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.3.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "eee8vc2vj8cg0d"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "select Date_Time, \r\nPOI_Q AS \"POI_Q\",\r\nCT1_Q AS \"SS1_Q\",\r\nCT2_Q AS \"SS2_Q\"\r\nfrom DB_CSL_BROKER_INPUT",
+          "refId": "Medidas",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "eee8vc2vj8cg0d"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "select Date_Time, \r\nQ_POI_POI AS \"POI_Q_EST\",\r\nQ_SS1_SS2 AS \"SS1_Q_EST\",\r\nQ_SS2_POI AS \"SS2_Q_EST\"\r\nfrom DB_CSL_BROKER_OUTPUT",
+          "refId": "Estimador",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Reactive Power",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "eee8vc2vj8cg0d"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": -1,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "decimals": 4,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "volt"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 13,
+        "x": 0,
+        "y": 11
+      },
+      "id": 15,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.3.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "eee8vc2vj8cg0d"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "select Date_Time, \r\nPOI_Va AS \"POI_V\",\r\nCT1_Vab AS \"SS1_V\",\r\nCT2_Vab AS \"SS2_V\"\r\nfrom DB_CSL_BROKER_INPUT",
+          "refId": "Medidas",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "eee8vc2vj8cg0d"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "select Date_Time, \r\nV_POI_EST AS \"POI_V_EST\",\r\nV_SS1_EST AS \"SS1_V_EST\",\r\nV_SS2_EST AS \"SS2_V_EST\"\r\nfrom DB_CSL_BROKER_OUTPUT",
+          "refId": "Estimador",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "VOLTAGE",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "eee8vc2vj8cg0d"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "red",
+            "mode": "continuous-RdYlGr"
+          },
+          "decimals": 4,
+          "fieldMinMax": true,
+          "mappings": [],
+          "min": -2000,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              }
+            ]
+          },
+          "unit": "watt"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 11,
+        "x": 13,
+        "y": 11
+      },
+      "id": 14,
+      "options": {
+        "displayMode": "gradient",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "maxVizHeight": 300,
+        "minVizHeight": 16,
+        "minVizWidth": 8,
+        "namePlacement": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "firstNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": false,
+        "sizing": "manual",
+        "valueMode": "color"
+      },
+      "pluginVersion": "11.3.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "eee8vc2vj8cg0d"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "select Date_Time, \r\nP_POI_POI AS \"POI_P_EST\",\r\nP_SS1_SS2 AS \"SS1_P_EST\",\r\nP_SS2_POI AS \"SS2_P_EST\"\r\nfrom DB_CSL_BROKER_OUTPUT",
+          "refId": "Estimador",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "eee8vc2vj8cg0d"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "select Date_Time, \r\nPOI_P AS \"POI_P\",\r\nCT1_P AS \"SS1_P\",\r\nCT2_P AS \"SS2_P\"\r\nfrom DB_CSL_BROKER_INPUT",
+          "refId": "Medidas",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "",
+      "transparent": true,
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "eee8vc2vj8cg0d"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 2,
+          "fieldMinMax": false,
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 5000000
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 23,
+        "w": 24,
+        "x": 0,
+        "y": 20
+      },
+      "id": 13,
+      "options": {
+        "infinitePan": false,
+        "inlineEditing": true,
+        "panZoom": false,
+        "root": {
+          "background": {
+            "color": {
+              "fixed": "transparent"
+            },
+            "image": {
+              "field": "",
+              "fixed": "",
+              "mode": "fixed"
+            },
+            "size": "tile"
+          },
+          "border": {
+            "color": {
+              "fixed": "yellow"
+            },
+            "radius": 60,
+            "width": 1
+          },
+          "constraint": {
+            "horizontal": "left",
+            "vertical": "top"
+          },
+          "elements": [
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "width": 18
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#000000"
+                },
+                "valign": "middle"
+              },
+              "connections": [
+                {
+                  "color": {
+                    "fixed": "#ffffff"
+                  },
+                  "lineStyle": {
+                    "animate": true,
+                    "style": "dotted"
+                  },
+                  "path": "straight",
+                  "size": {
+                    "fixed": 1,
+                    "max": 10,
+                    "min": 1
+                  },
+                  "source": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "sourceOriginal": {
+                    "x": 435.5,
+                    "y": 169
+                  },
+                  "target": {
+                    "x": 0.009708737864077669,
+                    "y": -1.2
+                  },
+                  "targetName": "Element 6",
+                  "targetOriginal": {
+                    "x": 436,
+                    "y": 138
+                  }
+                }
+              ],
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 2",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 69,
+                "left": 597,
+                "top": 425,
+                "width": 69
+              },
+              "type": "ellipse"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "#ffffff00"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "#fbfbfb"
+                },
+                "width": 18
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 3",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 69,
+                "left": 597,
+                "top": 455,
+                "width": 69
+              },
+              "type": "ellipse"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "#f2eaea"
+                },
+                "width": 18
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#000000"
+                },
+                "valign": "middle"
+              },
+              "connections": [
+                {
+                  "color": {
+                    "fixed": "#ffffff"
+                  },
+                  "lineStyle": {
+                    "animate": true,
+                    "style": "dotted"
+                  },
+                  "path": "straight",
+                  "size": {
+                    "fixed": 1,
+                    "max": 10,
+                    "min": 1
+                  },
+                  "source": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "sourceOriginal": {
+                    "x": 862.5,
+                    "y": 216
+                  },
+                  "target": {
+                    "x": 0.009708737864077669,
+                    "y": -1.2
+                  },
+                  "targetName": "Element 7",
+                  "targetOriginal": {
+                    "x": 863,
+                    "y": 138
+                  }
+                }
+              ],
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 4",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 69,
+                "left": 1315,
+                "top": 419,
+                "width": 69
+              },
+              "type": "ellipse"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "width": 18
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#000000"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 5",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 69,
+                "left": 1315,
+                "top": 454,
+                "width": 69
+              },
+              "type": "ellipse"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "#ffffff"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#000000"
+                },
+                "valign": "middle"
+              },
+              "connections": [
+                {
+                  "color": {
+                    "fixed": "#ffffff"
+                  },
+                  "lineStyle": {
+                    "animate": true,
+                    "style": "dotted"
+                  },
+                  "path": "straight",
+                  "size": {
+                    "fixed": 1,
+                    "max": 10,
+                    "min": 1
+                  },
+                  "source": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "sourceOriginal": {
+                    "x": 408.5,
+                    "y": 356
+                  },
+                  "target": {
+                    "x": -0.009708737864077669,
+                    "y": -1.8
+                  },
+                  "targetName": "Element 82",
+                  "targetOriginal": {
+                    "x": 408,
+                    "y": 153
+                  }
+                }
+              ],
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 6",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 10,
+                "left": 580,
+                "top": 369,
+                "width": 103
+              },
+              "type": "rectangle"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "#ffffff"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#000000"
+                },
+                "valign": "middle"
+              },
+              "connections": [
+                {
+                  "color": {
+                    "fixed": "#ffffff"
+                  },
+                  "lineStyle": {
+                    "animate": true,
+                    "style": "dotted"
+                  },
+                  "path": "straight",
+                  "size": {
+                    "fixed": 1,
+                    "max": 10,
+                    "min": 1
+                  },
+                  "source": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "sourceOriginal": {
+                    "x": 862.5,
+                    "y": 127
+                  },
+                  "target": {
+                    "x": 0.5145631067961165,
+                    "y": 0.8
+                  },
+                  "targetName": "Element 6",
+                  "targetOriginal": {
+                    "x": 462,
+                    "y": 128
+                  },
+                  "vertices": [
+                    {
+                      "x": -1.2247191011235956,
+                      "y": 198
+                    },
+                    {
+                      "x": 0.5106117353308365,
+                      "y": 198
+                    }
+                  ]
+                }
+              ],
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 7",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 10,
+                "left": 1299,
+                "top": 369,
+                "width": 103
+              },
+              "type": "rectangle"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "width": 18
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#000000"
+                },
+                "size": 100,
+                "text": {
+                  "fixed": "",
+                  "mode": "fixed"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 8",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 69,
+                "left": 598,
+                "top": 27,
+                "width": 69
+              },
+              "type": "ellipse"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 50,
+                "text": {
+                  "fixed": "~"
+                },
+                "valign": "top"
+              },
+              "connections": [],
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 9",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 50,
+                "left": 581,
+                "top": 19,
+                "width": 100
+              },
+              "type": "text"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "#fffbfb"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#010101"
+                },
+                "valign": "middle"
+              },
+              "connections": [
+                {
+                  "color": {
+                    "fixed": "#fdfbfb"
+                  },
+                  "lineStyle": {
+                    "animate": true,
+                    "style": "dotted"
+                  },
+                  "path": "straight",
+                  "size": {
+                    "fixed": 1,
+                    "max": 10,
+                    "min": 1
+                  },
+                  "source": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "sourceOriginal": {
+                    "x": 437.5,
+                    "y": 418
+                  },
+                  "target": {
+                    "x": 0.043478260869565216,
+                    "y": -0.9710144927536232
+                  },
+                  "targetName": "Element 3",
+                  "targetOriginal": {
+                    "x": 437,
+                    "y": 318
+                  }
+                }
+              ],
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 10",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 10,
+                "left": 582,
+                "top": 555,
+                "width": 103
+              },
+              "type": "rectangle"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "#ffffff"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#dcdcdc"
+                },
+                "valign": "middle"
+              },
+              "connections": [
+                {
+                  "color": {
+                    "fixed": "#ffffff"
+                  },
+                  "lineStyle": {
+                    "animate": true,
+                    "style": "dotted"
+                  },
+                  "path": "straight",
+                  "size": {
+                    "fixed": 1,
+                    "max": 10,
+                    "min": 1
+                  },
+                  "source": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "sourceOriginal": {
+                    "x": 862.5,
+                    "y": 418
+                  },
+                  "target": {
+                    "x": -0.014492753623188406,
+                    "y": -0.9420289855072463
+                  },
+                  "targetName": "Element 5",
+                  "targetOriginal": {
+                    "x": 862,
+                    "y": 318
+                  }
+                }
+              ],
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 11",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 10,
+                "left": 1298,
+                "top": 550,
+                "width": 103
+              },
+              "type": "rectangle"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "#ebebeb"
+                },
+                "width": 4
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#000000"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 12",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 70,
+                "left": 239,
+                "top": 642,
+                "width": 56
+              },
+              "type": "rectangle"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "width": 20
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#000000"
+                },
+                "valign": "middle"
+              },
+              "connections": [
+                {
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "lineStyle": {
+                    "animate": true,
+                    "style": "dotted"
+                  },
+                  "path": "straight",
+                  "size": {
+                    "fixed": 1,
+                    "max": 10,
+                    "min": 1
+                  },
+                  "source": {
+                    "x": 1,
+                    "y": -1
+                  },
+                  "sourceOriginal": {
+                    "x": 70,
+                    "y": 547
+                  },
+                  "target": {
+                    "x": -1,
+                    "y": -0.03571428571428571
+                  },
+                  "targetName": "Element 14",
+                  "targetOriginal": {
+                    "x": 113,
+                    "y": 548
+                  }
+                }
+              ],
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 13",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 35,
+                "left": 239,
+                "rotation": 180,
+                "top": 642,
+                "width": 56
+              },
+              "type": "triangle"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "#ebebeb"
+                },
+                "width": 4
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "text": {
+                  "fixed": "INV"
+                },
+                "valign": "middle"
+              },
+              "connections": [
+                {
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "lineStyle": {
+                    "animate": true,
+                    "style": "dotted"
+                  },
+                  "path": "straight",
+                  "size": {
+                    "fixed": 1,
+                    "max": 10,
+                    "min": 1
+                  },
+                  "source": {
+                    "x": 1,
+                    "y": 0
+                  },
+                  "sourceOriginal": {
+                    "x": 169,
+                    "y": 547
+                  },
+                  "target": {
+                    "x": -1,
+                    "y": -0.07692307692307693
+                  },
+                  "targetName": "Element 15",
+                  "targetOriginal": {
+                    "x": 207,
+                    "y": 549
+                  }
+                }
+              ],
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 14",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 56,
+                "left": 338,
+                "top": 649,
+                "width": 56
+              },
+              "type": "rectangle"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "#fffbfb"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#010101"
+                },
+                "valign": "middle"
+              },
+              "connections": [
+                {
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "lineStyle": {
+                    "animate": true,
+                    "style": "dotted"
+                  },
+                  "path": "straight",
+                  "size": {
+                    "fixed": 1,
+                    "max": 10,
+                    "min": 1
+                  },
+                  "source": {
+                    "x": 1,
+                    "y": 0
+                  },
+                  "sourceOriginal": {
+                    "x": 222,
+                    "y": 545
+                  },
+                  "target": {
+                    "x": -0.6,
+                    "y": -0.038461538461538464
+                  },
+                  "targetName": "Element 16",
+                  "targetOriginal": {
+                    "x": 274,
+                    "y": 546
+                  }
+                }
+              ],
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 15",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 10,
+                "left": 416,
+                "rotation": 90,
+                "top": 670,
+                "width": 52
+              },
+              "type": "rectangle"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "#fffbfb"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#010101"
+                },
+                "valign": "middle"
+              },
+              "connections": [
+                {
+                  "color": {
+                    "fixed": "#ffffff"
+                  },
+                  "lineStyle": {
+                    "animate": true,
+                    "style": "dotted"
+                  },
+                  "path": "straight",
+                  "size": {
+                    "fixed": 1,
+                    "max": 10,
+                    "min": 1
+                  },
+                  "source": {
+                    "x": 1,
+                    "y": 0
+                  },
+                  "sourceOriginal": {
+                    "x": 282,
+                    "y": 545
+                  },
+                  "target": {
+                    "x": -0.009708737864077669,
+                    "y": -1
+                  },
+                  "targetName": "Element 10",
+                  "targetOriginal": {
+                    "x": 408,
+                    "y": 435
+                  },
+                  "vertices": [
+                    {
+                      "x": 2.7857142857142856,
+                      "y": -1.1818181818181819
+                    }
+                  ]
+                }
+              ],
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 16",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 10,
+                "left": 476,
+                "rotation": 90,
+                "top": 670,
+                "width": 52
+              },
+              "type": "rectangle"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "#ebebeb"
+                },
+                "width": 4
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#000000"
+                },
+                "valign": "middle"
+              },
+              "connections": [
+                {
+                  "color": {
+                    "fixed": "#ffffff"
+                  },
+                  "lineStyle": {
+                    "animate": true,
+                    "style": "dotted"
+                  },
+                  "path": "straight",
+                  "size": {
+                    "fixed": 1,
+                    "max": 10,
+                    "min": 1
+                  },
+                  "source": {
+                    "x": 1,
+                    "y": 0
+                  },
+                  "sourceOriginal": {
+                    "x": 791,
+                    "y": 547
+                  },
+                  "target": {
+                    "x": -1,
+                    "y": 0
+                  },
+                  "targetName": "Element 21",
+                  "targetOriginal": {
+                    "x": 834,
+                    "y": 548
+                  }
+                }
+              ],
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 17",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 70,
+                "left": 960,
+                "top": 642,
+                "width": 56
+              },
+              "type": "rectangle"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "width": 20
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#000000"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 18",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 35,
+                "left": 960,
+                "rotation": 180,
+                "top": 642,
+                "width": 56
+              },
+              "type": "triangle"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "#fffbfb"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#010101"
+                },
+                "valign": "middle"
+              },
+              "connections": [
+                {
+                  "color": {
+                    "fixed": "#ceced9"
+                  },
+                  "lineStyle": {
+                    "animate": true,
+                    "style": "dotted"
+                  },
+                  "path": "straight",
+                  "size": {
+                    "fixed": 1,
+                    "max": 10,
+                    "min": 1
+                  },
+                  "source": {
+                    "x": 1,
+                    "y": 0
+                  },
+                  "sourceOriginal": {
+                    "x": 943,
+                    "y": 545
+                  },
+                  "target": {
+                    "x": -0.4,
+                    "y": 0
+                  },
+                  "targetName": "Element 20",
+                  "targetOriginal": {
+                    "x": 996,
+                    "y": 546
+                  }
+                }
+              ],
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 19",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 10,
+                "left": 1137,
+                "rotation": 90,
+                "top": 670,
+                "width": 52
+              },
+              "type": "rectangle"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "#fffbfb"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#010101"
+                },
+                "valign": "middle"
+              },
+              "connections": [
+                {
+                  "color": {
+                    "fixed": "#ffffff"
+                  },
+                  "lineStyle": {
+                    "animate": true,
+                    "style": "dotted"
+                  },
+                  "path": "straight",
+                  "size": {
+                    "fixed": 1,
+                    "max": 10,
+                    "min": 1
+                  },
+                  "source": {
+                    "x": 1,
+                    "y": 0
+                  },
+                  "sourceOriginal": {
+                    "x": 1003,
+                    "y": 545
+                  },
+                  "target": {
+                    "x": -0.009708737864077669,
+                    "y": -1.2
+                  },
+                  "targetName": "Element 11",
+                  "targetOriginal": {
+                    "x": 1124,
+                    "y": 431
+                  },
+                  "vertices": [
+                    {
+                      "x": 2.8595041322314048,
+                      "y": -1.1403508771929824
+                    }
+                  ]
+                }
+              ],
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 20",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 10,
+                "left": 1197,
+                "rotation": 90,
+                "top": 670,
+                "width": 52
+              },
+              "type": "rectangle"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "#ebebeb"
+                },
+                "width": 4
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "text": {
+                  "fixed": "INV"
+                },
+                "valign": "middle"
+              },
+              "connections": [
+                {
+                  "color": {
+                    "fixed": "#ffffff"
+                  },
+                  "lineStyle": {
+                    "animate": true,
+                    "style": "dotted"
+                  },
+                  "path": "straight",
+                  "size": {
+                    "fixed": 1,
+                    "max": 10,
+                    "min": 1
+                  },
+                  "source": {
+                    "x": 1,
+                    "y": 0
+                  },
+                  "sourceOriginal": {
+                    "x": 890,
+                    "y": 547
+                  },
+                  "target": {
+                    "x": -1.2,
+                    "y": -0.038461538461538464
+                  },
+                  "targetName": "Element 19",
+                  "targetOriginal": {
+                    "x": 932,
+                    "y": 546
+                  }
+                }
+              ],
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 21",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 56,
+                "left": 1059,
+                "top": 649,
+                "width": 56
+              },
+              "type": "rectangle"
+            },
+            {
+              "background": {
+                "color": {
+                  "field": "POI_V",
+                  "fixed": "#D9D9D9"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                },
+                "radius": 55,
+                "width": 0
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "field": "POI_V",
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "POI V",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 34,
+                "left": 683,
+                "top": 17,
+                "width": 145
+              },
+              "type": "metric-value"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                },
+                "width": 0
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "fixed": "V"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 27",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 50,
+                "left": 847,
+                "top": 12,
+                "width": 46
+              },
+              "type": "text"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "green"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                },
+                "radius": 55,
+                "width": 0
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "field": "POI_F",
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 28",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 34,
+                "left": 683,
+                "top": 121,
+                "width": 143
+              },
+              "type": "metric-value"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "fixed": "Hz"
+                },
+                "valign": "middle"
+              },
+              "connections": [],
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 29",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 50,
+                "left": 847,
+                "top": 112,
+                "width": 46
+              },
+              "type": "text"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "fixed": "SS2"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 38",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 50,
+                "left": 609,
+                "top": 420,
+                "width": 46
+              },
+              "type": "text"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "fixed": "SS1"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 39",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 50,
+                "left": 1327,
+                "top": 418,
+                "width": 46
+              },
+              "type": "text"
+            },
+            {
+              "background": {
+                "color": {
+                  "field": "CT2_Pref",
+                  "fixed": "#D9D9D9"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                },
+                "radius": 55,
+                "width": 0
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "field": "CT2_Pref",
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "valign": "middle"
+              },
+              "connections": [],
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 40",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 34,
+                "left": 300,
+                "top": 563,
+                "width": 142
+              },
+              "type": "metric-value"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "fixed": "W"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 41",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 50,
+                "left": 442,
+                "top": 556,
+                "width": 46
+              },
+              "type": "text"
+            },
+            {
+              "background": {
+                "color": {
+                  "field": "CT2_Qref",
+                  "fixed": "#D9D9D9"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                },
+                "radius": 55,
+                "width": 0
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "field": "CT2_Qref",
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 42",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 34,
+                "left": 300,
+                "top": 599,
+                "width": 142
+              },
+              "type": "metric-value"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "fixed": "var"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 43",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 50,
+                "left": 437,
+                "top": 597,
+                "width": 46
+              },
+              "type": "text"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "fixed": "W"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 44",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 50,
+                "left": 1163,
+                "top": 548,
+                "width": 46
+              },
+              "type": "text"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "fixed": "var"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 45",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 50,
+                "left": 1158,
+                "top": 583,
+                "width": 46
+              },
+              "type": "text"
+            },
+            {
+              "background": {
+                "color": {
+                  "field": "CT1_Pref",
+                  "fixed": "#D9D9D9"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                },
+                "radius": 55,
+                "width": 0
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "field": "CT1_Pref",
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 46",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 34,
+                "left": 1023,
+                "top": 556,
+                "width": 129
+              },
+              "type": "metric-value"
+            },
+            {
+              "background": {
+                "color": {
+                  "field": "CT1_Qref",
+                  "fixed": "#D9D9D9"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                },
+                "radius": 55,
+                "width": 0
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "field": "CT2_Qref",
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 47",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 34,
+                "left": 1023,
+                "top": 591,
+                "width": 129
+              },
+              "type": "metric-value"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "fixed": "W"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 48",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 50,
+                "left": 834,
+                "top": 443,
+                "width": 46
+              },
+              "type": "text"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "fixed": "var"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 49",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 50,
+                "left": 834,
+                "top": 486,
+                "width": 46
+              },
+              "type": "text"
+            },
+            {
+              "background": {
+                "color": {
+                  "field": "CT2_Q",
+                  "fixed": "#D9D9D9"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                },
+                "radius": 55,
+                "width": 0
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "field": "CT2_Q",
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 50",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 34,
+                "left": 696,
+                "top": 486,
+                "width": 138
+              },
+              "type": "metric-value"
+            },
+            {
+              "background": {
+                "color": {
+                  "field": "CT2_P",
+                  "fixed": "#D9D9D9"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                },
+                "radius": 55,
+                "width": 0
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "field": "CT2_P",
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 51",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 34,
+                "left": 695,
+                "top": 451,
+                "width": 139
+              },
+              "type": "metric-value"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "fixed": "W"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 52",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 50,
+                "left": 847,
+                "top": 47,
+                "width": 46
+              },
+              "type": "text"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "fixed": "var"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 53",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 50,
+                "left": 847,
+                "top": 76,
+                "width": 46
+              },
+              "type": "text"
+            },
+            {
+              "background": {
+                "color": {
+                  "field": "POI_P",
+                  "fixed": "#D9D9D9"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                },
+                "radius": 55,
+                "width": 0
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "field": "POI_P",
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 54",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 34,
+                "left": 681,
+                "top": 51,
+                "width": 145
+              },
+              "type": "metric-value"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "green"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                },
+                "radius": 55,
+                "width": 0
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "field": "POI_Q",
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 55",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 34,
+                "left": 681,
+                "top": 86,
+                "width": 145
+              },
+              "type": "metric-value"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "green"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                },
+                "radius": 55,
+                "width": 0
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "field": "CT2_V",
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 56",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 34,
+                "left": 695,
+                "top": 416,
+                "width": 139
+              },
+              "type": "metric-value"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                },
+                "width": 0
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "fixed": "V"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 57",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 50,
+                "left": 834,
+                "top": 405,
+                "width": 46
+              },
+              "type": "text"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "fixed": "W"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 58",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 50,
+                "left": 1561,
+                "top": 443,
+                "width": 46
+              },
+              "type": "text"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "fixed": "var"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 59",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 50,
+                "left": 1561,
+                "top": 486,
+                "width": 46
+              },
+              "type": "text"
+            },
+            {
+              "background": {
+                "color": {
+                  "field": "CT1_Q",
+                  "fixed": "#D9D9D9"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                },
+                "radius": 55,
+                "width": 0
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "field": "CT1_Q",
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 60",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 34,
+                "left": 1423,
+                "top": 486,
+                "width": 138
+              },
+              "type": "metric-value"
+            },
+            {
+              "background": {
+                "color": {
+                  "field": "CT1_P",
+                  "fixed": "#D9D9D9"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                },
+                "radius": 55,
+                "width": 0
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "field": "CT1_P",
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 61",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 34,
+                "left": 1422,
+                "top": 451,
+                "width": 139
+              },
+              "type": "metric-value"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "green"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                },
+                "radius": 55,
+                "width": 0
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "field": "CT1_V",
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 62",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 34,
+                "left": 1423,
+                "top": 416,
+                "width": 138
+              },
+              "type": "metric-value"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                },
+                "width": 0
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "fixed": "V"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 63",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 50,
+                "left": 1561,
+                "top": 405,
+                "width": 46
+              },
+              "type": "text"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "blue"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                },
+                "radius": 0,
+                "width": 0
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "field": "POI_V_EST",
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 64",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 34,
+                "left": 382,
+                "top": 17,
+                "width": 145
+              },
+              "type": "metric-value"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                },
+                "width": 0
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "fixed": "V"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 65",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 50,
+                "left": 548,
+                "top": 12,
+                "width": 46
+              },
+              "type": "text"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "fixed": "W"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 68",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 50,
+                "left": 548,
+                "top": 48,
+                "width": 46
+              },
+              "type": "text"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "fixed": "var"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 69",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 50,
+                "left": 548,
+                "top": 86,
+                "width": 46
+              },
+              "type": "text"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "blue"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                },
+                "radius": 0,
+                "width": 0
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "field": "POI_P_EST",
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 70",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 34,
+                "left": 382,
+                "top": 52,
+                "width": 145
+              },
+              "type": "metric-value"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "blue"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                },
+                "radius": 0,
+                "width": 0
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "field": "POI_Q_EST",
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "valign": "middle"
+              },
+              "connections": [],
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 71",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 34,
+                "left": 382,
+                "top": 87,
+                "width": 145
+              },
+              "type": "metric-value"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "fixed": "W"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 66",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 50,
+                "left": 588,
+                "top": 242,
+                "width": 46
+              },
+              "type": "text"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "fixed": "var"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 67",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 50,
+                "left": 588,
+                "top": 285,
+                "width": 46
+              },
+              "type": "text"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "blue"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                },
+                "radius": 0,
+                "width": 0
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "field": "SS2_Q_EST",
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 72",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 34,
+                "left": 449,
+                "top": 285,
+                "width": 139
+              },
+              "type": "metric-value"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "blue"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                },
+                "radius": 0,
+                "width": 0
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "field": "SS2_P_EST",
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 73",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 34,
+                "left": 449,
+                "top": 250,
+                "width": 139
+              },
+              "type": "metric-value"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "blue"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "super-light-red"
+                },
+                "radius": 0,
+                "width": 0
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "field": "SS2_V_EST",
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 74",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 34,
+                "left": 449,
+                "top": 215,
+                "width": 139
+              },
+              "type": "metric-value"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                },
+                "width": 0
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "fixed": "V"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 75",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 50,
+                "left": 588,
+                "top": 204,
+                "width": 46
+              },
+              "type": "text"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "fixed": "W"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 76",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 50,
+                "left": 1241,
+                "top": 440,
+                "width": 46
+              },
+              "type": "text"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "fixed": "var"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 77",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 50,
+                "left": 1241,
+                "top": 483,
+                "width": 46
+              },
+              "type": "text"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "blue"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                },
+                "radius": 0,
+                "width": 0
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "field": "SS1_V_EST",
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 78",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 34,
+                "left": 1102,
+                "top": 413,
+                "width": 139
+              },
+              "type": "metric-value"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                },
+                "width": 0
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "fixed": "V"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 79",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 50,
+                "left": 1241,
+                "top": 402,
+                "width": 46
+              },
+              "type": "text"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "blue"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                },
+                "radius": 0,
+                "width": 0
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "field": "SS1_P_EST",
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 80",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 34,
+                "left": 1102,
+                "top": 448,
+                "width": 139
+              },
+              "type": "metric-value"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "blue"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                },
+                "radius": 0,
+                "width": 0
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "field": "SS1_Q_EST",
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 81",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 34,
+                "left": 1102,
+                "top": 483,
+                "width": 139
+              },
+              "type": "metric-value"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "#ffffff"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#000000"
+                },
+                "valign": "middle"
+              },
+              "connections": [
+                {
+                  "color": {
+                    "fixed": "#ffffff"
+                  },
+                  "lineStyle": {
+                    "animate": true,
+                    "style": "dotted"
+                  },
+                  "path": "straight",
+                  "size": {
+                    "fixed": 1,
+                    "max": 10,
+                    "min": 1
+                  },
+                  "source": {
+                    "x": 0,
+                    "y": 1
+                  },
+                  "sourceOriginal": {
+                    "x": 408.5,
+                    "y": 139
+                  },
+                  "target": {
+                    "x": -0.014492753623188406,
+                    "y": -1.144927536231884
+                  },
+                  "targetName": "Element 8",
+                  "targetOriginal": {
+                    "x": 409,
+                    "y": 88
+                  }
+                }
+              ],
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 82",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 10,
+                "left": 580,
+                "top": 152,
+                "width": 103
+              },
+              "type": "rectangle"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "#F2495C"
+                },
+                "radius": 60,
+                "width": 0
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "fixed": "3"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 83",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 50,
+                "left": 652,
+                "top": 349,
+                "width": 100
+              },
+              "type": "text"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "#F2495C"
+                },
+                "radius": 60,
+                "width": 0
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "fixed": "4"
+                },
+                "valign": "middle"
+              },
+              "connections": [],
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 84",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 50,
+                "left": 1384,
+                "top": 349,
+                "width": 100
+              },
+              "type": "text"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "#F2495C"
+                },
+                "radius": 60,
+                "width": 0
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "fixed": "2"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 85",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 50,
+                "left": 509,
+                "top": 131,
+                "width": 100
+              },
+              "type": "text"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "#F2495C"
+                },
+                "radius": 60,
+                "width": 0
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "fixed": "1"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 86",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 50,
+                "left": 581,
+                "top": 19,
+                "width": 100
+              },
+              "type": "text"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "blue"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "fixed": "Estimated value"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 88",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 36,
+                "left": 1607,
+                "top": 24,
+                "width": 194
+              },
+              "type": "rectangle"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "green"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                },
+                "radius": 55
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#ffffff"
+                },
+                "size": 20,
+                "text": {
+                  "fixed": "Measured value"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 87",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 36,
+                "left": 1607,
+                "top": 65,
+                "width": 194
+              },
+              "type": "rectangle"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "fill": {
+                  "fixed": "#D9D9D9"
+                },
+                "path": {
+                  "fixed": "img/icons/unicons/question-circle.svg",
+                  "mode": "fixed"
+                }
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 89",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 100,
+                "left": 100,
+                "rotation": 0,
+                "top": 100,
+                "width": 100
+              },
+              "type": "icon"
+            }
+          ],
+          "name": "Element 1734005403317",
+          "oneClickMode": "off",
+          "placement": {
+            "height": 100,
+            "left": 0,
+            "rotation": 0,
+            "top": 0,
+            "width": 100
+          },
+          "type": "frame"
+        },
+        "showAdvancedTypes": true
+      },
+      "pluginVersion": "11.3.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "eee8vc2vj8cg0d"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "select Date_Time, \r\nPOI_Va AS \"POI_V\",\r\nPOI_F AS \"POI_F\",\r\nPOI_P AS \"POI_P\",\r\nPOI_Q AS \"POI_Q\",\r\nCT1_Vab AS \"CT1_V\",\r\nCT1_P AS \"CT1_P\",\r\nCT1_Q AS \"CT1_Q\",\r\nCT1_P_REF AS \"CT1_Pref\",\r\nCT1_Q_REF AS \"CT1_Qref\",\r\nCT2_Vab AS \"CT2_V\",\r\nCT2_P AS \"CT2_P\",\r\nCT2_Q AS \"CT2_Q\",\r\nCT2_P_REF AS \"CT2_Pref\",\r\nCT2_Q_REF AS \"CT2_Qref\"\r\nfrom DB_CSL_BROKER_INPUT",
+          "refId": "Medidas",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "eee8vc2vj8cg0d"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "select Date_Time, \r\nV_POI_EST AS \"POI_V_EST\",\r\nP_POI_POI AS \"POI_P_EST\",\r\nQ_POI_POI AS \"POI_Q_EST\",\r\nV_SS1_EST AS \"SS1_V_EST\",\r\nP_SS1_SS2 AS \"SS1_P_EST\",\r\nQ_SS1_SS2 AS \"SS1_Q_EST\",\r\nV_SS2_EST AS \"SS2_V_EST\",\r\nP_SS2_POI AS \"SS2_P_EST\",\r\nQ_SS2_POI AS \"SS2_Q_EST\"\r\nfrom DB_CSL_BROKER_OUTPUT",
+          "refId": "Estimador",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "",
+      "transparent": true,
+      "type": "canvas"
+    }
+  ],
+  "preload": false,
+  "refresh": "auto",
+  "schemaVersion": 40,
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now+40m",
+    "to": "now+1h"
+  },
+  "timepicker": {},
+  "timezone": "utc",
+  "title": "SCADA_ESTIMADOR_PostgreSQL",
+  "uid": "be5zfmceuky68aa",
+  "version": 29,
+  "weekStart": ""
+}
