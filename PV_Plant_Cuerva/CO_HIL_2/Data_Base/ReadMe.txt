@@ -5,6 +5,8 @@ The name assigned to the Data Base is: DB_CSL_Broker. This is created using pgAd
 The user is the one when you install PostgreSQL
 The password is the one when you install PostgreSQL
 
+-File 'test_create_db.py' is a test code for creating a data base from a python scripts
+
 
 -File 'sql_DB_CSL_Broker.txt' is the sql code for creating the table in the data base called DB_CSL_Broker
 -File 'DB_CSL_BROKER_bup' is a backup of the SQL server for importing the table in the Query of pgAdmin4 (Management tool of PostgreSQL)
@@ -17,4 +19,8 @@ By default, the DB is created in the localhost.
 For enabling a remote access to the DB follow this link:
 https://quike.it/es/como-configurar-acceso-remoto-postgresql/#elementor-toc__heading-anchor-5
 
--File 'test_create_db.py' is a test code for creating a data base from a python scripts
+-File 'DB_CSL_BROKER_PostgreSQL.py' is a python scripts with the following functions:
+1. read_elec_POI. It is a modbus client for reading all the measurements from the server corresponding to the PLC
+2. read_elec_CT1. It is a modbus client for reading all the measurements/references from the server corresponding to the CT1
+3. read_elec_CT2. It is a modbus client for reading all the measurements/references from the server corresponding to the CT2
+4. write_DB_CSL_BROKER_INPUT. It is a function for writing in the table DB_CSL_BROKER_INPUT of the data base DB_CSL_Broker, all the measurements/references collected in the previous functions
