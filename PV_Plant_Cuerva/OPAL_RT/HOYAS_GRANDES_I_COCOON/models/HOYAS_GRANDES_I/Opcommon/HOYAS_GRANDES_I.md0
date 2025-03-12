@@ -1,0 +1,85 @@
+[GENERATION.REDHAWK.SETTINGS]
+CompilerVersion=Automatic
+PlatformDependent=yes
+RTLAB_Version=v2024.1.2.43undefined
+[INTERNAL]
+LAST_PLATFORM=4
+[SEPARATION.SETTINGS]
+CompilerVersion=AUTOMATIC
+MATLAB_VERSION=173
+PostBuildCmd=
+PreBuildCmd=
+RTLAB_Version=v2024.1.2.43undefined
+[SEPARATION]
+HOYAS_GRANDES_I.slx=d0ecf3e630c2e7badf0c37f0f8d93cd2@03/03/25 13:51:12
+Modelo_trafo.m=cef3e370d1a5b80035a8bf0a63cb9f0d@04/25/24 13:42:06
+Opcommon\HOYAS_GRANDES_I.subsys=exists
+Opcommon\hoyas_grandes_i_1_sm_computation.slx=exists
+PV_profile_generacion.m=424c708ee7db36ccc3aa791c31baaea8@01/17/25 10:27:14
+fig_result_PPC.m=43b3bc148170c09a04584e38e6061daf@09/27/24 10:59:41
+hoyas_grandes_i_2_sc_user_interface.slx=exists
+[GENERATION.REDHAWK]
+..\..\..\..\..\..\..\OPAL-RT\RT-LAB\2024.1.2\Simulink\rtw\c\common\rtlab_rtmodel.tlc=649c42bccd471daa642662d96f043530@02/23/24 15:51:02
+..\..\..\..\..\..\..\OPAL-RT\RT-LAB\2024.1.2\Simulink\rtw\c\common\rtlab_rtmodel.tmf=33eea3c0e3168484863192a84ea0cb87@02/23/24 15:51:02
+Opcommon\HOYAS_GRANDES_I.param=38bd9b4dbcce73086cb61f8b7eda0913@03/03/25 13:56:10
+Opcommon\HOYAS_GRANDES_I.signal=29769848e2f7dabb4cb15ea087002b11@03/03/25 13:56:10
+Opcommon\HOYAS_GRANDES_I.subsys=fccfe088157ff335404f9740ea96c1ca@03/03/25 13:55:17
+Opcommon\hoyas_grandes_i_1_sm_computation.slx=a0a5a30f2bef727597adc3124cb3aed0@03/03/25 13:55:11
+hoyas_grandes_i_sm_computation\OpREDHAWKtarget\OpalSnapshotUtil.c=exists
+hoyas_grandes_i_sm_computation\OpREDHAWKtarget\builtin_typeid_types.h=exists
+hoyas_grandes_i_sm_computation\OpREDHAWKtarget\hoyas_grandes_i_1_sm_computation.c=exists
+hoyas_grandes_i_sm_computation\OpREDHAWKtarget\hoyas_grandes_i_1_sm_computation.h=exists
+hoyas_grandes_i_sm_computation\OpREDHAWKtarget\hoyas_grandes_i_1_sm_computation.mk=exists
+hoyas_grandes_i_sm_computation\OpREDHAWKtarget\hoyas_grandes_i_1_sm_computation_data.c=exists
+hoyas_grandes_i_sm_computation\OpREDHAWKtarget\hoyas_grandes_i_1_sm_computation_offsets.c=exists
+hoyas_grandes_i_sm_computation\OpREDHAWKtarget\hoyas_grandes_i_1_sm_computation_private.h=exists
+hoyas_grandes_i_sm_computation\OpREDHAWKtarget\hoyas_grandes_i_1_sm_computation_types.h=exists
+hoyas_grandes_i_sm_computation\OpREDHAWKtarget\multiword_types.h=exists
+hoyas_grandes_i_sm_computation\OpREDHAWKtarget\rtGetInf.c=exists
+hoyas_grandes_i_sm_computation\OpREDHAWKtarget\rtGetInf.h=exists
+hoyas_grandes_i_sm_computation\OpREDHAWKtarget\rtGetNaN.c=exists
+hoyas_grandes_i_sm_computation\OpREDHAWKtarget\rtGetNaN.h=exists
+hoyas_grandes_i_sm_computation\OpREDHAWKtarget\rt_defines.h=exists
+hoyas_grandes_i_sm_computation\OpREDHAWKtarget\rt_nonfinite.c=exists
+hoyas_grandes_i_sm_computation\OpREDHAWKtarget\rt_nonfinite.h=exists
+hoyas_grandes_i_sm_computation\OpREDHAWKtarget\rtmodel.h=exists
+hoyas_grandes_i_sm_computation\OpREDHAWKtarget\rtwtypes.h=exists
+hoyas_grandes_i_sm_computation\OpREDHAWKtarget\settings.json=exists
+hoyas_grandes_i_sm_computation\OpREDHAWKtarget\zero_crossing_types.h=exists
+[COMPILATION.REDHAWK]
+..\..\..\..\..\..\..\OPAL-RT\RT-LAB\2024.1.2\Simulink\rtw\c\common\model_main.c=20126176871ed37bdf13744f2fad163e@02/23/24 15:51:02
+hoyas_grandes_i_sm_computation\OpREDHAWKtarget\OpalSnapshotUtil.c=ce476de5060f497dd3e31fa4a65db9cc@02/26/25 13:22:05
+hoyas_grandes_i_sm_computation\OpREDHAWKtarget\builtin_typeid_types.h=eb699d15e1f309816ce4480d55fe3fb8@02/26/25 13:22:01
+hoyas_grandes_i_sm_computation\OpREDHAWKtarget\hoyas_grandes_i_1_sm_computation=exists
+hoyas_grandes_i_sm_computation\OpREDHAWKtarget\hoyas_grandes_i_1_sm_computation.c=9d7c15255154fc3c9e8a30f4dd2ec538@02/26/25 13:22:20
+hoyas_grandes_i_sm_computation\OpREDHAWKtarget\hoyas_grandes_i_1_sm_computation.h=ccc9e12bdc7898b48e96780d4886ec6a@02/26/25 13:22:01
+hoyas_grandes_i_sm_computation\OpREDHAWKtarget\hoyas_grandes_i_1_sm_computation.mk=c0783072436d08f6d97e9cb1361d299b@02/26/25 13:22:03
+hoyas_grandes_i_sm_computation\OpREDHAWKtarget\hoyas_grandes_i_1_sm_computation_data.c=2d51b7c766d9f61b7a0c35f9ba8a698e@02/26/25 13:22:01
+hoyas_grandes_i_sm_computation\OpREDHAWKtarget\hoyas_grandes_i_1_sm_computation_offsets.c=a2db332e7ba0121f34c60cd4cee601fe@02/26/25 13:22:01
+hoyas_grandes_i_sm_computation\OpREDHAWKtarget\hoyas_grandes_i_1_sm_computation_private.h=083de00f5b848499c361b9374ea1285e@02/26/25 13:22:01
+hoyas_grandes_i_sm_computation\OpREDHAWKtarget\hoyas_grandes_i_1_sm_computation_types.h=0e4fb1de295067291737fe58897a4082@02/26/25 13:22:01
+hoyas_grandes_i_sm_computation\OpREDHAWKtarget\multiword_types.h=bf7b196f8d1c9faaa27de55c33e38456@02/26/25 13:22:01
+hoyas_grandes_i_sm_computation\OpREDHAWKtarget\rtGetInf.c=17831d7c5845e1a50da161bd507de6f8@02/26/25 13:22:01
+hoyas_grandes_i_sm_computation\OpREDHAWKtarget\rtGetInf.h=e15568f4e188836d706269258be913a5@02/26/25 13:21:47
+hoyas_grandes_i_sm_computation\OpREDHAWKtarget\rtGetNaN.c=af9ff267bfe985f6cda361cf77923ad4@02/26/25 13:22:01
+hoyas_grandes_i_sm_computation\OpREDHAWKtarget\rtGetNaN.h=212963ada84a8f114eaa1b8a5bd2ef31@02/26/25 13:21:47
+hoyas_grandes_i_sm_computation\OpREDHAWKtarget\rt_defines.h=7055affac97b275daf617aa429424ea4@02/26/25 13:21:47
+hoyas_grandes_i_sm_computation\OpREDHAWKtarget\rt_nonfinite.c=6458c1b64942679716956c0ee24b172b@02/26/25 13:22:01
+hoyas_grandes_i_sm_computation\OpREDHAWKtarget\rt_nonfinite.h=e777787e4a137c3dcd3be2c8881f821c@02/26/25 13:21:47
+hoyas_grandes_i_sm_computation\OpREDHAWKtarget\rtmodel.h=1fb495c83627cd493943aa8947a38cba@02/26/25 13:22:01
+hoyas_grandes_i_sm_computation\OpREDHAWKtarget\rtwtypes.h=4d5c7cf6abbb417f48aa655261ab3da4@02/26/25 13:22:01
+hoyas_grandes_i_sm_computation\OpREDHAWKtarget\settings.json=ba7b178e14b7e850e13b2c7ce60e6cb4@02/26/25 13:22:19
+hoyas_grandes_i_sm_computation\OpREDHAWKtarget\zero_crossing_types.h=b2e22b917400047f0bea8fb000749c4d@02/26/25 13:22:01
+[COMPILATION.REDHAWK.SETTINGS]
+CompilerVersion=Automatic
+DEBUG=0
+DevNodeIP=192.168.10.101
+DevNodeOSVersion=Red Hat 5.2 (2.6.29.6-opalrt-6)
+EXT_CC_OPTS=
+EXT_LD_OPTS=
+EXT_LIB=
+EXT_LIBPATH=
+RTLAB_Version=v2024.1.2.43undefined
+TargetCompileCmd=
+USER_INCS=
+USER_SRCS=

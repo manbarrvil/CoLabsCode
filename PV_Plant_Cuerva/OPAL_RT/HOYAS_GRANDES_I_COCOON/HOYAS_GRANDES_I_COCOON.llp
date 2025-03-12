@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project>
+    <General>
+        <att_name>HOYAS_GRANDES_I_COCOON</att_name>
+        <att_description>This is a project!</att_description>
+        <att_ip_address>192.168.10.102:25251</att_ip_address>
+        <att_hashcode>7069D05E-2C53-4394-856F-92EA9083A451</att_hashcode>
+        <att_autosave>ON</att_autosave>
+        <att_project_locked>0</att_project_locked>
+        <att_filename>C:\Users\depto\OPAL-RT\RT-LABv2024.1_Workspace\HOYAS_GRANDES_I_COCOON\HOYAS_GRANDES_I_COCOON.llp</att_filename>
+    </General>
+    <Optionals>
+        <att_donotask_loadcfg_at_prjopen>0</att_donotask_loadcfg_at_prjopen>
+        <att_matlab_compile_outprocess>OFF</att_matlab_compile_outprocess>
+        <att_donotremind_labviewdeprecated>FALSE</att_donotremind_labviewdeprecated>
+    </Optionals>
+    <Models>
+        <Model>
+            <Path>
+                <Relative>models/HOYAS_GRANDES_I/HOYAS_GRANDES_I.slx</Relative>
+                <Absolute>C:/Users/depto/OPAL-RT/RT-LABv2024.1_Workspace/HOYAS_GRANDES_I_COCOON/models/HOYAS_GRANDES_I/HOYAS_GRANDES_I.slx</Absolute>
+                <UNC>C:/Users/depto/OPAL-RT/RT-LABv2024.1_Workspace/HOYAS_GRANDES_I_COCOON/models/HOYAS_GRANDES_I/HOYAS_GRANDES_I.slx</UNC>
+            </Path>
+        </Model>
+    </Models>
+</Project>

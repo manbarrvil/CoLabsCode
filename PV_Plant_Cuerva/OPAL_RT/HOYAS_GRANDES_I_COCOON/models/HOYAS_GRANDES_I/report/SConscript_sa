@@ -1,0 +1,12 @@
+Import("*")
+from SconsTools.CopyFunctions import CopyDirectory
+
+# SOURCES
+
+# COMPILATION COMMANDS
+           
+#INSTALL
+
+n1 = CopyDirectory(env, configDict['srcdir']  + '/common/report/', configDict['buildrootdir'] + '/common/report/')
+env.Alias('install_files', n1)
+

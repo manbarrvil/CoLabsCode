@@ -1,0 +1,14 @@
+[
+  {"version":2},
+  {
+    "Opal::Simulation::SerializeableLoadParamList":
+    {
+      "name":"205CC9BF-3E22-4EC6-AB37-D5F5BD1FDC4A",
+      "loadParamSets":
+      [
+        "HOYAS_GRANDES_I.slx"
+      ],
+      "parent":"/"
+    }
+  }
+]

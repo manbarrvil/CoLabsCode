@@ -1,0 +1,1 @@
+CO_HIL_1, CO_HIL_2, CO_HIL_n contains the python code for running the state estimator depending on the CO-HIL setup
