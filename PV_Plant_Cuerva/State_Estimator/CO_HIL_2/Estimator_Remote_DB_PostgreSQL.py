@@ -1,18 +1,21 @@
 '''Code of the State Estimator'''
-#https://quike.it/es/como-configurar-acceso-remoto-postgresql/#elementor-toc__heading-anchor-5
 
 from datetime import datetime, timezone
 import lib
 import numpy as np
 import time
 import psycopg2
+import matplotlib.pyplot as plt
+import json
 
 
-db_host = '172.17.3.239'  # Dirección del servidor remoto de PostgreSQL
-db_port = 5432  # Puerto del servidor PostgreSQL (por defecto es 5432)
-db_user = 'postgres'  # Nombre de usuario para la base de datos
-db_password = 'postgres'  # Contraseña para la base de datos
-db_name = 'DB_CSL_BROKER'  # Nombre de la base de datos       
+db_host = '172.17.3.239'  # Address of the remote PostgreSQL serverQL
+db_port = 5432  # PostgreSQL server port (default is 5432)
+db_user = 'postgres'  # Username for the database
+db_password = 'postgres'  # Password for the database
+db_name = 'DB_CSL_BROKER'  # name for the databases   
+
+#Function for reading from the remote data base    
 def read_DB_CSL_BROKER_INPUT(db_host,db_port,db_user,db_password,db_name):
 
     conexion2 = psycopg2.connect(
@@ -40,14 +43,15 @@ def read_DB_CSL_BROKER_INPUT(db_host,db_port,db_user,db_password,db_name):
             
     return V_POI_DB, V_CT1_DB, V_CT2_DB, P_POI_DB, Q_POI_DB, P_CT1_DB, Q_CT1_DB, P_CT2_DB, Q_CT2_DB
 
+#Function defining the input to the state estimator_ topology and measurements 
 def input_data_SE(V_POI_DB, V_SS1_DB, V_SS2_DB, P_POI_DB, Q_POI_DB, P_CT1_DB, Q_CT1_DB, P_CT2_DB, Q_CT2_DB):
-            '''Son los datos de entrada al estimador de estados'''
-            # Definir de forma adecuada las magnitudes base
+            '''Input data of the state estimator'''
+            # Base value of the systems
             Sbase = 5.7e6
             Ubase = 20.0e3
             Zbase = (Ubase**2)/Sbase
         
-            # Por unidad
+            # Conversion to pu values
             V_POI_pu = V_POI_DB/Ubase
             P_POI_pu = P_POI_DB/Sbase
             Q_POI_pu = Q_POI_DB/Sbase
@@ -60,22 +64,22 @@ def input_data_SE(V_POI_DB, V_SS1_DB, V_SS2_DB, P_POI_DB, Q_POI_DB, P_CT1_DB, Q_
             P_CT2_pu = P_CT2_DB/Sbase
             Q_CT2_pu = Q_CT2_DB/Sbase
             
-            # Nodos - Hay que darle id, nombre y decir si hay un elemento shunt
+            # Nodes - You have to provide an id of the node, name and say if there is a shunt element
             Nodes = [{'id': 1, 'name': 'Nodo 1', 'B': 0},
                       {'id': 2, 'name': 'Nodo 2', 'B': 0},
                       {'id': 3, 'name': 'Nodo 3', 'B': 0},
                       {'id': 4, 'name': 'Nodo 4', 'B': 0}]
         
-            # Lines -> B es la mitad de la susceptancia (la que hay en cada pata)
-            # La conexión con los nodos se indica por el "name" y no por el "id"
+            # Lines -> B is half the susceptance (the one in each leg o the pi model)
+            # The connection to the nodes is indicated by the "name" and not by the "id"
             Lines = [{'id': 1,  'From': 'Nodo 1',  'To': 'Nodo 2',  'R': 0.7586/Zbase, 'X': 2.5565/Zbase, 'B': 0 , 'Transformer': False, 'rt': 1},  
                       {'id': 2,  'From': 'Nodo 2',  'To': 'Nodo 3',  'R': 0.206*0.153/Zbase, 'X': 0.115*0.153/Zbase, 'B': 0.235e-6*2*np.pi*50*0.153/2*Zbase , 'Transformer': False, 'rt': 1},
                       {'id': 3,  'From': 'Nodo 3',  'To': 'Nodo 4',  'R': 0.206*0.613/Zbase, 'X': 0.115*0.613/Zbase, 'B': 0.235e-6*2*np.pi*50*0.613/2*Zbase , 'Transformer': False, 'rt': 1}]
         
             # Measurements
-            # Se indica el nodo o la línea por su "id"!
+            # The node or line is indicated by its "id"!
             Meas = [{'id': 1, 'node': 2,    'line': None, 'type': 'U', 'value': V_POI_pu,   'std': 0.008},
-                    {'id': 2, 'node': None, 'line': -1,   'type': 'P', 'value': P_POI_pu,   'std': 0.008}, # Flujo de potencia de 1 a 2 medido en 2, en OPAL-RT el flujo esta medido en 2 pero de 2 a 1
+                    {'id': 2, 'node': None, 'line': -1,   'type': 'P', 'value': P_POI_pu,   'std': 0.008}, # Power flow from 1 to 2 measured in 2, in OPAL-RT the flow is measured in 2 but from 2 to 1
                     {'id': 3, 'node': None, 'line': -1,   'type': 'Q', 'value': Q_POI_pu,   'std': 0.008},
                     {'id': 4, 'node': 4,    'line': None, 'type': 'P', 'value': P_CT1_pu,   'std': 0.008},
                     {'id': 5, 'node': 4,    'line': None, 'type': 'Q', 'value': Q_CT1_pu,   'std': 0.008},
@@ -85,7 +89,8 @@ def input_data_SE(V_POI_DB, V_SS1_DB, V_SS2_DB, P_POI_DB, Q_POI_DB, P_CT1_DB, Q_
                     {'id': 9, 'node': 3,    'line': None, 'type': 'U', 'value': V_SS2_pu,   'std': 0.008},
                     {'id': 9, 'node': 4,    'line': None, 'type': 'U', 'value': V_SS1_pu,   'std': 0.008}]
             return Nodes, Lines, Meas
-        
+
+#Function for writing into the remote data base        
 def write_DB_CSL_BROKER_OUTPUT(t, V_POI_EST, V_SS1_EST, V_SS2_EST, P_SS1_SS2, P_SS2_POI, P_POI_POI, Q_SS1_SS2, Q_SS2_POI, Q_POI_POI,db_host,db_port,db_user,db_password,db_name):
     conexion3 = psycopg2.connect(
         host=db_host,
@@ -104,36 +109,43 @@ def write_DB_CSL_BROKER_OUTPUT(t, V_POI_EST, V_SS1_EST, V_SS2_EST, P_SS1_SS2, P_
 
 if __name__ == '__main__':
 
-
+    latency_global=[]
     try:
         while True:
             
             t = datetime.now(timezone.utc)
-            
-            # Lectura de la tabla DB_CSL_BROKER_INPUT para el estimador
+            # Tic: Init timer
+            tic_read_DB_CSL_BROKER_INPUT = time.time()
+            # Readin from the remote data base
             V_POI_DB, V_SS1_DB, V_SS2_DB, P_POI_DB, Q_POI_DB, P_CT1_DB, Q_CT1_DB, P_CT2_DB, Q_CT2_DB = read_DB_CSL_BROKER_INPUT(db_host,db_port,db_user,db_password,db_name)
+            # Toc: End Timer
+            toc_read_DB_CSL_BROKER_INPUT = time.time()
+            # Print execution time
+            print(f"Execution time read_DB_CSL_BROKER_INPUT: {(toc_read_DB_CSL_BROKER_INPUT - tic_read_DB_CSL_BROKER_INPUT) * 1000:.2f} ms")
             
+            # Tic: Init timer
+            tic_state_estimation = time.time()
             # Parametros de entrada al estimador
             Nodes, Lines, Meas = input_data_SE(V_POI_DB, V_SS1_DB, V_SS2_DB, P_POI_DB, Q_POI_DB, P_CT1_DB, Q_CT1_DB, P_CT2_DB, Q_CT2_DB)
             
-            '''EJECUCION DE ESTIMADOR'''
-            # Si se definen restricciones, al menos, hay que detallar: 'id', 'node', 'line', 'type', 'value' del mismo modo que se hizo con las medidas
+            '''STATE ESTIMATOR EXECUTION'''
+            # If restrictions are defined, at least, the following must be detailed: 'id', 'node', 'line', 'type', 'value' in the same way as was done with the measures
             Cons =[]
         
-            # Se contruye el objeto red
+            # The network object is built
             net = lib.grid(Nodes, Lines, Meas, Cons)
         
-            # # Se resuelve la estimación de estado utilizando WLS
+            # # State estimation is solved using WLS
             # Results_WLS = net.state_estimation(tol = 1e-4, niter = 50, Huber = False, lmb = None, rn = True)  
         
-            # Se resuelve la estimación de estado utilizando Huber
+            # The state estimate is solved using Huber
             Results_Huber = net.state_estimation(tol = 1e-4, 
                                                 niter = 50, 
                                                 Huber = True, 
                                                 lmb = 3, 
                                                 rn = False)
         
-            # Sacamos resultados
+            # Results
             tensiones = [node.V for node in net.nodes]
             angulos = [node.theta for node in net.nodes]
             lab_r = net.lab_results()
@@ -159,10 +171,25 @@ if __name__ == '__main__':
             Q_SS2_POI = Potencias_reac[1]*Sbase
             Q_POI_POI = Potencias_reac[0]*Sbase
             
+            # Toc: End Timer
+            toc_state_estimation = time.time()
+            # Print execution time
+            print(f"Execution time state_estimation: {(toc_state_estimation - tic_state_estimation) * 1000:.2f} ms")
+            
+            # Tic: Init timer
+            tic_write_DB_CSL_BROKER_OUTPUT = time.time()
             write_DB_CSL_BROKER_OUTPUT(t, V_POI_EST, V_SS1_EST, V_SS2_EST, P_SS1_SS2, P_SS2_POI, P_POI_POI, Q_SS1_SS2, Q_SS2_POI, Q_POI_POI,db_host,db_port,db_user,db_password,db_name)
-            time.sleep(1)
+            #time.sleep(1)
+            # Toc: End Timer
+            toc_write_DB_CSL_BROKER_OUTPUT = time.time()
+            # Print execution time
+            print(f"Execution time write_DB_CSL_BROKER_OUTPUT: {(toc_write_DB_CSL_BROKER_OUTPUT - tic_write_DB_CSL_BROKER_OUTPUT) * 1000:.2f} ms")
 
-
+            latency_global.append(toc_write_DB_CSL_BROKER_OUTPUT - tic_read_DB_CSL_BROKER_INPUT)
     except KeyboardInterrupt:
         print("Fin de la conexion...")
+        plt.plot(latency_global)
+        plt.title("Latency")
+        with open("data.json", "w") as file:
+            json.dump(latency_global, file)
 

@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
-'''Código de PPC'''
-#https://quike.it/es/como-configurar-acceso-remoto-postgresql/#elementor-toc__heading-anchor-5
-# Convertidor de uint16 a int16
+'''Data base code'''
+# converter from uint16 to int16
 def toSigned16(n,bit):
     mask = (2**bit) - 1
     if n & (1 << (bit - 1)):
@@ -9,7 +8,7 @@ def toSigned16(n,bit):
     else: 
         return n & mask
     
-# Convertidor de int16 a uint16
+# converter from int16 to uint16
 def toUnsigned16(n,bit):
     if (n>=0 and n<(2**(bit-1))):
         n_uns=n
@@ -35,12 +34,12 @@ import psycopg2
 import matplotlib.pyplot as plt
 import json
 
-# Direccines IP
+# IP addresses from the PLCs server
 IP = "192.168.5.15"
 IP1 = "192.168.1.10"
 IP2 = "192.168.2.10"
 
-# Funciones de Modbus
+# Modbus Functions
 def read_elec_POI(IP):
     client = ModbusTcpClient(IP)
     
@@ -108,7 +107,7 @@ def read_elec_POI(IP):
 def read_elec_SS1(IP):
     client = ModbusTcpClient(IP)
     
-    # Leer valores
+    # Read values
     # int 16 bits
     CT1_Vab_mb = client.read_holding_registers(40575, 1)
     CT1_Vbc_mb = client.read_holding_registers(40576, 1)
@@ -145,7 +144,7 @@ def read_elec_SS1(IP):
 def read_elec_SS2(IP):
     client = ModbusTcpClient(IP)
     
-    # Leer valores
+    # Read values
     # int 16 bits
     CT2_Vab_mb = client.read_holding_registers(40575, 1)
     CT2_Vbc_mb = client.read_holding_registers(40576, 1)
@@ -209,7 +208,7 @@ if __name__ == '__main__':
             # Toc: End Timer
             toc_read_elec_POI = time.time()
             # Print execution time
-            print(f"Tiempo transcurrido read_elec_POI: {(toc_read_elec_POI - tic_read_elec_POI) * 1000:.2f} ms")
+            print(f"Execution time read_elec_POI: {(toc_read_elec_POI - tic_read_elec_POI) * 1000:.2f} ms")
             
             # Modbus Client SS1
             tic_read_elec_SS1 = time.time()
@@ -217,7 +216,7 @@ if __name__ == '__main__':
             # Toc: End Timer
             toc_read_elec_SS1 = time.time()
             # Print execution time
-            print(f"Tiempo transcurrido read_elec_SS1: {(toc_read_elec_SS1 - tic_read_elec_SS1) * 1000:.2f} ms")
+            print(f"Execution time read_elec_SS1: {(toc_read_elec_SS1 - tic_read_elec_SS1) * 1000:.2f} ms")
             
             # Modbus Client SS2
             # Tic: Init timer
@@ -226,7 +225,7 @@ if __name__ == '__main__':
             # Toc: End Timer
             toc_read_elec_SS2 = time.time()
             # Print execution time
-            print(f"Tiempo transcurrido read_elec_SS2: {(toc_read_elec_SS2 - tic_read_elec_SS2) * 1000:.2f} ms")
+            print(f"Execution time read_elec_SS2: {(toc_read_elec_SS2 - tic_read_elec_SS2) * 1000:.2f} ms")
             
             
             t = datetime.now(timezone.utc)
@@ -242,11 +241,11 @@ if __name__ == '__main__':
             # Toc: End Timer
             toc_read_elec_DB = time.time()
             # Print execution time
-            print(f"Tiempo transcurrido write_DB_CSL_BROKER_INPUT: {(toc_read_elec_DB - tic_read_elec_POI) * 1000:.2f} ms")
+            print(f"Execution time write_DB_CSL_BROKER_INPUT: {(toc_read_elec_DB - tic_read_elec_POI) * 1000:.2f} ms")
             
             latency_global.append(toc_read_elec_DB - tic_read_elec_POI)
             
-            print("Rellenado tabla DB_CSL_BROKER_INPUT con medidas de Modbus TCP/IP...")
+            print("Filling the DB_CSL_BROKER_INPUT table with Modbus TCP/IP measurements...")
             
 
             #time.sleep(1)
