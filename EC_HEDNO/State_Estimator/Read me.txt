@@ -1,0 +1,16 @@
+Main_FDII.py: The main script that calls the main state estimation function "State_Estimation_generic_function.py". 
+The inputs of the function are the network Excel file ("EC_Network_reduced_merged.xlsx") and the measurement Excel file ("Input measurements.xlsx").
+The outputs are:
+
+	removed_residuals: The measurement type and bus index of the measurements that have been identified as bad data because their normalized residual exceeded 3.
+	max_residual_measurement_type: The type (P, Q or V) of the measurement that resulted in the highest normalized residual
+ 	max_residual_bus_index: The index of the bus of the highest residual
+	max_residual_index: The index of the highest residual
+	max_residual_val: The value of the maximum residual
+
+	Pest, Qest, Vest: Gampsy objects containing the estimates. To access them type e.g., "Pest.records"
+	Pmesp, Qmesp, Vmesp: Gamspy objects containing the measurements. To access them type e.g., "Pmesp.records"
+	residuals_df_P, residuals_df_Q, residuals_df_V: Arrays containing the values of the normalized residual per quantity and bus
+	
+
+The remaining .py files correspond to other functions that are called during the execution of "State_Estimation_generic_function.py", to perform actions like measurement processing, basic plausibility analysis, observability check, calculation of the normalized residuals etc. 
