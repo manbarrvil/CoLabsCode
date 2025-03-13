@@ -3,3 +3,7 @@
 2. read_elec_CT1. It is a modbus client for reading all the measurements/references from the server corresponding to the CT1
 3. read_elec_CT2. It is a modbus client for reading all the measurements/references from the server corresponding to the CT2
 4. write_DB_CSL_BROKER_INPUT. It is a function for writing in the table DB_CSL_BROKER_INPUT of the data base DB_CSL_Broker, all the measurements/references collected in the previous functions
+
+The last part of the code is done for registering the exececution time of the functions and sabe this information in json file called data.json
+
+The file plot_execution_time represents a figure for monitoring the execution time of the json file

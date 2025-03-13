@@ -32,6 +32,8 @@ from datetime import datetime, timezone
 from pymodbus.client import ModbusTcpClient
 import time
 import psycopg2
+import matplotlib.pyplot as plt
+import json
 
 # Direccines IP
 IP = "192.168.5.15"
@@ -103,7 +105,7 @@ def read_elec_POI(IP):
     client.close()
     return Va, Vb, Vc, f, P, Q, Ia, Ib, Ic, In, U12, U23, U31, U1, U2, U3
 
-def read_elec_CT1(IP):
+def read_elec_SS1(IP):
     client = ModbusTcpClient(IP)
     
     # Leer valores
@@ -140,7 +142,7 @@ def read_elec_CT1(IP):
     return CT1_Vab, CT1_Vbc, CT1_Vca, CT1_Ia, CT1_Ib, CT1_Ic, CT1_P, CT1_Q, CT1_P_ref, CT1_Q_ref
 
 
-def read_elec_CT2(IP):
+def read_elec_SS2(IP):
     client = ModbusTcpClient(IP)
     
     # Leer valores
@@ -194,28 +196,67 @@ def write_DB_CSL_BROKER_INPUT(t, POI_Va, POI_Vb, POI_Vc, f, POI_P, POI_Q, POI_Ia
 
 if __name__ == '__main__':
 
-
+    latency_global=[]
     try:
         while True:
             
-            # Extracción de datos por Modbus
+            '''Modbus client reading from servers'''
+            
+            # Modbus Client POI
+            # Tic: Init timer
+            tic_read_elec_POI = time.time()
             POI_Va, POI_Vb, POI_Vc, f, POI_P, POI_Q, POI_Ia, POI_Ib, POI_Ic, POI_In, POI_U12, POI_U23, POI_U31, POI_U1, POI_U2, POI_U3 = read_elec_POI(IP)
-            CT1_Vab, CT1_Vbc, CT1_Vca, CT1_Ia, CT1_Ib, CT1_Ic, CT1_P, CT1_Q, CT1_P_ref, CT1_Q_ref = read_elec_CT1(IP1)
-            CT2_Vab, CT2_Vbc, CT2_Vca, CT2_Ia, CT2_Ib, CT2_Ic, CT2_P, CT2_Q, CT2_P_ref, CT2_Q_ref = read_elec_CT2(IP2)
+            # Toc: End Timer
+            toc_read_elec_POI = time.time()
+            # Print execution time
+            print(f"Tiempo transcurrido read_elec_POI: {(toc_read_elec_POI - tic_read_elec_POI) * 1000:.2f} ms")
+            
+            # Modbus Client SS1
+            tic_read_elec_SS1 = time.time()
+            CT1_Vab, CT1_Vbc, CT1_Vca, CT1_Ia, CT1_Ib, CT1_Ic, CT1_P, CT1_Q, CT1_P_ref, CT1_Q_ref = read_elec_SS1(IP1)
+            # Toc: End Timer
+            toc_read_elec_SS1 = time.time()
+            # Print execution time
+            print(f"Tiempo transcurrido read_elec_SS1: {(toc_read_elec_SS1 - tic_read_elec_SS1) * 1000:.2f} ms")
+            
+            # Modbus Client SS2
+            # Tic: Init timer
+            tic_read_elec_SS2 = time.time()
+            CT2_Vab, CT2_Vbc, CT2_Vca, CT2_Ia, CT2_Ib, CT2_Ic, CT2_P, CT2_Q, CT2_P_ref, CT2_Q_ref = read_elec_SS2(IP2)
+            # Toc: End Timer
+            toc_read_elec_SS2 = time.time()
+            # Print execution time
+            print(f"Tiempo transcurrido read_elec_SS2: {(toc_read_elec_SS2 - tic_read_elec_SS2) * 1000:.2f} ms")
+            
+            
             t = datetime.now(timezone.utc)
                         
-            
-            # Escritura en la base de datos, de comunicación a base de datos (DB)
+            '''Writing into the data base with the data from PLCs''' 
+           
+            # Writing into the table DB_CSL_BROKER_INPUT of the DB server DB_CSL_BROKER the data from POI, SS1 and SS2 
+            # Tic: Init timer
+            tic_read_elec_DB = time.time()
             write_DB_CSL_BROKER_INPUT(t, POI_Va, POI_Vb, POI_Vc, f, POI_P, POI_Q, POI_Ia, POI_Ib, POI_Ic, POI_In, POI_U12, POI_U23, POI_U31, POI_U1, POI_U2, POI_U3, 
                                       CT1_Vab, CT1_Vbc, CT1_Vca, CT1_Ia, CT1_Ib, CT1_Ic, CT1_P, CT1_Q, CT1_P_ref, CT1_Q_ref, 
                                       CT2_Vab, CT2_Vbc, CT2_Vca, CT2_Ia, CT2_Ib, CT2_Ic, CT2_P, CT2_Q, CT2_P_ref, CT2_Q_ref)
+            # Toc: End Timer
+            toc_read_elec_DB = time.time()
+            # Print execution time
+            print(f"Tiempo transcurrido write_DB_CSL_BROKER_INPUT: {(toc_read_elec_DB - tic_read_elec_POI) * 1000:.2f} ms")
+            
+            latency_global.append(toc_read_elec_DB - tic_read_elec_POI)
             
             print("Rellenado tabla DB_CSL_BROKER_INPUT con medidas de Modbus TCP/IP...")
             
 
-            time.sleep(1)
+            #time.sleep(1)
 
 
     except KeyboardInterrupt:
         print("Fin de la conexión...")
+        plt.plot(latency_global)
+        plt.title("Latency")
+        with open("data.json", "w") as file:
+            json.dump(latency_global, file)
+        
 
