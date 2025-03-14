@@ -5,6 +5,8 @@ import lib
 import time
 import matplotlib.pyplot as plt
 import json
+import psycopg2
+
 
 import sys
 
@@ -23,17 +25,27 @@ db_user = 'postgres'  # Username for the database
 db_password = 'postgres'  # Password for the database
 db_name = 'DB_CSL_BROKER'  # name for the databases   
 
+conexion = psycopg2.connect(
+    host=db_host,
+    port=db_port,
+    user=db_user,
+    password=db_password,
+    dbname=db_name
+)
+
 if __name__ == '__main__':
 
     latency_global=[]
+    
     try:
         while True:
+            
             
             t = datetime.now(timezone.utc)
             # Tic: Init timer
             tic_read_DB_CSL_BROKER_INPUT = time.time()
             # Readin from the remote data base
-            V_POI_DB, V_SS1_DB, V_SS2_DB, P_POI_DB, Q_POI_DB, P_CT1_DB, Q_CT1_DB, P_CT2_DB, Q_CT2_DB = read_DB_CSL_BROKER_INPUT(db_host,db_port,db_user,db_password,db_name)
+            V_POI_DB, V_SS1_DB, V_SS2_DB, P_POI_DB, Q_POI_DB, P_CT1_DB, Q_CT1_DB, P_CT2_DB, Q_CT2_DB = read_DB_CSL_BROKER_INPUT(db_host,db_port,db_user,db_password,db_name,conexion)
             # Toc: End Timer
             toc_read_DB_CSL_BROKER_INPUT = time.time()
             # Print execution time
@@ -94,7 +106,7 @@ if __name__ == '__main__':
             
             # Tic: Init timer
             tic_write_DB_CSL_BROKER_OUTPUT = time.time()
-            write_DB_CSL_BROKER_OUTPUT(t, V_POI_EST, V_SS1_EST, V_SS2_EST, P_SS1_SS2, P_SS2_POI, P_POI_POI, Q_SS1_SS2, Q_SS2_POI, Q_POI_POI,db_host,db_port,db_user,db_password,db_name)
+            write_DB_CSL_BROKER_OUTPUT(t, V_POI_EST, V_SS1_EST, V_SS2_EST, P_SS1_SS2, P_SS2_POI, P_POI_POI, Q_SS1_SS2, Q_SS2_POI, Q_POI_POI,db_host,db_port,db_user,db_password,db_name,conexion)
             #time.sleep(1)
             # Toc: End Timer
             toc_write_DB_CSL_BROKER_OUTPUT = time.time()
