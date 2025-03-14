@@ -2,8 +2,9 @@ import struct
 from pymodbus.client import ModbusTcpClient
 
 def read_elec_POI(IP):
+   
     client = ModbusTcpClient(IP)
-    
+
     # Leer valores
     Va_mb = client.read_holding_registers(32768, 2)
     Vb_mb = client.read_holding_registers(32770, 2)
@@ -63,4 +64,5 @@ def read_elec_POI(IP):
     U3 = struct.unpack('>f', U3.to_bytes(4, byteorder='big'))[0]
     
     client.close()
+
     return Va, Vb, Vc, f, P, Q, Ia, Ib, Ic, In, U12, U23, U31, U1, U2, U3

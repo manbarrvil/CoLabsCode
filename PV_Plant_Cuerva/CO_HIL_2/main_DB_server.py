@@ -7,6 +7,7 @@ import json
 import sys
 import psycopg2
 
+
 # Add the directory containing the script or function to sys.path
 sys.path.append('C:/workspace/CoLabsCode/PV_Plant_Cuerva/fcns')
 
@@ -62,16 +63,16 @@ if __name__ == '__main__':
            
             # Writing into the table DB_CSL_BROKER_INPUT of the DB server DB_CSL_BROKER the data from POI, SS1 and SS2 
             # Tic: Init timer
-            tic_read_elec_DB = time.time()
+            tic_write_DB_CSL_BROKER_INPUT = time.time()
             write_DB_CSL_BROKER_INPUT(t, POI_Va, POI_Vb, POI_Vc, f, POI_P, POI_Q, POI_Ia, POI_Ib, POI_Ic, POI_In, POI_U12, POI_U23, POI_U31, POI_U1, POI_U2, POI_U3, 
                                       CT1_Vab, CT1_Vbc, CT1_Vca, CT1_Ia, CT1_Ib, CT1_Ic, CT1_P, CT1_Q, CT1_P_ref, CT1_Q_ref, 
-                                      CT2_Vab, CT2_Vbc, CT2_Vca, CT2_Ia, CT2_Ib, CT2_Ic, CT2_P, CT2_Q, CT2_P_ref, CT2_Q_ref)
+                                      CT2_Vab, CT2_Vbc, CT2_Vca, CT2_Ia, CT2_Ib, CT2_Ic, CT2_P, CT2_Q, CT2_P_ref, CT2_Q_ref,conexion)
             # Toc: End Timer
-            toc_read_elec_DB = time.time()
+            toc_write_DB_CSL_BROKER_INPUT = time.time()
             # Print execution time
-            print(f"Execution time write_DB_CSL_BROKER_INPUT: {(toc_read_elec_DB - tic_read_elec_POI) * 1000:.2f} ms")
-            
-            latency_global.append(toc_read_elec_DB - tic_read_elec_POI)
+            print(f"Execution time write_DB_CSL_BROKER_INPUT: {(toc_write_DB_CSL_BROKER_INPUT - tic_write_DB_CSL_BROKER_INPUT) * 1000:.2f} ms")
+            print(f"Execution time DB server: {(toc_write_DB_CSL_BROKER_INPUT - tic_read_elec_POI) * 1000:.2f} ms")
+            latency_global.append(toc_write_DB_CSL_BROKER_INPUT - tic_read_elec_POI)
             
             print("Filling the DB_CSL_BROKER_INPUT table with Modbus TCP/IP measurements...")
             
