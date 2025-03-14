@@ -10,7 +10,7 @@ import json
 import numpy as np
 
 # Open and load the json file
-with open("latency_SE.json", "r") as file:
+with open("latency_DB.json", "r") as file:
     data = json.load(file)
 
 data = np.array(data)*1000
@@ -23,6 +23,6 @@ ax.hist(data, bins=8, linewidth=0.5, edgecolor="white")
 ax.set_xlabel("Execution time (ms)", labelpad=10)
 ax.set_ylabel("Frequency", labelpad=10)
 plt.show()
-fig.savefig("latency_SE.pdf", format="pdf")
-fig.savefig("latency_SE.png", format="png")
-fig.savefig("latency_SE.svg", format="svg")
+fig.savefig("latency_DB.pdf", format="pdf")
+fig.savefig("latency_DB.png", format="png")
+fig.savefig("latency_DB.svg", format="svg")

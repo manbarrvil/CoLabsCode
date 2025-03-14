@@ -82,7 +82,7 @@ if __name__ == '__main__':
         print("End of connection...")
         plt.plot(latency_global)
         plt.title("Latency")
-        with open("data.json", "w") as file:
+        with open("latency_DB.json", "w") as file:
             json.dump(latency_global, file)
         
 
