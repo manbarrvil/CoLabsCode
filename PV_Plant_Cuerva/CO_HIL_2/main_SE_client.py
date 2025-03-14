@@ -115,6 +115,7 @@ if __name__ == '__main__':
 
             latency_global.append(toc_write_DB_CSL_BROKER_OUTPUT - tic_read_DB_CSL_BROKER_INPUT)
     except KeyboardInterrupt:
+        conexion.close()
         print("Fin de la conexion...")
         plt.plot(latency_global)
         plt.title("Latency")

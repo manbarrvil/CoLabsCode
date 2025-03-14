@@ -5,6 +5,7 @@ import time
 import matplotlib.pyplot as plt
 import json
 import sys
+import psycopg2
 
 # Add the directory containing the script or function to sys.path
 sys.path.append('C:/workspace/CoLabsCode/PV_Plant_Cuerva/fcns')
@@ -19,7 +20,7 @@ from fcn_write_DB_CSL_BROKER_INPUT import write_DB_CSL_BROKER_INPUT
 IP = "192.168.5.15"
 IP1 = "192.168.1.10"
 IP2 = "192.168.2.10"
-
+conexion = psycopg2.connect(database="DB_CSL_BROKER", user="postgres", password="postgres")
 if __name__ == '__main__':
 
     latency_global=[]
@@ -79,6 +80,7 @@ if __name__ == '__main__':
 
 
     except KeyboardInterrupt:
+        conexion.close()
         print("End of connection...")
         plt.plot(latency_global)
         plt.title("Latency")
