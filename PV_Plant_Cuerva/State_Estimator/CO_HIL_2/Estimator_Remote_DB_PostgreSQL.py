@@ -116,7 +116,7 @@ if __name__ == '__main__':
             t = datetime.now(timezone.utc)
             # Tic: Init timer
             tic_read_DB_CSL_BROKER_INPUT = time.time()
-            # Readin from the remote data base
+            # Reading from the remote data base
             V_POI_DB, V_SS1_DB, V_SS2_DB, P_POI_DB, Q_POI_DB, P_CT1_DB, Q_CT1_DB, P_CT2_DB, Q_CT2_DB = read_DB_CSL_BROKER_INPUT(db_host,db_port,db_user,db_password,db_name)
             # Toc: End Timer
             toc_read_DB_CSL_BROKER_INPUT = time.time()
