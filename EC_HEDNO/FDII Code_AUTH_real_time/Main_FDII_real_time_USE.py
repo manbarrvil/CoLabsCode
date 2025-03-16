@@ -37,9 +37,9 @@ def write_TagArray_W(connection, t, data_COMM):
         keys.append(f'Tag{i}_Value')  # Assign a unique key for each value
  
     #data[keys[0]] = t
-    #data[keys[1]] = ['Tag_1']
     for i in range(2,len(values)*2+2,2): 
-        data[keys[i-1]] = [f'Tag{int(i/2)}_Name']
+#        data[keys[1]] = 'i'
+        data[keys[i-1]] = [f'TAG_{int(i/2)}']
         data[keys[i]] = [values[int(i/2-1)]+1]
 
         
