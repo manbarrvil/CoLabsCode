@@ -12,7 +12,9 @@ def read_DB_CSL_BROKER_INPUT(db_host,db_port,db_user,db_password,db_name,conexio
     # )
     cursor=conexion.cursor()
     cursor.execute("select Date_Time, POI_Va,POI_P,POI_Q,CT1_Vab,CT1_P,CT1_Q,CT2_Vab,CT2_P,CT2_Q from DB_CSL_BROKER_INPUT")
-    for data in cursor:
+    #for data in cursor:
+    data = cursor.fetchone()
+    while data:
        # Date_Time_DB = data[0]
         V_POI_DB = data[1]
         P_POI_DB = data[2]
@@ -23,6 +25,7 @@ def read_DB_CSL_BROKER_INPUT(db_host,db_port,db_user,db_password,db_name,conexio
         V_CT2_DB = data[7]
         P_CT2_DB = data[8]
         Q_CT2_DB = data[9]
+        data = cursor.fetchone()
     #conexion.close()
 
             
