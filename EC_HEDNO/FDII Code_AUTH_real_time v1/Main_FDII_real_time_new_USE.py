@@ -204,6 +204,44 @@ def write_TagArray_W(connection, t, data_COMM):
     finally:
         cursor.close()
 
+def write_TagArray_Est(connection, t, Vest_array):
+
+    # Inicializar diccionario vacío
+    data = {}
+    # Inicializar lista de claves vacía
+    keys = []
+    # Inicializar lista de valores con ceros
+    Vest_array_W = Vest_array.to_numpy()
+    values = Vest_array_W
+    # Crear la lista de claves
+    keys.append(f'Tag{0}_Value')
+    for i in range(1,len(values)+1):
+        keys.append(f'Tag{i}_Name')  # Asignar una clave única para cada valor
+        keys.append(f'Tag{i}_Value')  # Asignar una clave única para cada valor
+ 
+    data[keys[0]] = t
+    #data[keys[1]] = ['Tag_1']
+    for i in range(2,len(values)*2+1,2): 
+        data[keys[i-1]] = [f'TAG_{int(i/2)}']
+        data[keys[i]] = values[int(i/2-1)]
+
+        
+    df_combinado = pd.DataFrame(data)
+    
+    valores = [tuple(row) for row in df_combinado.itertuples(index=False)]
+    consulta_insert = f"""
+    INSERT INTO TagArray_Est ({', '.join(df_combinado.columns)})
+    VALUES ({', '.join(['?'] * len(df_combinado.columns))})
+    """
+    cursor = connection.cursor()
+    try:
+        cursor.executemany(consulta_insert, valores)
+        connection.commit()
+    except pyodbc.Error as e:
+        print("Error al insertar registros:", e)
+    finally:
+        cursor.close()
+
 def read_TagArray_W(connection):
     cursor=connection.cursor()
       
@@ -279,7 +317,8 @@ try:
         se_accum["removed_residuals"].append(
             json.dumps(removed_residuals, default=lambda x: int(x) if isinstance(x, np.integer) else x)
         )
-
+        write_TagArray_Est(connection, t, Vest_array)
+        print('Rellenando Tabla  TagArray_Est with the estimated values')
         # Write the accumulated state estimation results to CSV
         write_state_estimation_csv(se_accum)
         logging.info("Cycle %d: State estimation results saved in restructured CSV.", cycle + 1)
