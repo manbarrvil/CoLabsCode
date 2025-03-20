@@ -50,8 +50,8 @@ def process_measurements(pseudo_measurement_filepath, pseudo_measurement_sheet_n
         Qmes[bus_index_real] = q_array[idx]*0.001
         Vmes[bus_index_real] = v_array[idx]/231
 
-    Pmes[slack_bus]=feeder_P*0.001
-    Qmes[slack_bus]=feeder_Q*0.001
-    Vmes[slack_bus]=feeder_V/400
+    Pmes[slack_bus]=-feeder_P*0.001
+    Qmes[slack_bus]=-feeder_Q*0.001
+    Vmes[slack_bus]=feeder_V/20e3
     
     return Pmes, Qmes, Vmes

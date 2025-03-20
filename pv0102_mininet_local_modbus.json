@@ -55,9 +55,9 @@
     "port": 5500
 },
 "devices": [
-  {"ing_id": "poi", "ing_type":     "poi", "emec_id":   "POI", "modbus_ip":  "10.10.0.5", "modbus_port":502, "iec104_ip":  "10.10.0.5","iec104_port":2404,"config": "poi", "reg_0":1000, "linker_Dt":0.1, "protocol":"modbus", "common_address":40},
-  {"ing_id":"inv1", "ing_type":"inverter", "emec_id":"LV0101", "modbus_ip":  "10.10.1.1", "modbus_port":502, "iec104_ip":  "10.10.1.1","iec104_port":2404,"config": "inv", "reg_0":2000, "linker_Dt":0.1, "protocol":"modbus", "common_address":41},
-  {"ing_id":"inv2", "ing_type":"inverter", "emec_id":"LV0102", "modbus_ip":  "10.10.1.2", "modbus_port":502, "iec104_ip":  "10.10.1.2","iec104_port":2404,"config": "inv", "reg_0":3000, "linker_Dt":0.1, "protocol":"modbus", "common_address":42},
+  {"ing_id": "poi", "ing_type":     "poi", "emec_id":   "POI", "modbus_ip":  "192.168.1.10", "modbus_port":502, "iec104_ip":  "10.10.0.5","iec104_port":2404,"config": "poi", "reg_0":1000, "linker_Dt":0.1, "protocol":"modbus", "common_address":40},
+  {"ing_id":"inv1", "ing_type":"inverter", "emec_id":"LV0101", "modbus_ip":  "192.168.5.15", "modbus_port":502, "iec104_ip":  "10.10.1.1","iec104_port":2404,"config": "inv", "reg_0":2000, "linker_Dt":0.1, "protocol":"modbus", "common_address":41},
+  {"ing_id":"inv2", "ing_type":"inverter", "emec_id":"LV0102", "modbus_ip":  "192.168.2.10", "modbus_port":502, "iec104_ip":  "10.10.1.2","iec104_port":2404,"config": "inv", "reg_0":3000, "linker_Dt":0.1, "protocol":"modbus", "common_address":42},
   {"ing_id":"bess1","ing_type":    "bess", "emec_id":  "BESS", "modbus_ip":"10.10.0.100", "modbus_port":502, "iec104_ip":"10.10.0.100","iec104_port":2404,"config":"bess", "reg_0":4000, "linker_Dt":0.1, "protocol":"modbus", "common_address":43}
 ], 
 "configs":{

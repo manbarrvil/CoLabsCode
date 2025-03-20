@@ -162,8 +162,8 @@ def write_state_estimation_csv(accum_dict):
 cycle = 0
 monitoring_sleep = 5  # seconds
 
-arr_W = [50.0, 0.0, 250.0, 100.0,10.0,0.0,0.0,0.0,0.0,0.0]
-arr_feeder = [0.0, 0.0, 0.0, 433,433,433,600,60.0]
+arr_W = [50.0, 0.0, 250.0, 1.0,1.0,0.0,0.0,0.0,0.0,0.0]
+arr_feeder = [0.0, 0.0, 0.0, 20e3,20e3,20e3,60.0,20.0]
 arr_W = arr_W*6
 arr_W.extend(arr_feeder)
 
@@ -278,10 +278,12 @@ try:
         # Escritura en la base de datos, de comunicación a base de datos (DB)
         write_TagArray_W(connection, t, data_COMM_W)
         print('Rellenando Tabla  TagArray_W con las medidas del IEC104')
-        meas_array = read_TagArray_W(connection)
+        #meas_array = read_TagArray_W(connection)
+        meas_array = [51.0, 0.0, 249.0, 2.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 50.0, 1.0, 251.0, 0.0, 2.0, -1.0, 1.0, -1.0, 0.0, 0.0, 49.0, 1.0, 250.0, 2.0, 0.0, 1.0, -1.0, 0.0, -1.0, 1.0, 50.0, -1.0, 249.0, 0.0, 1.0, 0.0, 0.0, -1.0, 0.0, -1.0, 49.0, 1.0, 249.0, 2.0, 2.0, 0.0, 0.0, 0.0, 0.0, 0.0, 49.0, 1.0, 249.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, -1.0, 0.0, 19999.0, 19999.0, 20001.0, 60.0, 21.0]
         print(meas_array)
         
-        
+        time.sleep(1.0)
+
         Pmes, Qmes, Vmes = process_measurements(
             pseudo_measurement_filepath, pseudo_measurement_sheet_name, 
             tag_correspondence_filepath, tag_correspondence_sheet_name, 
