@@ -55,15 +55,16 @@
     "port": 5500
 },
 "devices": [
-  {"ing_id": "poi", "ing_type":     "poi", "emec_id":   "POI", "modbus_ip":  "192.168.1.10", "modbus_port":502, "iec104_ip":  "10.10.0.5","iec104_port":2404,"config": "poi", "reg_0":1000, "linker_Dt":0.1, "protocol":"modbus", "common_address":40},
-  {"ing_id":"inv1", "ing_type":"inverter", "emec_id":"LV0101", "modbus_ip":  "192.168.5.15", "modbus_port":502, "iec104_ip":  "10.10.1.1","iec104_port":2404,"config": "inv", "reg_0":2000, "linker_Dt":0.1, "protocol":"modbus", "common_address":41},
+  {"ing_id": "poi", "ing_type":     "poi", "emec_id":   "POI", "modbus_ip":  "192.168.5.15", "modbus_port":502, "iec104_ip":  "10.10.0.5","iec104_port":2404,"config": "poi", "reg_0":32000, "linker_Dt":0.1, "protocol":"modbus", "common_address":40},
+  {"ing_id":"inv1", "ing_type":"inverter", "emec_id":"LV0101", "modbus_ip":  "192.168.1.10", "modbus_port":502, "iec104_ip":  "10.10.1.1","iec104_port":2404,"config": "inv", "reg_0":40000, "linker_Dt":0.1, "protocol":"modbus", "common_address":41},
   {"ing_id":"inv2", "ing_type":"inverter", "emec_id":"LV0102", "modbus_ip":  "192.168.2.10", "modbus_port":502, "iec104_ip":  "10.10.1.2","iec104_port":2404,"config": "inv", "reg_0":3000, "linker_Dt":0.1, "protocol":"modbus", "common_address":42},
   {"ing_id":"bess1","ing_type":    "bess", "emec_id":  "BESS", "modbus_ip":"10.10.0.100", "modbus_port":502, "iec104_ip":"10.10.0.100","iec104_port":2404,"config":"bess", "reg_0":4000, "linker_Dt":0.1, "protocol":"modbus", "common_address":43}
 ], 
 "configs":{
-  "poi":{"measurements":[{"emec_prefix":"V","min":0.0,"max":2.0, "ing_name":"VoltageAVG", "register": 372, "type": "int16", "format": "AB","emec_scale":0.001,"io_register":1000,"type_iec104":"M_ME_NC_1"},                               
-                         {"emec_name":"p_line_POI_GRID","min":0.0,"max":2.0, "ing_name":  "ActivePower", "register": 370,"type": "int32", "format": "CDAB", "emec_scale":1e-6,"io_register":1001,"type_iec104":"M_ME_NC_1"},
-                         {"emec_name":"q_line_POI_GRID","min":0.0,"max":2.0, "ing_name":"ReactivePower", "register": 374,"type": "int32", "format": "CDAB", "emec_scale":1e-6,"io_register":1002,"type_iec104":"M_ME_NC_1"}],
+  "poi":{"measurements":[{"emec_prefix":"Vab", "ing_name":"VoltageAB","units": "V", "register": 768, "type": "float32", "format": "ABCD"},
+                         {"emec_prefix":"Vbc", "ing_name":"VoltageBC","units": "V", "register": 770, "type": "float32", "format": "ABCD"},
+                         {"emec_prefix":"Vca", "ing_name":"VoltageCA","units": "V", "register": 772, "type": "float32", "format": "ABCD"}
+                        ],
          "setpoints":[
         ]},
   "inv":{"setpoints":[
@@ -71,9 +72,8 @@
                     {"emec_prefix":"q_s_ppc","ini":0.0,"min":-1.0,"max":1.0, "ing_name":"SetReactivePower","register":426,"type": "int32", "format": "CDAB", "emec_scale":1e-6,"io_register":2001,"type_iec104":"C_SE_NC_1"}
                      ],
         "measurements":[
-                    {"emec_prefix":"V","min":0.0,"max":2.0, "ing_name":"VoltageAVG", "register": 372, "type": "int16", "format": "AB","emec_scale":0.001,"io_register":1000,"type_iec104":"M_ME_NC_1"},
-                    {"emec_prefix":"p_s","ini":2.0,"min": 0.0,"max":1.0, "ing_name":  "ActivePower", "register":525,"type": "int32", "format": "CDAB", "emec_scale":1e-6,"io_register":1000,"type_iec104":"M_ME_NC_1"},
-                    {"emec_prefix":"q_s","ini":0.0,"min":-1.0,"max":1.0, "ing_name":"ReactivePower", "register":544,"type": "int32", "format": "CDAB", "emec_scale":1e-6,"io_register":1001,"type_iec104":"M_ME_NC_1"}
+                    {"emec_prefix":"p_s", "ing_name":  "ActivePower", "units": "W", "register":525,"type": "int32", "format": "CDAB"},
+                    {"emec_prefix":"q_s", "ing_name":  "ReactivePower", "units": "var", "register":544,"type": "int32", "format": "CDAB"}
                        ]},
   "bess":{"setpoints":[
           {"emec_prefix":"p_s_ref","ini":2.0,"min": 0.0,"max":1.0, "ing_name":  "SetActivePower", "register":424,"type": "int32", "format": "CDAB", "emec_scale":1e-6,"io_register":2000,"type_iec104":"C_SE_NC_1"},

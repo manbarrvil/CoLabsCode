@@ -163,7 +163,6 @@ def write_state_estimation_csv(accum_dict):
 cycle = 0
 monitoring_sleep = 5  # seconds
 
-<<<<<<< HEAD
 # arr_W = [50.0, 0.0, 250.0, 100.0,10.0,0.0,0.0,0.0,0.0,0.0]
 # arr_feeder = [0.0, 0.0, 0.0, 433,433,433,600,60.0]
 # arr_W = arr_W*6
@@ -416,12 +415,6 @@ def client_IEC104():
 
     client.stop()
     return PV1_Read, PV2_Read, PV3_Read, PV4_Read, PV5_Read, POI_Read
-=======
-arr_W = [50.0, 0.0, 250.0, 1.0,1.0,0.0,0.0,0.0,0.0,0.0]
-arr_feeder = [0.0, 0.0, 0.0, 20e3,20e3,20e3,60.0,20.0]
-arr_W = arr_W*6
-arr_W.extend(arr_feeder)
->>>>>>> 873a93b63b005a354c367b01c2d8574583dbabe0
 
 def write_TagArray_W(connection, t, data_COMM):
 
