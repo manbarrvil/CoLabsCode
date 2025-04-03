@@ -4,7 +4,6 @@ Created on Sun Mar 16 19:22:36 2025
 
 @author: manba
 """
-
 import json
 import struct
 from pymodbus.client import ModbusTcpClient
@@ -58,9 +57,10 @@ def client_Modbus(ident_emec_id, data):
     keys_list = ["ing_name","value","units"]
 
     for item1 in data["configs"][config]['measurements']:
-        read_meas_MB = client.read_holding_registers(item1['register'] + reg_ini, 2)
+        
 
         if (item1['type'] == 'float32'):
+            read_meas_MB = client.read_holding_registers(item1['register'] + reg_ini, 2)
             if(item1['format'] == 'ABCD'):
                 con_meas = (read_meas_MB.registers[1] << 16) | read_meas_MB.registers[0]
                 con_meas = struct.unpack('>f', con_meas.to_bytes(4, byteorder='big'))[0]
@@ -71,6 +71,7 @@ def client_Modbus(ident_emec_id, data):
 
 
         elif(item1['type'] == 'int32'):
+            read_meas_MB = client.read_holding_registers(item1['register'] + reg_ini, 2)
             if(item1['format'] == 'ABCD'):
                 con_meas = (read_meas_MB.registers[1] << 16) | read_meas_MB.registers[0]
                 con_meas = toSigned16(con_meas, 32)
@@ -80,9 +81,11 @@ def client_Modbus(ident_emec_id, data):
                 con_meas = toSigned16(con_meas, 32)
 
         elif(item1['type'] == 'uint32'):
+            read_meas_MB = client.read_holding_registers(item1['register'] + reg_ini, 2)
             con_meas = read_meas_MB.registers[0] << 16 | read_meas_MB.registers[1]
 
         elif(item1['type'] == 'int16'):
+            read_meas_MB = client.read_holding_registers(item1['register'] + reg_ini, 1)
             con_meas = read_meas_MB.registers[0]
 
         value_list.append([item1['ing_name'], con_meas, item1['units']])
@@ -90,18 +93,34 @@ def client_Modbus(ident_emec_id, data):
     # Convertir a diccionario
     dict_meas = {values[0]: dict(zip(keys_list[1::], values[1::])) for i, values in enumerate(value_list)}
 
+    client.close()
     return dict_meas
 
     
 
 
-'''Test de llamado desde un main'''
-# Cargar el fichero JSON
-with open('pv0102_mininet_local_modbus.json', 'r') as file:
-    data = json.load(file)
+# '''Test de llamado desde un main'''
+# # Cargar el fichero JSON
+# with open('pv0102_mininet_local_modbus.json', 'r') as file:
+#     data = json.load(file)
 
-ident_emec_id = "poi" #Select "poi", "inv1", "inv2"
+# ident_emec_id_POI = "poi" #Select "poi", "inv1", "inv2"
+# ident_emec_id_SS1 = "inv1" #Select "poi", "inv1", "inv2"
+# ident_emec_id_SS2 = "inv2" #Select "poi", "inv1", "inv2"
 
-meas = client_Modbus(ident_emec_id, data)
-print('\n')
-print(meas, '\n')
+# try:
+#     while True:
+#         meas_POI = client_Modbus(ident_emec_id_POI, data)
+#         print('\n')
+#         print(meas_POI, '\n')
+#         meas_SS1 = client_Modbus(ident_emec_id_SS1, data)
+#         print('\n')
+#         print(meas_SS1, '\n')
+#         meas_SS2 = client_Modbus(ident_emec_id_SS2, data)
+#         print('\n')
+#         print(meas_SS2, '\n')
+#         time.sleep(10)
+# except KeyboardInterrupt:
+#     print('\n Parada por teclado \n')
+# finally:
+#     print('\n Esto es todo amigos \n')
