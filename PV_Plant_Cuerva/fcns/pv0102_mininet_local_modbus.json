@@ -1,0 +1,140 @@
+{
+"system": {
+          "name": "pv_1_2",
+          "S_base": 10000000.0,
+          "K_p_agc": 0.0,
+          "K_i_agc": 0.0,
+          "K_xif": 0.01
+        },
+"buses": [
+          {"name": "POIMV","P_W": 0.0,"Q_var": 0.0,"U_kV": 20.0},
+          {"name": "POI","P_W": 0.0,"Q_var": 0.0,"U_kV": 132.0},
+          {"name": "GRID","P_W": 0.0,"Q_var": 0.0,"U_kV": 132.0},
+          {"name": "BESS","P_W": 0.0,"Q_var": 0.0,"U_kV": 0.8},
+          {"name": "LV0101","P_W": 0.0,"Q_var": 0.0,"U_kV": 0.8},
+          {"name": "MV0101","P_W": 0.0,"Q_var": 0.0,"U_kV": 20.0},
+          {"name": "LV0102","P_W": 0.0,"Q_var": 0.0,"U_kV": 0.8},
+          {"name": "MV0102","P_W": 0.0,"Q_var": 0.0,"U_kV": 20.0}
+        ],
+"lines": [
+          {"bus_j": "POI","bus_k": "GRID","X_pu": 0.0006945,"R_pu": 0.0,"Bs_pu": 0.0,"S_mva": 10.0,  "sym": true,"monitor": true},
+          {"bus_j": "BESS","bus_k": "POIMV","X_pu": 0.01,"R_pu": 0.0,"Bs_pu": 0.0,"S_mva": 10.0,  "sym": true,"monitor": true},
+          {"bus_j": "LV0101","bus_k": "MV0101","X_pu": 0.1389,"R_pu": 0.026,"Bs_pu": 0.0,"S_mva": 10.0,  "monitor": false},
+          {"bus_j": "MV0101","bus_k": "POIMV","X_pu": 0.0002771281292110204,"R_pu": 0.00087252,"Bs_pu": 0.0002035,"S_mva": 10.0,  "monitor": true},
+          {"bus_j": "LV0102","bus_k": "MV0102","X_pu": 0.1389,"R_pu": 0.026,"Bs_pu": 0.0,"S_mva": 10.0,  "monitor": false},
+          {"bus_j": "MV0102","bus_k": "MV0101","X_pu": 0.0005542562584220408,"R_pu": 0.001745,"Bs_pu": 0.00040702,"S_mva": 10.0,  "monitor": false}
+        ],
+"transformers": [
+          {"bus_j": "POIMV","bus_k": "POI","X_pu": 0.034722,"R_pu": 0.0,"Bs_pu": 0.0,"S_mva": 10.0}
+        ],
+"pvs": [
+          {"bus": "LV0101","type": "pv_dq_d","S_n": 3000000.0,"U_n": 800,"F_n": 50.0,"X_s": 0.1,"R_s": 0.0001,"monitor": true,
+          "I_sc": 8,"V_oc": 42.1,"I_mp": 3.56,"V_mp": 33.7,"K_vt": -0.16,"K_it": 0.065,"N_pv_s": 23,"N_pv_p": 1087},
+          {"bus": "LV0102","type": "pv_dq_d","S_n": 3000000.0,"U_n": 800,"F_n": 50.0,"X_s": 0.1,"R_s": 0.0001,"monitor": true,
+          "I_sc": 8,"V_oc": 42.1,"I_mp": 3.56,"V_mp": 33.7,"K_vt": -0.16,"K_it": 0.065,"N_pv_s": 23,"N_pv_p": 1087}
+        ],
+"sources": [
+          {"type": "genape","bus": "GRID","S_n": 1000000000.0,"F_n": 50.0,"X_v": 0.001,"R_v": 0.0,"K_delta": 0.001,"K_alpha": 1e-06}
+        ],
+"vscs": [
+          {"type": "bess_pq","bus": "BESS","E_kWh": 250,"S_n": 1000000.0,"soc_ref": 0.5,"socs": [0.0,0.1,0.2,0.8,0.9,1.0],"es": [1,1.08,1.13,1.17,1.18,1.25]}
+        ],
+"emec_config":{
+"Dt":10e-3,"Dt_low":20e-3,"Dt_mid":40e-3
+},
+"emec_modbus_server": {
+    "ip": "10.20.0.2",
+    "port": 5000
+ },
+"emec_http_server": {
+    "ip": "127.100.0.1",
+    "port": 8000
+},
+"ppc_api": {
+    "ip": "127.200.0.1",
+    "port": 5500
+},
+"devices": [
+  {"ing_id": "poi", "ing_type":     "poi", "emec_id":   "POI", "modbus_ip":  "192.168.5.15", "modbus_port":502, "iec104_ip":  "10.10.0.5","iec104_port":2404,"config": "poi", "reg_0":32000, "linker_Dt":0.1, "protocol":"modbus", "common_address":40},
+  {"ing_id":"inv1", "ing_type":"inverter", "emec_id":"LV0101", "modbus_ip":  "192.168.1.10", "modbus_port":502, "iec104_ip":  "10.10.1.1","iec104_port":2404,"config": "inv", "reg_0":40000, "linker_Dt":0.1, "protocol":"modbus", "common_address":41},
+  {"ing_id":"inv2", "ing_type":"inverter", "emec_id":"LV0102", "modbus_ip":  "192.168.2.10", "modbus_port":502, "iec104_ip":  "10.10.1.2","iec104_port":2404,"config": "inv", "reg_0":40000, "linker_Dt":0.1, "protocol":"modbus", "common_address":42},
+  {"ing_id":"bess1","ing_type":    "bess", "emec_id":  "BESS", "modbus_ip":"10.10.0.100", "modbus_port":502, "iec104_ip":"10.10.0.100","iec104_port":2404,"config":"bess", "reg_0":4000, "linker_Dt":0.1, "protocol":"modbus", "common_address":43}
+], 
+"configs":{
+  "poi":{"measurements":[{"emec_prefix":"Vab", "ing_name":"VoltageAB","units": "V", "register": 768, "type": "float32", "format": "ABCD"},
+                         {"emec_prefix":"Vbc", "ing_name":"VoltageBC","units": "V", "register": 770, "type": "float32", "format": "ABCD"},
+                         {"emec_prefix":"Vca", "ing_name":"VoltageCA","units": "V", "register": 772, "type": "float32", "format": "ABCD"},
+                         {"emec_prefix":"U1", "ing_name":"Voltage1","units": "V", "register": 774, "type": "float32", "format": "ABCD"},
+                         {"emec_prefix":"U2", "ing_name":"Voltage2","units": "V", "register": 776, "type": "float32", "format": "ABCD"},
+                         {"emec_prefix":"U3", "ing_name":"Voltage3","units": "V", "register": 778, "type": "float32", "format": "ABCD"},
+                         {"emec_prefix":"F", "ing_name":"Frequency","units": "Hz", "register": 780, "type": "float32", "format": "ABCD"},
+                         {"emec_prefix":"Ia", "ing_name":"CurrentA","units": "A", "register": 782, "type": "float32", "format": "ABCD"},
+                         {"emec_prefix":"Ib", "ing_name":"CurrentB","units": "A", "register": 784, "type": "float32", "format": "ABCD"},
+                         {"emec_prefix":"Ic", "ing_name":"CurrentC","units": "A", "register": 786, "type": "float32", "format": "ABCD"},
+                         {"emec_prefix":"In", "ing_name":"CurrentN","units": "A", "register": 788, "type": "float32", "format": "ABCD"},
+                         {"emec_prefix":"P", "ing_name":"ActivePower","units": "W", "register": 790, "type": "float32", "format": "ABCD"},
+                         {"emec_prefix":"Q", "ing_name":"ReactivePower","units": "var", "register": 17176, "type": "float32", "format": "ABCD"}
+                        ],
+         "setpoints":[
+        ]},
+  "inv":{"setpoints":[
+                    {"emec_prefix":"p_s_ppc","ini":2.0,"min": 0.0,"max":1.0, "ing_name":  "SetActivePower", "register":424,"type": "int32", "format": "CDAB", "emec_scale":1e-6,"io_register":2000,"type_iec104":"C_SE_NC_1"},
+                    {"emec_prefix":"q_s_ppc","ini":0.0,"min":-1.0,"max":1.0, "ing_name":"SetReactivePower","register":426,"type": "int32", "format": "CDAB", "emec_scale":1e-6,"io_register":2001,"type_iec104":"C_SE_NC_1"}
+                     ],
+        "measurements":[{"emec_prefix":"Vab", "ing_name":"VoltageAB","units": "V", "register": 575, "type": "int16", "format": "AB"},
+                    {"emec_prefix":"Vbc", "ing_name":"VoltageBC","units": "V", "register": 576, "type": "int16", "format": "AB"},
+                    {"emec_prefix":"Vca", "ing_name":"VoltageCA","units": "V", "register": 577, "type": "int16", "format": "AB"},
+                    {"emec_prefix":"Ia", "ing_name":"CurrentA","units": "A", "register": 572, "type": "int16", "format": "AB"},
+                    {"emec_prefix":"Ib", "ing_name":"CurrentB","units": "A", "register": 573, "type": "int16", "format": "AB"},
+                    {"emec_prefix":"Ic", "ing_name":"CurrentC","units": "A", "register": 574, "type": "int16", "format": "AB"},
+                    {"emec_prefix":"p_s", "ing_name":  "ActivePower", "units": "W", "register":525,"type": "int32", "format": "CDAB"},
+                    {"emec_prefix":"q_s", "ing_name":  "ReactivePower", "units": "var", "register":544,"type": "int32", "format": "CDAB"}
+                       ]},
+  "bess":{"setpoints":[
+          {"emec_prefix":"p_s_ref","ini":2.0,"min": 0.0,"max":1.0, "ing_name":  "SetActivePower", "register":424,"type": "int32", "format": "CDAB", "emec_scale":1e-6,"io_register":2000,"type_iec104":"C_SE_NC_1"},
+          {"emec_prefix":"q_s_ref","ini":0.0,"min":-1.0,"max":1.0, "ing_name":"SetReactivePower", "register":426,"type": "int32", "format": "CDAB", "emec_scale":1e-6,"io_register":2001,"type_iec104":"C_SE_NC_1"}
+                           ],
+        "measurements":[
+                {"emec_prefix":"p_s","ini":2.0,"min": 0.0,"max":1.0, "ing_name":  "ActivePower", "register":525,"type": "int32", "format": "CDAB", "emec_scale":1e-6,"io_register":1000,"type_iec104":"M_ME_NC_1"},
+                {"emec_prefix":"q_s","ini":0.0,"min":-1.0,"max":1.0, "ing_name":"ReactivePower", "register":544,"type": "int32", "format": "CDAB", "emec_scale":1e-6,"io_register":1001,"type_iec104":"M_ME_NC_1"},
+                {"emec_prefix":"soc","ini":0.0,"min":-1.0,"max":1.0, "ing_name":          "SoC", "register":548,"type": "int16", "format": "AB", "emec_scale":0.001,"io_register":1002,"type_iec104":"M_ME_NC_1"}                
+                   ]}
+},
+"hosts":[
+    {"name": "SCADA","ip":"10.10.0.6/16","mac":"00:00:00:00:00:06"},
+    {"name":   "PPC","ip":"10.10.0.4/16","mac":"00:00:00:00:00:04","ip_2":"10.20.0.4/16"},
+    {"name":   "POI","ip":"10.10.0.5/16","mac":"00:00:00:00:00:05","ip_2":"10.20.0.5/16"},
+    {"name":"LV0101","ip":"10.10.1.1/16","mac":"00:00:00:00:01:01","ip_2":"10.20.1.1/16"},
+    {"name":"LV0102","ip":"10.10.1.2/16","mac":"00:00:00:00:01:02","ip_2":"10.20.1.2/16"},
+    {"name":  "BESS","ip":"10.10.0.100/16","mac":"00:00:00:00:00:64","ip_2":"10.20.0.100/16"},
+    {"name":  "MITM","ip":"10.10.0.9/16","mac":"00:00:00:00:00:09", "description":"Man In The Middle"},
+    {"name":   "CPN","ip":"10.10.0.10/16","mac":"00:00:00:00:00:10"}
+],
+"switches":[
+    {"name":"sPOI"},
+    {"name":"sLV0102"},
+    {"name":"sLV0101"},
+    {"name":"sEEMU", "interface":"enp0s8"},
+    {"name":"sKALI", "interface":"enp0s10"},
+    {"name":"sPPC", "interface":"enp0s9"}
+],
+"links":[
+    {"node_j":"PPC", "node_k":"sPOI"},
+    {"node_j":"PPC", "node_k":"sPPC"},
+    {"node_j":"POI", "node_k":"sPOI"},
+    {"node_j":"BESS", "node_k":"sPOI"},
+    {"node_j":"sLV0101", "node_k":"sPOI", "delay":"20ms", "jitter":"10ms","loss":0},
+    {"node_j":"sLV0102", "node_k":"sLV0101"},
+    {"node_j":"LV0101", "node_k":"sLV0101"},
+    {"node_j":"LV0102", "node_k":"sLV0102"},
+    {"node_j":"POI", "node_k":"sEEMU"},
+    {"node_j":"LV0101", "node_k":"sEEMU"},
+    {"node_j":"LV0102", "node_k":"sEEMU"},
+    {"node_j":"BESS", "node_k":"sEEMU"},
+    {"node_j":"MITM", "node_k":"sPOI"},
+    {"node_j":"CPN", "node_k":"sPOI"},
+    {"node_j":"SCADA", "node_k":"sPOI"},
+    {"node_j":"sKALI", "node_k":"sPOI"}
+]        
+}
+
