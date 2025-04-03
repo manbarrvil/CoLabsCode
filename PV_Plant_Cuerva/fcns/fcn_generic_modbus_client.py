@@ -61,22 +61,22 @@ def client_Modbus(ident_emec_id, data):
 
         if (item1['type'] == 'float32'):
             read_meas_MB = client.read_holding_registers(item1['register'] + reg_ini, 2)
-            if(item1['format'] == 'ABCD'):
+            if(item1['format'] == 'CDAB'):
                 con_meas = (read_meas_MB.registers[1] << 16) | read_meas_MB.registers[0]
                 con_meas = struct.unpack('>f', con_meas.to_bytes(4, byteorder='big'))[0]
                 meas.append(con_meas)
-            elif(item1['format'] == 'CDAB'):
+            elif(item1['format'] == 'ABCD'):
                 con_meas = (read_meas_MB.registers[0] << 16) | read_meas_MB.registers[1]
                 con_meas = struct.unpack('>f', con_meas.to_bytes(4, byteorder='big'))[0]
 
 
         elif(item1['type'] == 'int32'):
             read_meas_MB = client.read_holding_registers(item1['register'] + reg_ini, 2)
-            if(item1['format'] == 'ABCD'):
+            if(item1['format'] == 'CDAB'):
                 con_meas = (read_meas_MB.registers[1] << 16) | read_meas_MB.registers[0]
                 con_meas = toSigned16(con_meas, 32)
                 meas.append(con_meas)
-            elif( item1['format'] == 'CDAB'):
+            elif( item1['format'] == 'ABCD'):
                 con_meas = (read_meas_MB.registers[0] << 16) | read_meas_MB.registers[1]
                 con_meas = toSigned16(con_meas, 32)
 
