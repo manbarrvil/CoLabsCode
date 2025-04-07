@@ -72,7 +72,7 @@ def input_data_SE(V_POI_DB, V_SS1_DB, V_SS2_DB, P_POI_DB, Q_POI_DB, P_CT1_DB, Q_
         
             # Lines -> B is half the susceptance (the one in each leg o the pi model)
             # The connection to the nodes is indicated by the "name" and not by the "id"
-            Lines = [{'id': 1,  'From': 'Nodo 1',  'To': 'Nodo 2',  'R': 0.7586/Zbase, 'X': 2.5565/Zbase, 'B': 0 , 'Transformer': False, 'rt': 1},  
+            Lines = [ {'id': 1,  'From': 'Nodo 1',  'To': 'Nodo 2',  'R': 0.7586/Zbase, 'X': 2.5565/Zbase, 'B': 0 , 'Transformer': False, 'rt': 1},  
                       {'id': 2,  'From': 'Nodo 2',  'To': 'Nodo 3',  'R': 0.206*0.153/Zbase, 'X': 0.115*0.153/Zbase, 'B': 0.235e-6*2*np.pi*50*0.153/2*Zbase , 'Transformer': False, 'rt': 1},
                       {'id': 3,  'From': 'Nodo 3',  'To': 'Nodo 4',  'R': 0.206*0.613/Zbase, 'X': 0.115*0.613/Zbase, 'B': 0.235e-6*2*np.pi*50*0.613/2*Zbase , 'Transformer': False, 'rt': 1}]
         
