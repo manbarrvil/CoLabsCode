@@ -238,6 +238,35 @@ POI_Vca     = station.add_point(io_address=25119, type=c104.Type.M_ME_NC_1)
 POI_P       = station.add_point(io_address=25120, type=c104.Type.M_ME_NC_1)
 POI_Q       = station.add_point(io_address=25121, type=c104.Type.M_ME_NC_1)
 
+PV6_P_ref  = station.add_point(io_address=16418+125, type=c104.Type.M_ME_NC_1)
+PV6_P_rate = station.add_point(io_address=16419+125, type=c104.Type.M_ME_NC_1)
+PV6_FDP    = station.add_point(io_address=16420+125, type=c104.Type.M_ME_NC_1)
+PV6_Q_ref  = station.add_point(io_address=16421+125, type=c104.Type.M_ME_NC_1)
+PV6_Q_rate = station.add_point(io_address=16423+125, type=c104.Type.M_ME_NC_1)
+PV6_P      = station.add_point(io_address=16431+125, type=c104.Type.M_ME_NC_1)
+PV6_Q      = station.add_point(io_address=16433+125, type=c104.Type.M_ME_NC_1)
+PV6_V      = station.add_point(io_address=16434+125, type=c104.Type.M_ME_NC_1)
+PV6_I      = station.add_point(io_address=16437+125, type=c104.Type.M_ME_NC_1)
+PV6_F      = station.add_point(io_address=16442+125, type=c104.Type.M_ME_NC_1)
+
+PV7_V      = station.add_point(io_address=16568, type=c104.Type.M_ME_NC_1)
+PV7_I      = station.add_point(io_address=16569, type=c104.Type.M_ME_NC_1)
+PV7_F      = station.add_point(io_address=16570, type=c104.Type.M_ME_NC_1)
+PV7_P      = station.add_point(io_address=16571, type=c104.Type.M_ME_NC_1)
+PV7_Q      = station.add_point(io_address=16572, type=c104.Type.M_ME_NC_1)
+
+PV8_V      = station.add_point(io_address=16573, type=c104.Type.M_ME_NC_1)
+PV8_I      = station.add_point(io_address=16574, type=c104.Type.M_ME_NC_1)
+PV8_F      = station.add_point(io_address=16575, type=c104.Type.M_ME_NC_1)
+PV8_P      = station.add_point(io_address=16576, type=c104.Type.M_ME_NC_1)
+PV8_Q      = station.add_point(io_address=16577, type=c104.Type.M_ME_NC_1)
+
+PV9_V      = station.add_point(io_address=16578, type=c104.Type.M_ME_NC_1)
+PV9_I      = station.add_point(io_address=16579, type=c104.Type.M_ME_NC_1)
+PV9_F      = station.add_point(io_address=16580, type=c104.Type.M_ME_NC_1)
+PV9_P      = station.add_point(io_address=16581, type=c104.Type.M_ME_NC_1)
+PV9_Q      = station.add_point(io_address=16582, type=c104.Type.M_ME_NC_1)
+
 # command point preparation
 PV1_SET_P      = station.add_point(io_address=25089, type=c104.Type.C_SE_NC_1)
 PV1_SET_P_rate = station.add_point(io_address=25090, type=c104.Type.C_SE_NC_1)
@@ -330,6 +359,35 @@ def client_IEC104():
     PV5_I     .read()
     PV5_F     .read()
 
+    PV6_P_ref .read()
+    PV6_P_rate.read()
+    PV6_FDP   .read()
+    PV6_Q_ref .read()
+    PV6_Q_rate.read()
+    PV6_P     .read()
+    PV6_Q     .read()
+    PV6_V     .read()
+    PV6_I     .read()
+    PV6_F     .read()
+
+    PV7_V.read()
+    PV7_I.read()
+    PV7_F.read()
+    PV7_P.read()
+    PV7_Q.read()
+
+    PV8_V.read()
+    PV8_I.read()
+    PV8_F.read()
+    PV8_P.read()
+    PV8_Q.read()
+
+    PV9_V.read()
+    PV9_I.read()
+    PV9_F.read()
+    PV9_P.read()
+    PV9_Q.read()
+
     POI_Ia .read()
     POI_Ib .read()
     POI_Ic .read()
@@ -399,22 +457,26 @@ def client_IEC104():
     PV5_SET_Q     .transmit(cause=c104.Cot.ACTIVATION)
     PV5_SET_Q_rate.transmit(cause=c104.Cot.ACTIVATION)
 
-    PV1_Read = [PV1_F.value,PV1_I.value,PV1_V.value,PV1_P.value/1000,PV1_Q.value/1000,PV1_P_ref.value/1000,PV1_P_rate.value,PV1_FDP.value,PV1_Q_ref.value/1000,PV1_Q_rate.value]
-    PV2_Read = [PV2_F.value,PV2_I.value,PV2_V.value,PV2_P.value/1000,PV2_Q.value/1000,PV2_P_ref.value/1000,PV2_P_rate.value,PV2_FDP.value,PV2_Q_ref.value/1000,PV2_Q_rate.value]
-    PV3_Read = [PV3_F.value,PV3_I.value,PV3_V.value,PV3_P.value/1000,PV3_Q.value/1000,PV3_P_ref.value/1000,PV3_P_rate.value,PV3_FDP.value,PV3_Q_ref.value/1000,PV3_Q_rate.value]
-    PV4_Read = [PV4_F.value,PV4_I.value,PV4_V.value,PV4_P.value/1000,PV4_Q.value/1000,PV4_P_ref.value/1000,PV4_P_rate.value,PV4_FDP.value,PV4_Q_ref.value/1000,PV4_Q_rate.value]
-    PV5_Read = [PV5_F.value,PV5_I.value,PV5_V.value,PV5_P.value/1000,PV5_Q.value/1000,PV5_P_ref.value/1000,PV5_P_rate.value,PV5_FDP.value,PV5_Q_ref.value/1000,PV5_Q_rate.value]
-    POI_Read = [POI_Ia.value,POI_Ib.value,POI_Ic.value,POI_Vab.value,POI_Vbc.value,POI_Vca.value,POI_P.value/1000,POI_Q.value/1000]
+    PV1_Read = [PV1_F.value,PV1_I.value,PV1_V.value,PV1_P.value,PV1_Q.value,PV1_P_ref.value,PV1_P_rate.value,PV1_FDP.value,PV1_Q_ref.value,PV1_Q_rate.value]
+    PV2_Read = [PV2_F.value,PV2_I.value,PV2_V.value,PV2_P.value,PV2_Q.value,PV2_P_ref.value,PV2_P_rate.value,PV2_FDP.value,PV2_Q_ref.value,PV2_Q_rate.value]
+    PV3_Read = [PV3_F.value,PV3_I.value,PV3_V.value,PV3_P.value,PV3_Q.value,PV3_P_ref.value,PV3_P_rate.value,PV3_FDP.value,PV3_Q_ref.value,PV3_Q_rate.value]
+    PV4_Read = [PV4_F.value,PV4_I.value,PV4_V.value,PV4_P.value,PV4_Q.value,PV4_P_ref.value,PV4_P_rate.value,PV4_FDP.value,PV4_Q_ref.value,PV4_Q_rate.value]
+    PV5_Read = [PV5_F.value,PV5_I.value,PV5_V.value,PV5_P.value,PV5_Q.value,PV5_P_ref.value,PV5_P_rate.value,PV5_FDP.value,PV5_Q_ref.value,PV5_Q_rate.value]
+    PV6_Read = [PV6_F.value,PV6_I.value,PV6_V.value,PV6_P.value,PV6_Q.value,PV6_P_ref.value,PV6_P_rate.value,PV6_FDP.value,PV6_Q_ref.value,PV6_Q_rate.value]
+    PV7_Read = [PV7_V.value,PV7_I.value,PV7_F.value,PV7_P.value,PV7_Q.value]
+    PV8_Read = [PV8_V.value,PV8_I.value,PV8_F.value,PV8_P.value,PV8_Q.value]
+    PV9_Read = [PV9_V.value,PV9_I.value,PV9_F.value,PV9_P.value,PV9_Q.value]
+    POI_Read = [POI_Ia.value,POI_Ib.value,POI_Ic.value,POI_Vab.value,POI_Vbc.value,POI_Vca.value,POI_P.value,POI_Q.value]
 
-    PV1_setpoint = [PV1_SET_P.value, PV1_SET_P_rate.value, PV1_SET_FDP.value, PV1_SET_Q.value, PV1_SET_Q_rate.value]
-    PV2_setpoint = [PV2_SET_P.value, PV2_SET_P_rate.value, PV2_SET_FDP.value, PV2_SET_Q.value, PV2_SET_Q_rate.value]
-    PV3_setpoint = [PV3_SET_P.value, PV3_SET_P_rate.value, PV3_SET_FDP.value, PV3_SET_Q.value, PV3_SET_Q_rate.value]
-    PV4_setpoint = [PV4_SET_P.value, PV4_SET_P_rate.value, PV4_SET_FDP.value, PV4_SET_Q.value, PV4_SET_Q_rate.value]
-    PV5_setpoint = [PV5_SET_P.value, PV5_SET_P_rate.value, PV5_SET_FDP.value, PV5_SET_Q.value, PV5_SET_Q_rate.value]
+    # PV1_setpoint = [PV1_SET_P.value, PV1_SET_P_rate.value, PV1_SET_FDP.value, PV1_SET_Q.value, PV1_SET_Q_rate.value]
+    # PV2_setpoint = [PV2_SET_P.value, PV2_SET_P_rate.value, PV2_SET_FDP.value, PV2_SET_Q.value, PV2_SET_Q_rate.value]
+    # PV3_setpoint = [PV3_SET_P.value, PV3_SET_P_rate.value, PV3_SET_FDP.value, PV3_SET_Q.value, PV3_SET_Q_rate.value]
+    # PV4_setpoint = [PV4_SET_P.value, PV4_SET_P_rate.value, PV4_SET_FDP.value, PV4_SET_Q.value, PV4_SET_Q_rate.value]
+    # PV5_setpoint = [PV5_SET_P.value, PV5_SET_P_rate.value, PV5_SET_FDP.value, PV5_SET_Q.value, PV5_SET_Q_rate.value]
 
 
     client.stop()
-    return PV1_Read, PV2_Read, PV3_Read, PV4_Read, PV5_Read, POI_Read
+    return PV1_Read, PV2_Read, PV3_Read, PV4_Read, PV5_Read, PV6_Read, PV7_Read, PV8_Read, PV9_Read, POI_Read
 
 def write_TagArray_W(connection, t, data_COMM):
 
@@ -523,61 +585,62 @@ try:
         now = dt.datetime.now()
         # Format the timestamp with decimal seconds
         t = now.strftime('%Y%m%d %H:%M:%S') + f".{now.microsecond // 1000:03d}"
-        PV1_Read, PV2_Read, PV3_Read, PV4_Read, PV5_Read, POI_Read = client_IEC104()
-        data_COMM_W = np.concatenate([np.array(PV1_Read), np.array(PV2_Read), np.array(PV3_Read), np.array(PV4_Read), np.array(PV5_Read),np.array(PV5_Read),np.array(POI_Read)])
+        PV1_Read, PV2_Read, PV3_Read, PV4_Read, PV5_Read, PV6_Read, PV7_Read, PV8_Read, PV9_Read, POI_Read = client_IEC104()
+        data_COMM_W = np.concatenate([np.array(PV1_Read), np.array(PV2_Read), np.array(PV3_Read), np.array(PV4_Read), np.array(PV5_Read),np.array(PV5_Read),np.array(PV6_Read),np.array(PV7_Read),np.array(PV8_Read),np.array(PV9_Read),np.array(POI_Read)])
+        print(data_COMM_W, '\n')
         # data_COMM_W = np.array(arr_W)
         # Escritura en la base de datos, de comunicación a base de datos (DB)
-        write_TagArray_W(connection, t, data_COMM_W)
-        print('Rellenando Tabla  TagArray_W con las medidas del IEC104')
-        #meas_array = read_TagArray_W(connection)
-        meas_array = [51.0, 0.0, 249.0, 2.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 50.0, 1.0, 251.0, 0.0, 2.0, -1.0, 1.0, -1.0, 0.0, 0.0, 49.0, 1.0, 250.0, 2.0, 0.0, 1.0, -1.0, 0.0, -1.0, 1.0, 50.0, -1.0, 249.0, 0.0, 1.0, 0.0, 0.0, -1.0, 0.0, -1.0, 49.0, 1.0, 249.0, 2.0, 2.0, 0.0, 0.0, 0.0, 0.0, 0.0, 49.0, 1.0, 249.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, -1.0, 0.0, 19999.0, 19999.0, 20001.0, 60.0, 21.0]
-        print(meas_array)
+        # write_TagArray_W(connection, t, data_COMM_W)
+        # print('Rellenando Tabla  TagArray_W con las medidas del IEC104')
+        # #meas_array = read_TagArray_W(connection)
+        # meas_array = [51.0, 0.0, 249.0, 2.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 50.0, 1.0, 251.0, 0.0, 2.0, -1.0, 1.0, -1.0, 0.0, 0.0, 49.0, 1.0, 250.0, 2.0, 0.0, 1.0, -1.0, 0.0, -1.0, 1.0, 50.0, -1.0, 249.0, 0.0, 1.0, 0.0, 0.0, -1.0, 0.0, -1.0, 49.0, 1.0, 249.0, 2.0, 2.0, 0.0, 0.0, 0.0, 0.0, 0.0, 49.0, 1.0, 249.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, -1.0, 0.0, 19999.0, 19999.0, 20001.0, 60.0, 21.0]
+        # print(meas_array)
         
         time.sleep(1.0)
 
-        Pmes, Qmes, Vmes = process_measurements(
-            pseudo_measurement_filepath, pseudo_measurement_sheet_name, 
-            tag_correspondence_filepath, tag_correspondence_sheet_name, 
-            Pmes, Qmes, Vmes, hashmap_names, hashmap_reduction, 
-            meas_array, slack_bus
-        )
+        # Pmes, Qmes, Vmes = process_measurements(
+        #     pseudo_measurement_filepath, pseudo_measurement_sheet_name, 
+        #     tag_correspondence_filepath, tag_correspondence_sheet_name, 
+        #     Pmes, Qmes, Vmes, hashmap_names, hashmap_reduction, 
+        #     meas_array, slack_bus
+        # )
 
     
-        # Call state estimation function
-        (max_residual_measurement_type, max_residual_bus_index, max_residual_index, max_residual_val,
-         Vest_array, Pest_array, Qest_array, Vmesp_array, Pmesp_array, Qmesp_array,
-         residuals_df_P, residuals_df_Q, residuals_df_V, removed_residuals) = State_Estimation_generic_function(
-            num_buses, slack_bus, der_positions_ratings, zero_injection_buses, hashmap_reduction2, hashmap_names2,
-            H_v_full, H_p_full, H_q_full, slack_bus_row_P, slack_bus_row_Q, injection_buses, Pmes, Qmes, Vmes,
-            adjacency_matrix_buses, adjacency_matrix_branches, parent_child_adjacency, R, X, Bshunt, Gshunt, S_n
-        )
+        # # Call state estimation function
+        # (max_residual_measurement_type, max_residual_bus_index, max_residual_index, max_residual_val,
+        #  Vest_array, Pest_array, Qest_array, Vmesp_array, Pmesp_array, Qmesp_array,
+        #  residuals_df_P, residuals_df_Q, residuals_df_V, removed_residuals) = State_Estimation_generic_function(
+        #     num_buses, slack_bus, der_positions_ratings, zero_injection_buses, hashmap_reduction2, hashmap_names2,
+        #     H_v_full, H_p_full, H_q_full, slack_bus_row_P, slack_bus_row_Q, injection_buses, Pmes, Qmes, Vmes,
+        #     adjacency_matrix_buses, adjacency_matrix_branches, parent_child_adjacency, R, X, Bshunt, Gshunt, S_n
+        # )
 
-        # For each state estimation parameter, convert outputs to strings if necessary.
-        # (For arrays, we use json.dumps after converting to list; for DataFrames, use .to_json.)
-        se_accum["max_residual_measurement_type"].append(str(max_residual_measurement_type))
-        se_accum["max_residual_bus_index"].append(str(max_residual_bus_index))
-        se_accum["max_residual_index"].append(str(max_residual_index))
-        se_accum["max_residual_val"].append(str(max_residual_val))
-        se_accum["Vest_array"].append(json.dumps(Vest_array.tolist() if hasattr(Vest_array, 'tolist') else Vest_array))
-        se_accum["Pest_array"].append(json.dumps(Pest_array.tolist() if hasattr(Pest_array, 'tolist') else Pest_array))
-        se_accum["Qest_array"].append(json.dumps(Qest_array.tolist() if hasattr(Qest_array, 'tolist') else Qest_array))
-        se_accum["Vmesp_array"].append(json.dumps(Vmesp_array.tolist() if hasattr(Vmesp_array, 'tolist') else Vmesp_array))
-        se_accum["Pmesp_array"].append(json.dumps(Pmesp_array.tolist() if hasattr(Pmesp_array, 'tolist') else Pmesp_array))
-        se_accum["Qmesp_array"].append(json.dumps(Qmesp_array.tolist() if hasattr(Qmesp_array, 'tolist') else Qmesp_array))
-        se_accum["residuals_df_P"].append(residuals_df_P.to_json() if hasattr(residuals_df_P, "to_json") else str(residuals_df_P))
-        se_accum["residuals_df_Q"].append(residuals_df_Q.to_json() if hasattr(residuals_df_Q, "to_json") else str(residuals_df_Q))
-        se_accum["residuals_df_V"].append(residuals_df_V.to_json() if hasattr(residuals_df_V, "to_json") else str(residuals_df_V))
-        se_accum["removed_residuals"].append(
-            json.dumps(removed_residuals, default=lambda x: int(x) if isinstance(x, np.integer) else x)
-        )
-        write_TagArray_Est(connection, t, Vest_array)
-        print('Rellenando Tabla  TagArray_Est with the estimated values')
-        # Write the accumulated state estimation results to CSV
-        write_state_estimation_csv(se_accum)
-        logging.info("Cycle %d: State estimation results saved in restructured CSV.", cycle + 1)
+        # # For each state estimation parameter, convert outputs to strings if necessary.
+        # # (For arrays, we use json.dumps after converting to list; for DataFrames, use .to_json.)
+        # se_accum["max_residual_measurement_type"].append(str(max_residual_measurement_type))
+        # se_accum["max_residual_bus_index"].append(str(max_residual_bus_index))
+        # se_accum["max_residual_index"].append(str(max_residual_index))
+        # se_accum["max_residual_val"].append(str(max_residual_val))
+        # se_accum["Vest_array"].append(json.dumps(Vest_array.tolist() if hasattr(Vest_array, 'tolist') else Vest_array))
+        # se_accum["Pest_array"].append(json.dumps(Pest_array.tolist() if hasattr(Pest_array, 'tolist') else Pest_array))
+        # se_accum["Qest_array"].append(json.dumps(Qest_array.tolist() if hasattr(Qest_array, 'tolist') else Qest_array))
+        # se_accum["Vmesp_array"].append(json.dumps(Vmesp_array.tolist() if hasattr(Vmesp_array, 'tolist') else Vmesp_array))
+        # se_accum["Pmesp_array"].append(json.dumps(Pmesp_array.tolist() if hasattr(Pmesp_array, 'tolist') else Pmesp_array))
+        # se_accum["Qmesp_array"].append(json.dumps(Qmesp_array.tolist() if hasattr(Qmesp_array, 'tolist') else Qmesp_array))
+        # se_accum["residuals_df_P"].append(residuals_df_P.to_json() if hasattr(residuals_df_P, "to_json") else str(residuals_df_P))
+        # se_accum["residuals_df_Q"].append(residuals_df_Q.to_json() if hasattr(residuals_df_Q, "to_json") else str(residuals_df_Q))
+        # se_accum["residuals_df_V"].append(residuals_df_V.to_json() if hasattr(residuals_df_V, "to_json") else str(residuals_df_V))
+        # se_accum["removed_residuals"].append(
+        #     json.dumps(removed_residuals, default=lambda x: int(x) if isinstance(x, np.integer) else x)
+        # )
+        # write_TagArray_Est(connection, t, Vest_array)
+        # print('Rellenando Tabla  TagArray_Est with the estimated values')
+        # # Write the accumulated state estimation results to CSV
+        # write_state_estimation_csv(se_accum)
+        # logging.info("Cycle %d: State estimation results saved in restructured CSV.", cycle + 1)
 
-        time.sleep(monitoring_sleep)
-        cycle += 1
+        # time.sleep(monitoring_sleep)
+        # cycle += 1
 
 except KeyboardInterrupt:
     logging.info("Dynamic state estimation loop terminated by user.")
