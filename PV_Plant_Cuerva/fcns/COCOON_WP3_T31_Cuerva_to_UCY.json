@@ -19,15 +19,15 @@
                          {"emec_prefix":"U12", "ing_name":    "Voltage12", "units":  "V", "register":  768, "type":"float32", "format":"CDAB", "fdii":false},
                          {"emec_prefix":"U23", "ing_name":    "Voltage23", "units":  "V", "register":  770, "type":"float32", "format":"CDAB", "fdii":false},
                          {"emec_prefix":"U31", "ing_name":    "Voltage31", "units":  "V", "register":  772, "type":"float32", "format":"CDAB", "fdii":false},
-                         {"emec_prefix": "U1", "ing_name":     "Voltage1", "units":  "V", "register":  774, "type":"float32", "format":"CDAB", "fdii":false},
-                         {"emec_prefix": "U2", "ing_name":     "Voltage2", "units":  "V", "register":  776, "type":"float32", "format":"CDAB", "fdii":false},
-                         {"emec_prefix": "U3", "ing_name":     "Voltage3", "units":  "V", "register":  778, "type":"float32", "format":"CDAB", "fdii":false}
+                         {"emec_prefix": "U1", "ing_name":     "Voltage1", "units":  "V", "register":  774, "type":"float32", "format":"CDAB", "fdii": true},
+                         {"emec_prefix": "U2", "ing_name":     "Voltage2", "units":  "V", "register":  776, "type":"float32", "format":"CDAB", "fdii": true},
+                         {"emec_prefix": "U3", "ing_name":     "Voltage3", "units":  "V", "register":  778, "type":"float32", "format":"CDAB", "fdii": true}
                         ],
          "setpoints":[
         ]},
   "inv":{"setpoints":[
-                    {"emec_prefix":"p_s_ppc", "ini":2.0, "min": 0.0, "max":1.0, "ing_name":  "SetActivePower", "units":  "W", "register":424, "type": "uint32", "format": "ABCD", "emec_scale":1e-6, "io_register":2000, "fdii": false},
-                    {"emec_prefix":"q_s_ppc", "ini":0.0, "min":-1.0, "max":1.0, "ing_name":"SetReactivePower", "units":"var", "register":426, "type":  "int32", "format": "ABCD", "emec_scale":1e-6, "io_register":2001, "fdii": false}
+                    {"emec_prefix":"p_s_ppc", "ini":2.0, "min": 0.0, "max":1.0, "ing_name":  "SetActivePower", "units":  "W", "register":424, "type": "uint32", "format": "ABCD", "emec_scale":1e-6, "io_register":2000, "fdii": true},
+                    {"emec_prefix":"q_s_ppc", "ini":0.0, "min":-1.0, "max":1.0, "ing_name":"SetReactivePower", "units":"var", "register":426, "type":  "int32", "format": "ABCD", "emec_scale":1e-6, "io_register":2001, "fdii": true}
                      ],
         "measurements":[{"emec_prefix":"Vab", "ing_name":    "VoltageAB", "units":  "V", "register":575, "type":"int16", "format":  "AB", "fdii": true},
                     {"emec_prefix":    "Vbc", "ing_name":    "VoltageBC", "units":  "V", "register":576, "type":"int16", "format":  "AB", "fdii": true},

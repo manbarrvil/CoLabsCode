@@ -463,9 +463,12 @@ def client_IEC104():
     PV4_Read = [PV4_F.value,PV4_I.value,PV4_V.value,PV4_P.value,PV4_Q.value,PV4_P_ref.value,PV4_P_rate.value,PV4_FDP.value,PV4_Q_ref.value,PV4_Q_rate.value]
     PV5_Read = [PV5_F.value,PV5_I.value,PV5_V.value,PV5_P.value,PV5_Q.value,PV5_P_ref.value,PV5_P_rate.value,PV5_FDP.value,PV5_Q_ref.value,PV5_Q_rate.value]
     PV6_Read = [PV6_F.value,PV6_I.value,PV6_V.value,PV6_P.value,PV6_Q.value,PV6_P_ref.value,PV6_P_rate.value,PV6_FDP.value,PV6_Q_ref.value,PV6_Q_rate.value]
-    PV7_Read = [PV7_V.value,PV7_I.value,PV7_F.value,PV7_P.value,PV7_Q.value]
-    PV8_Read = [PV8_V.value,PV8_I.value,PV8_F.value,PV8_P.value,PV8_Q.value]
-    PV9_Read = [PV9_V.value,PV9_I.value,PV9_F.value,PV9_P.value,PV9_Q.value]
+    # PV7_Read = [PV7_V.value,PV7_I.value,PV7_F.value,PV7_P.value,PV7_Q.value]
+    # PV8_Read = [PV8_V.value,PV8_I.value,PV8_F.value,PV8_P.value,PV8_Q.value]
+    # PV9_Read = [PV9_V.value,PV9_I.value,PV9_F.value,PV9_P.value,PV9_Q.value]
+    PV7_Read = [PV7_F.value,PV7_I.value,PV7_V.value,PV7_P.value,PV7_Q.value,PV1_P_ref.value,PV1_P_rate.value,PV1_FDP.value,PV1_Q_ref.value,PV1_Q_rate.value]
+    PV8_Read = [PV8_F.value,PV8_I.value,PV8_V.value,PV8_P.value,PV8_Q.value,PV1_P_ref.value,PV1_P_rate.value,PV1_FDP.value,PV1_Q_ref.value,PV1_Q_rate.value]
+    PV9_Read = [PV9_F.value,PV9_I.value,PV9_V.value,PV9_P.value,PV9_Q.value,PV1_P_ref.value,PV1_P_rate.value,PV1_FDP.value,PV1_Q_ref.value,PV1_Q_rate.value]
     POI_Read = [POI_Ia.value,POI_Ib.value,POI_Ic.value,POI_Vab.value,POI_Vbc.value,POI_Vca.value,POI_P.value,POI_Q.value]
 
     # PV1_setpoint = [PV1_SET_P.value, PV1_SET_P_rate.value, PV1_SET_FDP.value, PV1_SET_Q.value, PV1_SET_Q_rate.value]
@@ -556,7 +559,7 @@ def write_TagArray_Est(connection, t, Vest_array):
 def read_TagArray_W(connection):
     cursor=connection.cursor()
       
-    cursor.execute("SELECT TOP 1 Tag1_Value, Tag2_Value, Tag3_Value, Tag4_Value, Tag5_Value, Tag6_Value, Tag7_Value, Tag8_Value, Tag9_Value, Tag10_Value, Tag11_Value, Tag12_Value, Tag13_Value, Tag14_Value, Tag15_Value, Tag16_Value, Tag17_Value, Tag18_Value, Tag19_Value, Tag20_Value, Tag21_Value, Tag22_Value, Tag23_Value, Tag24_Value, Tag25_Value,Tag26_Value, Tag27_Value, Tag28_Value, Tag29_Value, Tag30_Value,Tag31_Value, Tag32_Value, Tag33_Value, Tag34_Value, Tag35_Value,Tag36_Value, Tag37_Value, Tag38_Value, Tag39_Value, Tag40_Value,Tag41_Value, Tag42_Value, Tag43_Value, Tag44_Value, Tag45_Value,Tag46_Value, Tag47_Value, Tag48_Value, Tag49_Value, Tag50_Value,Tag51_Value, Tag52_Value, Tag53_Value, Tag54_Value, Tag55_Value,Tag56_Value, Tag57_Value, Tag58_Value, Tag59_Value, Tag60_Value,Tag61_Value, Tag62_Value, Tag63_Value, Tag64_Value, Tag65_Value,Tag66_Value, Tag67_Value, Tag68_Value FROM MSG_PV.dbo.TagArray_W ORDER BY Tag0_Value DESC")
+    cursor.execute("SELECT TOP 1 Tag1_Value, Tag2_Value, Tag3_Value, Tag4_Value, Tag5_Value, Tag6_Value, Tag7_Value, Tag8_Value, Tag9_Value, Tag10_Value, Tag11_Value, Tag12_Value, Tag13_Value, Tag14_Value, Tag15_Value, Tag16_Value, Tag17_Value, Tag18_Value, Tag19_Value, Tag20_Value, Tag21_Value, Tag22_Value, Tag23_Value, Tag24_Value, Tag25_Value,Tag26_Value, Tag27_Value, Tag28_Value, Tag29_Value, Tag30_Value,Tag31_Value, Tag32_Value, Tag33_Value, Tag34_Value, Tag35_Value,Tag36_Value, Tag37_Value, Tag38_Value, Tag39_Value, Tag40_Value,Tag41_Value, Tag42_Value, Tag43_Value, Tag44_Value, Tag45_Value,Tag46_Value, Tag47_Value, Tag48_Value, Tag49_Value, Tag50_Value,Tag51_Value, Tag52_Value, Tag53_Value, Tag54_Value, Tag55_Value,Tag56_Value, Tag57_Value, Tag58_Value, Tag59_Value, Tag60_Value,Tag61_Value, Tag62_Value, Tag63_Value, Tag64_Value, Tag65_Value, Tag66_Value, Tag67_Value, Tag68_Value, Tag69_Value, Tag70_Value, Tag71_Value, Tag72_Value, Tag73_Value, Tag74_Value, Tag75_Value, Tag76_Value, Tag77_Value, Tag78_Value, Tag79_Value, Tag80_Value, Tag81_Value, Tag82_Value, Tag83_Value, Tag84_Value, Tag85_Value,Tag86_Value, Tag87_Value, Tag88_Value, Tag89_Value, Tag90_Value, Tag91_Value, Tag92_Value, Tag93_Value, Tag94_Value, Tag95_Value,Tag96_Value, Tag97_Value, Tag98_Value FROM MSG_PV.dbo.TagArray_W ORDER BY Tag0_Value DESC")
     
     data_read = cursor.fetchone()
     data_read_DB = list(data_read)  # Convierte la tupla en una lista
