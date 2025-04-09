@@ -229,15 +229,6 @@ PV5_V      = station.add_point(io_address=16434+100, type=c104.Type.M_ME_NC_1)
 PV5_I      = station.add_point(io_address=16437+100, type=c104.Type.M_ME_NC_1)
 PV5_F      = station.add_point(io_address=16442+100, type=c104.Type.M_ME_NC_1)
 
-POI_Ia      = station.add_point(io_address=25114, type=c104.Type.M_ME_NC_1)
-POI_Ib      = station.add_point(io_address=25115, type=c104.Type.M_ME_NC_1)
-POI_Ic      = station.add_point(io_address=25116, type=c104.Type.M_ME_NC_1)
-POI_Vab     = station.add_point(io_address=25117, type=c104.Type.M_ME_NC_1)
-POI_Vbc     = station.add_point(io_address=25118, type=c104.Type.M_ME_NC_1)
-POI_Vca     = station.add_point(io_address=25119, type=c104.Type.M_ME_NC_1)
-POI_P       = station.add_point(io_address=25120, type=c104.Type.M_ME_NC_1)
-POI_Q       = station.add_point(io_address=25121, type=c104.Type.M_ME_NC_1)
-
 PV6_P_ref  = station.add_point(io_address=16418+125, type=c104.Type.M_ME_NC_1)
 PV6_P_rate = station.add_point(io_address=16419+125, type=c104.Type.M_ME_NC_1)
 PV6_FDP    = station.add_point(io_address=16420+125, type=c104.Type.M_ME_NC_1)
@@ -249,23 +240,33 @@ PV6_V      = station.add_point(io_address=16434+125, type=c104.Type.M_ME_NC_1)
 PV6_I      = station.add_point(io_address=16437+125, type=c104.Type.M_ME_NC_1)
 PV6_F      = station.add_point(io_address=16442+125, type=c104.Type.M_ME_NC_1)
 
-PV7_V      = station.add_point(io_address=16568, type=c104.Type.M_ME_NC_1)
-PV7_I      = station.add_point(io_address=16569, type=c104.Type.M_ME_NC_1)
-PV7_F      = station.add_point(io_address=16570, type=c104.Type.M_ME_NC_1)
-PV7_P      = station.add_point(io_address=16571, type=c104.Type.M_ME_NC_1)
-PV7_Q      = station.add_point(io_address=16572, type=c104.Type.M_ME_NC_1)
+PV7_P      = station.add_point(io_address=16568, type=c104.Type.M_ME_NC_1)
+PV7_Q      = station.add_point(io_address=16569, type=c104.Type.M_ME_NC_1)
+PV7_V      = station.add_point(io_address=16570, type=c104.Type.M_ME_NC_1)
+PV7_I      = station.add_point(io_address=16571, type=c104.Type.M_ME_NC_1)
+PV7_F      = station.add_point(io_address=16572, type=c104.Type.M_ME_NC_1)
 
-PV8_V      = station.add_point(io_address=16573, type=c104.Type.M_ME_NC_1)
-PV8_I      = station.add_point(io_address=16574, type=c104.Type.M_ME_NC_1)
-PV8_F      = station.add_point(io_address=16575, type=c104.Type.M_ME_NC_1)
-PV8_P      = station.add_point(io_address=16576, type=c104.Type.M_ME_NC_1)
-PV8_Q      = station.add_point(io_address=16577, type=c104.Type.M_ME_NC_1)
+PV8_P      = station.add_point(io_address=16573, type=c104.Type.M_ME_NC_1)
+PV8_Q      = station.add_point(io_address=16574, type=c104.Type.M_ME_NC_1)
+PV8_V      = station.add_point(io_address=16575, type=c104.Type.M_ME_NC_1)
+PV8_I      = station.add_point(io_address=16576, type=c104.Type.M_ME_NC_1)
+PV8_F      = station.add_point(io_address=16577, type=c104.Type.M_ME_NC_1)
 
-PV9_V      = station.add_point(io_address=16578, type=c104.Type.M_ME_NC_1)
-PV9_I      = station.add_point(io_address=16579, type=c104.Type.M_ME_NC_1)
-PV9_F      = station.add_point(io_address=16580, type=c104.Type.M_ME_NC_1)
-PV9_P      = station.add_point(io_address=16581, type=c104.Type.M_ME_NC_1)
-PV9_Q      = station.add_point(io_address=16582, type=c104.Type.M_ME_NC_1)
+PV9_P      = station.add_point(io_address=16578, type=c104.Type.M_ME_NC_1)
+PV9_Q      = station.add_point(io_address=16579, type=c104.Type.M_ME_NC_1)
+PV9_V      = station.add_point(io_address=16580, type=c104.Type.M_ME_NC_1)
+PV9_I      = station.add_point(io_address=16581, type=c104.Type.M_ME_NC_1)
+PV9_F      = station.add_point(io_address=16582, type=c104.Type.M_ME_NC_1)
+
+POI_Ia      = station.add_point(io_address=25114, type=c104.Type.M_ME_NC_1)
+POI_Ib      = station.add_point(io_address=25115, type=c104.Type.M_ME_NC_1)
+POI_Ic      = station.add_point(io_address=25116, type=c104.Type.M_ME_NC_1)
+POI_Vab     = station.add_point(io_address=25117, type=c104.Type.M_ME_NC_1)
+POI_Vbc     = station.add_point(io_address=25118, type=c104.Type.M_ME_NC_1)
+POI_Vca     = station.add_point(io_address=25119, type=c104.Type.M_ME_NC_1)
+POI_P       = station.add_point(io_address=25120, type=c104.Type.M_ME_NC_1)
+POI_Q       = station.add_point(io_address=25121, type=c104.Type.M_ME_NC_1)
+POI_F       = station.add_point(io_address=25122, type=c104.Type.M_ME_NC_1)
 
 # command point preparation
 PV1_SET_P      = station.add_point(io_address=25089, type=c104.Type.C_SE_NC_1)
@@ -396,6 +397,8 @@ def client_IEC104():
     POI_Vca.read()
     POI_P  .read()
     POI_Q  .read()
+    POI_F  .read()
+
 
     PV1_SET_P     .value = 0.0
     PV1_SET_P_rate.value = 0.0
@@ -463,10 +466,10 @@ def client_IEC104():
     PV4_Read = [PV4_F.value,PV4_I.value,PV4_V.value,PV4_P.value,PV4_Q.value,PV4_P_ref.value,PV4_P_rate.value,PV4_FDP.value,PV4_Q_ref.value,PV4_Q_rate.value]
     PV5_Read = [PV5_F.value,PV5_I.value,PV5_V.value,PV5_P.value,PV5_Q.value,PV5_P_ref.value,PV5_P_rate.value,PV5_FDP.value,PV5_Q_ref.value,PV5_Q_rate.value]
     PV6_Read = [PV6_F.value,PV6_I.value,PV6_V.value,PV6_P.value,PV6_Q.value,PV6_P_ref.value,PV6_P_rate.value,PV6_FDP.value,PV6_Q_ref.value,PV6_Q_rate.value]
-    PV7_Read = [PV7_V.value,PV7_I.value,PV7_F.value,PV7_P.value,PV7_Q.value]
-    PV8_Read = [PV8_V.value,PV8_I.value,PV8_F.value,PV8_P.value,PV8_Q.value]
-    PV9_Read = [PV9_V.value,PV9_I.value,PV9_F.value,PV9_P.value,PV9_Q.value]
-    POI_Read = [POI_Ia.value,POI_Ib.value,POI_Ic.value,POI_Vab.value,POI_Vbc.value,POI_Vca.value,POI_P.value,POI_Q.value]
+    PV7_Read = [PV7_F.value,PV7_I.value,PV7_V.value,PV7_P.value,PV7_Q.value]
+    PV8_Read = [PV8_F.value,PV8_I.value,PV8_V.value,PV8_P.value,PV8_Q.value]
+    PV9_Read = [PV9_F.value,PV9_I.value,PV9_V.value,PV9_P.value,PV9_Q.value]
+    POI_Read = [POI_Ia.value,POI_Ib.value,POI_Ic.value,POI_Vab.value,POI_Vbc.value,POI_Vca.value,POI_P.value,POI_Q.value,POI_F.value]
 
     # PV1_setpoint = [PV1_SET_P.value, PV1_SET_P_rate.value, PV1_SET_FDP.value, PV1_SET_Q.value, PV1_SET_Q_rate.value]
     # PV2_setpoint = [PV2_SET_P.value, PV2_SET_P_rate.value, PV2_SET_FDP.value, PV2_SET_Q.value, PV2_SET_Q_rate.value]
@@ -586,8 +589,9 @@ try:
         # Format the timestamp with decimal seconds
         t = now.strftime('%Y%m%d %H:%M:%S') + f".{now.microsecond // 1000:03d}"
         PV1_Read, PV2_Read, PV3_Read, PV4_Read, PV5_Read, PV6_Read, PV7_Read, PV8_Read, PV9_Read, POI_Read = client_IEC104()
+        print (POI_Read)
         data_COMM_W = np.concatenate([np.array(PV1_Read), np.array(PV2_Read), np.array(PV3_Read), np.array(PV4_Read), np.array(PV5_Read),np.array(PV5_Read),np.array(PV6_Read),np.array(PV7_Read),np.array(PV8_Read),np.array(PV9_Read),np.array(POI_Read)])
-        print(data_COMM_W, '\n')
+        # print(data_COMM_W, '\n')
         # data_COMM_W = np.array(arr_W)
         # Escritura en la base de datos, de comunicación a base de datos (DB)
         # write_TagArray_W(connection, t, data_COMM_W)
