@@ -466,12 +466,6 @@ def client_IEC104():
     PV4_Read = [PV4_F.value,PV4_I.value,PV4_V.value,PV4_P.value,PV4_Q.value,PV4_P_ref.value,PV4_P_rate.value,PV4_FDP.value,PV4_Q_ref.value,PV4_Q_rate.value]
     PV5_Read = [PV5_F.value,PV5_I.value,PV5_V.value,PV5_P.value,PV5_Q.value,PV5_P_ref.value,PV5_P_rate.value,PV5_FDP.value,PV5_Q_ref.value,PV5_Q_rate.value]
     PV6_Read = [PV6_F.value,PV6_I.value,PV6_V.value,PV6_P.value,PV6_Q.value,PV6_P_ref.value,PV6_P_rate.value,PV6_FDP.value,PV6_Q_ref.value,PV6_Q_rate.value]
-<<<<<<< HEAD
-    PV7_Read = [PV7_F.value,PV7_I.value,PV7_V.value,PV7_P.value,PV7_Q.value]
-    PV8_Read = [PV8_F.value,PV8_I.value,PV8_V.value,PV8_P.value,PV8_Q.value]
-    PV9_Read = [PV9_F.value,PV9_I.value,PV9_V.value,PV9_P.value,PV9_Q.value]
-    POI_Read = [POI_Ia.value,POI_Ib.value,POI_Ic.value,POI_Vab.value,POI_Vbc.value,POI_Vca.value,POI_P.value,POI_Q.value,POI_F.value]
-=======
     # PV7_Read = [PV7_V.value,PV7_I.value,PV7_F.value,PV7_P.value,PV7_Q.value]
     # PV8_Read = [PV8_V.value,PV8_I.value,PV8_F.value,PV8_P.value,PV8_Q.value]
     # PV9_Read = [PV9_V.value,PV9_I.value,PV9_F.value,PV9_P.value,PV9_Q.value]
@@ -479,7 +473,6 @@ def client_IEC104():
     PV8_Read = [PV8_F.value,PV8_I.value,PV8_V.value,PV8_P.value,PV8_Q.value,PV1_P_ref.value,PV1_P_rate.value,PV1_FDP.value,PV1_Q_ref.value,PV1_Q_rate.value]
     PV9_Read = [PV9_F.value,PV9_I.value,PV9_V.value,PV9_P.value,PV9_Q.value,PV1_P_ref.value,PV1_P_rate.value,PV1_FDP.value,PV1_Q_ref.value,PV1_Q_rate.value]
     POI_Read = [POI_Ia.value,POI_Ib.value,POI_Ic.value,POI_Vab.value,POI_Vbc.value,POI_Vca.value,POI_P.value,POI_Q.value]
->>>>>>> 349863fefba9dce7b3bf74a38302e703bf1f9ca2
 
     # PV1_setpoint = [PV1_SET_P.value, PV1_SET_P_rate.value, PV1_SET_FDP.value, PV1_SET_Q.value, PV1_SET_Q_rate.value]
     # PV2_setpoint = [PV2_SET_P.value, PV2_SET_P_rate.value, PV2_SET_FDP.value, PV2_SET_Q.value, PV2_SET_Q_rate.value]
