@@ -95,32 +95,3 @@ def client_Modbus(ident_emec_id, data):
 
     client.close()
     return dict_meas
-
-    
-
-
-# '''Test de llamado desde un main'''
-# # Cargar el fichero JSON
-# with open('pv0102_mininet_local_modbus.json', 'r') as file:
-#     data = json.load(file)
-
-# ident_emec_id_POI = "poi" #Select "poi", "inv1", "inv2"
-# ident_emec_id_SS1 = "inv1" #Select "poi", "inv1", "inv2"
-# ident_emec_id_SS2 = "inv2" #Select "poi", "inv1", "inv2"
-
-# try:
-#     while True:
-#         meas_POI = client_Modbus(ident_emec_id_POI, data)
-#         print('\n')
-#         print(meas_POI, '\n')
-#         meas_SS1 = client_Modbus(ident_emec_id_SS1, data)
-#         print('\n')
-#         print(meas_SS1, '\n')
-#         meas_SS2 = client_Modbus(ident_emec_id_SS2, data)
-#         print('\n')
-#         print(meas_SS2, '\n')
-#         time.sleep(10)
-# except KeyboardInterrupt:
-#     print('\n Parada por teclado \n')
-# finally:
-#     print('\n Esto es todo amigos \n')
