@@ -1,0 +1,36 @@
+{
+
+"devices": [
+  {"ing_id":"moxa1", "ing_type":"gateway",  "modbus_ip":  "192.168.5.3", "iec104_port":2404, "config": "gw", "protocol":"modbus", "common_address":16000}
+], 
+"configs":{
+  
+  "gw":{"setpoints":[
+                    {"emec_prefix":"p_s_ppc", "ini":2.0, "min": 0.0, "max":1.0, "ing_name":  "SetActivePower", "units":  "W", "register":424, "type": "uint32", "format": "ABCD", "emec_scale":1e-6, "io_register":2000, "fdii": true},
+                    {"emec_prefix":"q_s_ppc", "ini":0.0, "min":-1.0, "max":1.0, "ing_name":"SetReactivePower", "units":"var", "register":426, "type":  "int32", "format": "ABCD", "emec_scale":1e-6, "io_register":2001, "fdii": true}
+                     ],
+        "measurements":[{"emec_prefix":"FPV1", "ing_name":         "FrequencyPV1", "units": "Hz", "register":442, "inc_register":0,  "type":"float32", "format":"CDAB", "fdii":  true},
+                    {"emec_prefix":   "IbPV1", "ing_name":           "CurrentPV1", "units":  "A", "register":437, "inc_register":0,  "type":"float32", "format":"CDAB", "fdii":  true},
+                    {"emec_prefix":   "VbPV1", "ing_name":           "VoltagePV1", "units":  "V", "register":434, "inc_register":0,  "type":"float32", "format":"CDAB", "fdii":  true},
+                    {"emec_prefix":  "PrtPV1", "ing_name":       "ActivePowerPV1", "units":  "W", "register":401, "inc_register":0,  "type":"float32", "format":"CDAB", "fdii":  true},
+                    {"emec_prefix":  "QrtPV1", "ing_name":     "ReactivePowerPV1", "units":"var", "register":403, "inc_register":0,  "type":"float32", "format":"CDAB", "fdii":  true},
+                    {"emec_prefix":  "PfvPV1", "ing_name":     "ActivePowerFVPV1", "units":  "W", "register":418, "inc_register":0,  "type":"float32", "format":"CDAB", "fdii": false},
+                    {"emec_prefix": "PRfvPV1", "ing_name":  "ActivePowerRatioPV1", "units": "pu", "register":419, "inc_register":0,  "type":"float32", "format":"CDAB", "fdii": false},
+                    {"emec_prefix":   "PFPV1", "ing_name":       "PowerFactorPV1", "units": "pu", "register":420, "inc_register":0,  "type":"float32", "format":"CDAB", "fdii": false},
+                    {"emec_prefix":  "QfvPV1", "ing_name":   "ReactivePowerFVPV1", "units":"var", "register":421, "inc_register":0,  "type":"float32", "format":"CDAB", "fdii": false},
+                    {"emec_prefix": "QRfvPV1", "ing_name":"ReactivePowerRatioPV1", "units": "pu", "register":423, "inc_register":0,  "type":"float32", "format":"CDAB", "fdii": false},
+                    {"emec_prefix":    "FPV2", "ing_name":         "FrequencyPV2", "units": "Hz", "register":442, "inc_register":25, "type":"float32", "format":"CDAB", "fdii":  true},
+                    {"emec_prefix":   "IbPV2", "ing_name":           "CurrentPV2", "units":  "A", "register":437, "inc_register":25, "type":"float32", "format":"CDAB", "fdii":  true},
+                    {"emec_prefix":   "VbPV2", "ing_name":           "VoltagePV2", "units":  "V", "register":434, "inc_register":25, "type":"float32", "format":"CDAB", "fdii":  true},
+                    {"emec_prefix":  "PrtPV2", "ing_name":       "ActivePowerPV2", "units":  "W", "register":401, "inc_register":25, "type":"float32", "format":"CDAB", "fdii":  true},
+                    {"emec_prefix":  "QrtPV2", "ing_name":     "ReactivePowerPV2", "units":"var", "register":403, "inc_register":25, "type":"float32", "format":"CDAB", "fdii":  true},
+                    {"emec_prefix":  "PfvPV2", "ing_name":     "ActivePowerFVPV2", "units":  "W", "register":418, "inc_register":25, "type":"float32", "format":"CDAB", "fdii": false},
+                    {"emec_prefix": "PRfvPV2", "ing_name":  "ActivePowerRatioPV2", "units": "pu", "register":419, "inc_register":25, "type":"float32", "format":"CDAB", "fdii": false},
+                    {"emec_prefix":   "PFPV2", "ing_name":       "PowerFactorPV2", "units": "pu", "register":420, "inc_register":25, "type":"float32", "format":"CDAB", "fdii": false},
+                    {"emec_prefix":  "QfvPV2", "ing_name":   "ReactivePowerFVPV2", "units":"var", "register":421, "inc_register":25, "type":"float32", "format":"CDAB", "fdii": false},
+                    {"emec_prefix": "QRfvPV2", "ing_name":"ReactivePowerRatioPV2", "units": "pu", "register":423, "inc_register":25, "type":"float32", "format":"CDAB", "fdii": false}
+                       ]}
+}
+      
+}
+
