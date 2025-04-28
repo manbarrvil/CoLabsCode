@@ -90,9 +90,6 @@ if __name__ == '__main__':
             meas_SS1 = []
             meas_SS2 = []
 
-            # time.sleep(10)
-
-
     except KeyboardInterrupt:
         conexion.close()
         print("End of connection...")

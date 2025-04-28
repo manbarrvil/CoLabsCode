@@ -4,20 +4,15 @@ import logging
 import pyodbc
 import pandas as pd
 import numpy as np
-import os
-import json
-from pandas import read_excel
+from datetime import datetime, timezone
 import datetime as dt
-import random
 import c104
-
 
 import time
 import pickle
 import logging
 import pandas as pd
 import numpy as np
-import json
 
 from State_Estimation_generic_function_rt1 import State_Estimation_generic_function
 from process_measurements_rt_new import process_measurements
@@ -547,7 +542,7 @@ def write_TagArray_Est(connection, t, Vest_array, Pest_array, Qest_array):
     # Inicializar lista de valores con ceros
     # Vest_array_W = Vest_array.to_numpy()
     # values = Vest_array_W
-    Sb= 1e6
+    Sb= 1e6/1000
     Vb_LV = 231
     Vb_MV = 20000
 
@@ -618,7 +613,9 @@ try:
         '''
         now = dt.datetime.now()
         # Format the timestamp with decimal seconds
-        t = now.strftime('%Y%m%d %H:%M:%S') + f".{now.microsecond // 1000:03d}"
+        # t = now.strftime('%Y%m%d %H:%M:%S') + f".{now.microsecond // 1000:03d}"
+        t = datetime.now(timezone.utc)
+
         PV1_Read, PV2_Read, PV3_Read, PV4_Read, PV5_Read, PV6_Read, PV7_Read, PV8_Read, PV9_Read, POI_Read = client_IEC104()
 
         data_COMM_W = np.concatenate([np.array(PV1_Read), np.array(PV2_Read), np.array(PV3_Read), np.array(PV4_Read), np.array(PV5_Read),np.array(PV6_Read),np.array(PV7_Read),np.array(PV8_Read),np.array(PV9_Read),np.array(POI_Read)])
