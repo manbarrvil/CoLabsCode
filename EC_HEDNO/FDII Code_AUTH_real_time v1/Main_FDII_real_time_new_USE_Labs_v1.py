@@ -13,6 +13,7 @@ import pickle
 import logging
 import pandas as pd
 import numpy as np
+from process_voltage_write_TagArray_Est import process_voltage_write_TagArray_Est
 
 from State_Estimation_generic_function_rt1 import State_Estimation_generic_function
 from process_measurements_rt_new import process_measurements
@@ -30,6 +31,7 @@ with open("extracted_grid_info1.pkl", "rb") as f:
     (num_buses, slack_bus, der_positions_ratings, _, _,
      zero_injection_buses, hashmap_reduction2, hashmap_names2, H_v_full, H_p_full, H_q_full, 
      slack_bus_row_P, slack_bus_row_Q, injection_buses, B, G) = pickle.load(f)
+print(hashmap_names2)
 
 ##The lines below to be activated if we want to re-extract the grid information 
 #data_filepath = "C:\\Users\\stdim\\EC_Network_reduced_merged_final.xlsx"
@@ -546,11 +548,10 @@ def write_TagArray_Est(connection, t, Vest_array, Pest_array, Qest_array):
     Vb_LV = 231
     Vb_MV = 20000
 
-    values = pd.concat([Vest_array, Pest_array*Sb, Qest_array*Sb], axis=1)
+    values = pd.concat([Vest_array, Pest_array*Sb, Qest_array*Sb], axis=0)
     values = values.to_numpy().flatten().tolist()
-    values[0] = values[0]*Vb_MV
-    for i in range(3,len(Vest_array)-1,4):
-        values[i] = values[i]*Vb_LV
+    values = process_voltage_write_TagArray_Est(values)
+
 
     # Crear la lista de claves
     keys.append(f'Tag{0}_Value')
@@ -615,9 +616,7 @@ try:
         # Format the timestamp with decimal seconds
         # t = now.strftime('%Y%m%d %H:%M:%S') + f".{now.microsecond // 1000:03d}"
         t = datetime.now(timezone.utc)
-
         PV1_Read, PV2_Read, PV3_Read, PV4_Read, PV5_Read, PV6_Read, PV7_Read, PV8_Read, PV9_Read, POI_Read = client_IEC104()
-
         data_COMM_W = np.concatenate([np.array(PV1_Read), np.array(PV2_Read), np.array(PV3_Read), np.array(PV4_Read), np.array(PV5_Read),np.array(PV6_Read),np.array(PV7_Read),np.array(PV8_Read),np.array(PV9_Read),np.array(POI_Read)])
 
         # Escritura en la base de datos, de comunicación a base de datos (DB)
@@ -633,8 +632,6 @@ try:
         #     Pmes, Qmes, Vmes, hashmap_names, hashmap_reduction, 
         #     meas_array, slack_bus
         # )
-
-    
         # # Call state estimation function
         # (max_residual_measurement_type, max_residual_bus_index, max_residual_index, max_residual_val,
         #  Vest_array, Pest_array, Qest_array, Vmesp_array, Pmesp_array, Qmesp_array,
@@ -643,7 +640,6 @@ try:
         #     H_v_full, H_p_full, H_q_full, slack_bus_row_P, slack_bus_row_Q, injection_buses, Pmes, Qmes, Vmes,
         #     adjacency_matrix_buses, adjacency_matrix_branches, parent_child_adjacency, R, X, Bshunt, Gshunt, S_n
         # )
-
         # # For each state estimation parameter, convert outputs to strings if necessary.
         # # (For arrays, we use json.dumps after converting to list; for DataFrames, use .to_json.)
         # se_accum["max_residual_measurement_type"].append(str(max_residual_measurement_type))
@@ -673,6 +669,7 @@ try:
 
         meas_array = read_TagArray_W(connection)
         # print(meas_array)
+        tic_ES_HEDNO = time.time()
         mes_positions_p = np.ones(num_buses, dtype=int)
         mes_positions_q = np.ones(num_buses, dtype=int)
         mes_positions_v = np.ones(num_buses, dtype=int)
@@ -691,14 +688,14 @@ try:
         column_rank = (num_buses-1)*2
 
         Pmes, Qmes, Vmes, Imes = process_measurements(meas_array, num_buses,np)
-        # print(Vmes)
+
 
         Pmes = Pmes + 1e-9
         Qmes = Qmes + 1e-9
         Vmes = Vmes + 1e-9
         Imes = Imes + 1e-9
 
-        # Vmes = Vmes/2
+        Vmes[5] = Vmes[5]*0.95
         
         mes_p.setRecords(np.where(mes_positions_p.copy()==1)[0])
         mes_q.setRecords(np.where(mes_positions_q.copy()==1)[0])
@@ -710,9 +707,6 @@ try:
         Pmesp.setRecords(Pmes)
         Qmesp.setRecords(Qmes)
         Vmesp.setRecords(Vmes)
-        
-        # print(len(Vmes),len(Pmes),len(Qmes))
-        # print(len(Qmesp))
         
         # Pest.setRecords(Pmesp.records['value'].to_numpy())
         # Qest.setRecords(Qmesp.records['value'].to_numpy())
@@ -727,7 +721,8 @@ try:
         (
             Vest_array, Pest_array, Qest_array, removed_residuals, Vtest, normalized_residuals_V,indices_v_test
         ) = State_Estimation_generic_function(estimation, column_rank, num_buses, hashmap_names2, hashmap_reduction2, mes_positions_p, mes_positions_q, mes_positions_v, H_v_full, H_p_full, H_q_full, slack_bus_row_P, slack_bus_row_Q, mes_positions_virtual, slack_bus, Pmesp, Qmesp, Vmesp, Std_P, Std_Q, Std_V, mes_p, mes_q, mes_v,Vest, Pest, Qest)
-        
+        toc_ES_HEDNO = time.time()
+        print(f"Execution time ES_HEDNO: {(toc_ES_HEDNO - tic_ES_HEDNO) * 1000:.2f} ms")
         # For each state estimation parameter, convert outputs to strings if necessary.
         # (For arrays, we use json.dumps after converting to list; for DataFrames, use .to_json.)
         # se_accum["Vest_array"].append(json.dumps(Vest_array.tolist() if hasattr(Vest_array, 'tolist') else Vest))
@@ -738,7 +733,7 @@ try:
         # )
         # print(Vmes,"\n", Vest_array.to_numpy().flatten().tolist(),"\n",normalized_residuals_V,"\n",Vtest)
         # print("Indices_v_test:",indices_v_test)
-        print("ActivePowerEST:",Pmes[7]*1e6)
+        # print("ActivePowerEST:",Pmes[7]*1e6)
         # Write the accumulated state estimation results to CSV
         # write_state_estimation_csv(se_accum)
         write_TagArray_Est(connection, t, Vest_array, Pest_array, Qest_array)
