@@ -11,10 +11,8 @@ def read_DB_CSL_BROKER_INPUT(db_host,db_port,db_user,db_password,db_name,conexio
     #     dbname=db_name
     # )
     cursor=conexion.cursor()
-    # cursor.execute("select Date_Time, POI_Va,POI_P,POI_Q,CT1_Vab,CT1_P,CT1_Q,CT2_Vab,CT2_P,CT2_Q from DB_CSL_BROKER_INPUT")
-    # cursor.execute("select Date_Time, POI_Va,POI_P,POI_Q,CT1_Vab,CT1_P,CT1_Q,CT2_Vab,CT2_P,CT2_Q FROM DB_CSL_BROKER_INPUT ORDER BY Date_Time DESC LIMIT 1")
-    cursor.execute("select Date_Time, Ua_POI,P_POI,Q_POI,Uab_CT1,P_CT1,Q_CT1,Uab_CT2,P_CT2,Q_CT2 FROM DB_CSL_BROKER_INPUT ORDER BY Date_Time DESC LIMIT 1")
-    #for data in cursor:
+    cursor.execute("select Date_Time, V_POI_AB,P_POI,Q_POI,V_CT1_AB,P_CT1,Q_CT1,V_CT2_AB,P_CT2,Q_CT2 FROM DB_CSL_BROKER_INPUT ORDER BY Date_Time DESC LIMIT 1")
+
     data = cursor.fetchone()
     while data:
        # Date_Time_DB = data[0]
@@ -28,7 +26,5 @@ def read_DB_CSL_BROKER_INPUT(db_host,db_port,db_user,db_password,db_name,conexio
         P_CT2_DB = data[8]
         Q_CT2_DB = data[9]
         data = cursor.fetchone()
-    #conexion.close()
-
-            
+   
     return V_POI_DB, V_CT1_DB, V_CT2_DB, P_POI_DB, Q_POI_DB, P_CT1_DB, Q_CT1_DB, P_CT2_DB, Q_CT2_DB

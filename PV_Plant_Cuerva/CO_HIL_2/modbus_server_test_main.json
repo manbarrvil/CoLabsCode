@@ -55,28 +55,25 @@
     "port": 5500
 },
 "devices": [
-  {"ing_id": "poi", "ing_type":     "poi", "emec_id":   "POI", "modbus_ip":  "192.168.5.15", "modbus_port":502, "iec104_ip":  "10.10.0.5","iec104_port":2404,"config": "poi", "reg_0":32000, "linker_Dt":0.1, "protocol":"modbus", "common_address":40},
-  {"ing_id":"inv1", "ing_type":"inverter", "emec_id":"LV0101", "modbus_ip":  "192.168.1.10", "modbus_port":502, "iec104_ip":  "10.10.1.1","iec104_port":2404,"config": "inv", "reg_0":40000, "linker_Dt":0.1, "protocol":"modbus", "common_address":41},
-  {"ing_id":"inv2", "ing_type":"inverter", "emec_id":"LV0102", "modbus_ip":  "192.168.2.10", "modbus_port":502, "iec104_ip":  "10.10.1.2","iec104_port":2404,"config": "inv", "reg_0":40000, "linker_Dt":0.1, "protocol":"modbus", "common_address":42},
-  {"ing_id":"bess1","ing_type":    "bess", "emec_id":  "BESS", "modbus_ip":"10.10.0.100", "modbus_port":502, "iec104_ip":"10.10.0.100","iec104_port":2404,"config":"bess", "reg_0":4000, "linker_Dt":0.1, "protocol":"modbus", "common_address":43}
+  {"ing_id": "poi", "ing_type":     "poi", "emec_id":   "POI", "modbus_ip":  "192.168.5.15", "modbus_port":502, "config": "poi", "reg_0":32000, "protocol":"modbus", "DB": "DB_CSL_BROKER_INPUT"},
+  {"ing_id":"inv1", "ing_type":"inverter", "emec_id":"LV0101", "modbus_ip":  "192.168.1.10", "modbus_port":502, "config": "inv", "reg_0":40000, "protocol":"modbus", "DB": "DB_CSL_BROKER_INPUT"},
+  {"ing_id":"inv2", "ing_type":"inverter", "emec_id":"LV0102", "modbus_ip":  "192.168.2.10", "modbus_port":502, "config": "inv", "reg_0":40000, "protocol":"modbus", "DB": "DB_CSL_BROKER_INPUT"},
+  {"ing_id":"bess1","ing_type":    "bess", "emec_id":  "BESS", "modbus_ip":   "10.10.0.100", "modbus_port":502, "config":"bess", "reg_0":4000, "linker_Dt":0.1, "protocol":"modbus", "common_address":43}
 ], 
 "configs":{
-  "poi":{"measurements":[{"emec_prefix":"Vab", "ing_name":"VoltageAB","units": "V", "register": 768, "type": "float32", "format": "CDAB"},
-                         {"emec_prefix":"Vbc", "ing_name":"VoltageBC","units": "V", "register": 770, "type": "float32", "format": "CDAB"},
-                         {"emec_prefix":"Vca", "ing_name":"VoltageCA","units": "V", "register": 772, "type": "float32", "format": "CDAB"},
-                         {"emec_prefix":"F", "ing_name":"Frequency","units": "Hz", "register": 780, "type": "float32", "format": "CDAB"},
-                         {"emec_prefix":"P", "ing_name":"ActivePower","units": "W", "register": 790, "type": "float32", "format": "CDAB"},
-                         {"emec_prefix":"Q", "ing_name":"ReactivePower","units": "var", "register": 17176, "type": "float32", "format": "CDAB"},
-                         {"emec_prefix":"Ia", "ing_name":"CurrentA","units": "A", "register": 782, "type": "float32", "format": "CDAB"},
-                         {"emec_prefix":"Ib", "ing_name":"CurrentB","units": "A", "register": 784, "type": "float32", "format": "CDAB"},
-                         {"emec_prefix":"Ic", "ing_name":"CurrentC","units": "A", "register": 786, "type": "float32", "format": "CDAB"},
-                         {"emec_prefix":"In", "ing_name":"CurrentN","units": "A", "register": 788, "type": "float32", "format": "CDAB"},
-                         {"emec_prefix":"U12", "ing_name":"Voltage12","units": "V", "register": 768, "type": "float32", "format": "CDAB"},
-                         {"emec_prefix":"U23", "ing_name":"Voltage23","units": "V", "register": 770, "type": "float32", "format": "CDAB"},
-                         {"emec_prefix":"U31", "ing_name":"Voltage31","units": "V", "register": 772, "type": "float32", "format": "CDAB"},
-                         {"emec_prefix":"U1", "ing_name":"Voltage1","units": "V", "register": 774, "type": "float32", "format": "CDAB"},
-                         {"emec_prefix":"U2", "ing_name":"Voltage2","units": "V", "register": 776, "type": "float32", "format": "CDAB"},
-                         {"emec_prefix":"U3", "ing_name":"Voltage3","units": "V", "register": 778, "type": "float32", "format": "CDAB"}
+  "poi":{"measurements":[{"emec_prefix":"V",       "ing_name":"VoltageAB",    "DB_name":"V_POI_ab", "units": "V",   "register": 768,   "type": "float32", "format": "CDAB"},
+                         {"emec_prefix":"V",       "ing_name":"VoltageBC",    "DB_name":"V_POI_bc", "units": "V",   "register": 770,   "type": "float32", "format": "CDAB"},
+                         {"emec_prefix":"V",       "ing_name":"VoltageCA",    "DB_name":"V_POI_ca", "units": "V",   "register": 772,   "type": "float32", "format": "CDAB"},
+                         {"emec_name":"omega_coi", "ing_name":"Frequency",    "DB_name":"omega_POI","units": "Hz",  "register": 780,   "type": "float32", "format": "CDAB"},
+                         {"emec_prefix":"P",       "ing_name":"ActivePower",  "DB_name":"P_POI",    "units": "W",   "register": 790,   "type": "float32", "format": "CDAB"},
+                         {"emec_prefix":"Q",       "ing_name":"ReactivePower","DB_name":"Q_POI",    "units": "var", "register": 17176, "type": "float32", "format": "CDAB"},
+                         {"emec_prefix":"Ia",      "ing_name":"CurrentA",     "DB_name":"I_POI_a",  "units": "A",   "register": 782,   "type": "float32", "format": "CDAB"},
+                         {"emec_prefix":"Ib",      "ing_name":"CurrentB",     "DB_name":"I_POI_b",  "units": "A",   "register": 784,   "type": "float32", "format": "CDAB"},
+                         {"emec_prefix":"Ic",      "ing_name":"CurrentC",     "DB_name":"I_POI_c",  "units": "A",   "register": 786,   "type": "float32", "format": "CDAB"},
+                         {"emec_prefix":"In",      "ing_name":"CurrentN",     "DB_name":"I_POI_n",  "units": "A",   "register": 788,   "type": "float32", "format": "CDAB"},
+                         {"emec_prefix":"U",       "ing_name":"Voltage1",     "DB_name":"V_POI_1",  "units": "V",   "register":  774,  "type": "float32", "format": "CDAB"},
+                         {"emec_prefix":"U",       "ing_name":"Voltage2",     "DB_name":"V_POI_2",  "units": "V",   "register":  776,  "type": "float32", "format": "CDAB"},
+                         {"emec_prefix":"U",       "ing_name":"Voltage3",     "DB_name":"V_POI_3",  "units": "V",   "register":  778,  "type": "float32", "format": "CDAB"}
                         ],
          "setpoints":[
         ]},
@@ -84,16 +81,16 @@
                     {"emec_prefix":"p_s_ppc","ini":2.0,"min": 0.0,"max":1.0, "ing_name":  "SetActivePower", "register":424,"type": "int32", "format": "CDAB", "emec_scale":1e-6,"io_register":2000,"type_iec104":"C_SE_NC_1"},
                     {"emec_prefix":"q_s_ppc","ini":0.0,"min":-1.0,"max":1.0, "ing_name":"SetReactivePower","register":426,"type": "int32", "format": "CDAB", "emec_scale":1e-6,"io_register":2001,"type_iec104":"C_SE_NC_1"}
                      ],
-        "measurements":[{"emec_prefix":"Vab", "ing_name":"VoltageAB","units": "V", "register": 575, "type": "int16", "format": "AB"},
-                    {"emec_prefix":"Vbc", "ing_name":"VoltageBC","units": "V", "register": 576, "type": "int16", "format": "AB"},
-                    {"emec_prefix":"Vca", "ing_name":"VoltageCA","units": "V", "register": 577, "type": "int16", "format": "AB"},
-                    {"emec_prefix":"Ia", "ing_name":"CurrentA","units": "A", "register": 572, "type": "int16", "format": "AB"},
-                    {"emec_prefix":"Ib", "ing_name":"CurrentB","units": "A", "register": 573, "type": "int16", "format": "AB"},
-                    {"emec_prefix":"Ic", "ing_name":"CurrentC","units": "A", "register": 574, "type": "int16", "format": "AB"},
-                    {"emec_prefix":"p_s", "ing_name":  "ActivePower", "units": "W", "register":525,"type": "int32", "format": "ABCD"},
-                    {"emec_prefix":"q_s", "ing_name":  "ReactivePower", "units": "var", "register":544,"type": "int32", "format": "ABCD"},
-                    {"emec_prefix":"p_s_r", "ing_name":  "SetActivePower", "units": "W", "register":424,"type": "int32", "format": "ABCD"},
-                    {"emec_prefix":"q_s_r", "ing_name":  "SetReactivePower", "units": "var", "register":426,"type": "int32", "format": "ABCD"}
+        "measurements":[{"emec_prefix": "Vab",   "ing_name": "VoltageAB",        "DB_name":"V_CT_ab",  "units": "V",   "register": 575, "type": "int16", "format": "AB"},
+                        {"emec_prefix": "Vbc",   "ing_name": "VoltageBC",        "DB_name":"V_CT_bc",  "units": "V",   "register": 576, "type": "int16", "format": "AB"},
+                        {"emec_prefix": "Vca",   "ing_name": "VoltageCA",        "DB_name":"V_CT_ca",  "units": "V",   "register": 577, "type": "int16", "format": "AB"},
+                        {"emec_prefix": "Ia",    "ing_name": "CurrentA",         "DB_name":"I_CT_a",   "units": "A",   "register": 572, "type": "int16", "format": "AB"},
+                        {"emec_prefix": "Ib",    "ing_name": "CurrentB",         "DB_name":"I_CT_b",   "units": "A",   "register": 573, "type": "int16", "format": "AB"},
+                        {"emec_prefix": "Ic",    "ing_name": "CurrentC",         "DB_name":"I_CT_c",   "units": "A",   "register": 574, "type": "int16", "format": "AB"},
+                        {"emec_prefix": "p_s",   "ing_name": "ActivePower",      "DB_name":"P_CT",     "units": "W",   "register": 525, "type": "int32", "format": "ABCD"},
+                        {"emec_prefix": "q_s",   "ing_name": "ReactivePower",    "DB_name":"Q_CT",     "units": "var", "register": 544, "type": "int32", "format": "ABCD"},
+                        {"emec_prefix": "p_s_r", "ing_name": "SetActivePower",   "DB_name":"P_CT_REF", "units": "W",   "register": 424, "type": "int32", "format": "ABCD"},
+                        {"emec_prefix": "q_s_r", "ing_name": "SetReactivePower", "DB_name":"Q_CT_REF", "units": "var", "register": 426, "type": "int32", "format": "ABCD"}
                        ]},
   "bess":{"setpoints":[
           {"emec_prefix":"p_s_ref","ini":2.0,"min": 0.0,"max":1.0, "ing_name":  "SetActivePower", "register":424,"type": "int32", "format": "CDAB", "emec_scale":1e-6,"io_register":2000,"type_iec104":"C_SE_NC_1"},

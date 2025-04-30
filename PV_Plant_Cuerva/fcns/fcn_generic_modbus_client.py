@@ -58,7 +58,6 @@ def client_Modbus(ident_emec_id, data):
 
     for item1 in data["configs"][config]['measurements']:
         
-
         if (item1['type'] == 'float32'):
             read_meas_MB = client.read_holding_registers(item1['register'] + reg_ini, 2)
             if(item1['format'] == 'CDAB'):
