@@ -5,11 +5,16 @@ def write_DB_CSL_BROKER_INPUT(t, POI_Va, POI_Vb, POI_Vc, f, POI_P, POI_Q, POI_Ia
     # Inicializar la lista de columnas
     columns = []
 
-    # Recorrer todos los tipos en "configs" (como "poi", "inv", etc.)
+    # Recorrer los tipos en "configs"
     for type_key, type_data in data["configs"].items():
         if "measurements" in type_data:
-            # Extraer los nombres de las columnas (DB_name) si existen
-            columns.extend([item["DB_name"] for item in type_data["measurements"] if "DB_name" in item])
+            if type_key == "poi":
+                # Agregar columnas del tipo `poi`
+                columns.extend([item["DB_name"] for item in type_data["measurements"] if "DB_name" in item])
+            elif type_key == "inv":
+                # Diferenciar `CT1` y `CT2` usando prefijos
+                for ct_prefix in ["CT1", "CT2"]:
+                    columns.extend([f"{ct_prefix}_{item['DB_name']}" for item in type_data["measurements"] if "DB_name" in item])
     columns_str = ", ".join(columns)
 
     cursor=conexion.cursor()
