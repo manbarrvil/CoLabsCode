@@ -14,34 +14,34 @@
 ], 
 
 "configs":{
-  "poi":{"measurements":[{"emec_prefix": "Ia", "hedno_name":     "CurrentA", "units":  "A", "register":25114, "type":"float16", "format":"AB", "min_value_pu": "-1", "max_value_pu":  "1", "fdii": true},
-                         {"emec_prefix": "Ib", "hedno_name":     "CurrentB", "units":  "A", "register":25115, "type":"float16", "format":"AB", "min_value_pu": "-1", "max_value_pu":  "1", "fdii": true},
-                         {"emec_prefix": "Ic", "hedno_name":     "CurrentC", "units":  "A", "register":25116, "type":"float16", "format":"AB", "min_value_pu": "-1", "max_value_pu":  "1", "fdii": true},
-                         {"emec_prefix":"Vab", "hedno_name":    "VoltageAB", "units":  "V", "register":25117, "type":"float16", "format":"AB", "min_value_pu":"0.9", "max_value_pu":"1.1", "fdii": true},
-                         {"emec_prefix":"Vbc", "hedno_name":    "VoltageBC", "units":  "V", "register":25118, "type":"float16", "format":"AB", "min_value_pu":"0.9", "max_value_pu":"1.1", "fdii": true},
-                         {"emec_prefix":"Vca", "hedno_name":    "VoltageCA", "units":  "V", "register":25119, "type":"float16", "format":"AB", "min_value_pu":"0.9", "max_value_pu":"1.1", "fdii": true},
-                         {"emec_prefix":  "P", "hedno_name":  "ActivePower", "units":  "W", "register":25120, "type":"float16", "format":"AB", "min_value_pu": "-1", "max_value_pu":  "1", "fdii": true},
-                         {"emec_prefix":  "Q", "hedno_name":"ReactivePower", "units":"var", "register":25121, "type":"float16", "format":"AB", "min_value_pu": "-1", "max_value_pu":  "1", "fdii": true}
+  "poi":{"measurements":[{"emec_prefix": "Ia", "hedno_name":     "CurrentA", "units":  "A", "register":25114, "type":"float16", "format":"AB", "min_value_pu": "-1", "max_value_pu":  "1", "fdii": true, "type_104": "M_ME_NC_1"},
+                         {"emec_prefix": "Ib", "hedno_name":     "CurrentB", "units":  "A", "register":25115, "type":"float16", "format":"AB", "min_value_pu": "-1", "max_value_pu":  "1", "fdii": true, "type_104": "M_ME_NC_1"},
+                         {"emec_prefix": "Ic", "hedno_name":     "CurrentC", "units":  "A", "register":25116, "type":"float16", "format":"AB", "min_value_pu": "-1", "max_value_pu":  "1", "fdii": true, "type_104": "M_ME_NC_1"},
+                         {"emec_prefix":"Vab", "hedno_name":    "VoltageAB", "units":  "V", "register":25117, "type":"float16", "format":"AB", "min_value_pu":"0.9", "max_value_pu":"1.1", "fdii": true, "type_104": "M_ME_NC_1"},
+                         {"emec_prefix":"Vbc", "hedno_name":    "VoltageBC", "units":  "V", "register":25118, "type":"float16", "format":"AB", "min_value_pu":"0.9", "max_value_pu":"1.1", "fdii": true, "type_104": "M_ME_NC_1"},
+                         {"emec_prefix":"Vca", "hedno_name":    "VoltageCA", "units":  "V", "register":25119, "type":"float16", "format":"AB", "min_value_pu":"0.9", "max_value_pu":"1.1", "fdii": true, "type_104": "M_ME_NC_1"},
+                         {"emec_prefix":  "P", "hedno_name":  "ActivePower", "units":  "W", "register":25120, "type":"float16", "format":"AB", "min_value_pu": "-1", "max_value_pu":  "1", "fdii": true, "type_104": "M_ME_NC_1"},
+                         {"emec_prefix":  "Q", "hedno_name":"ReactivePower", "units":"var", "register":25121, "type":"float16", "format":"AB", "min_value_pu": "-1", "max_value_pu":  "1", "fdii": true, "type_104": "M_ME_NC_1"}
                         ],
          "setpoints":[
         ]},
   "inv":{"setpoints":[
-                    {"emec_prefix":    "p_s_ppc", "hedno_name":       "SetActivePower", "units":  "W", "register":25089, "type": "float16", "format": "AB", "min_value_pu":"0", "max_value_pu":"1", "fdii": false},
-                    {"emec_prefix":"p_s_rat_ppc", "hedno_name":  "SetActivePowerRatio", "units": "pu", "register":25090, "type": "float16", "format": "AB", "min_value_pu":"0", "max_value_pu":"1", "fdii": false},
-                    {"emec_prefix":     "pf_ppc", "hedno_name":       "SetPowerFactor", "units": "pu", "register":25091, "type": "float16", "format": "AB", "min_value_pu":"0", "max_value_pu":"1", "fdii": false},
-                    {"emec_prefix":    "q_s_ppc", "hedno_name":     "SetReactivePower", "units":"var", "register":25092, "type": "float16", "format": "AB", "min_value_pu":"0", "max_value_pu":"1", "fdii": false},
-                    {"emec_prefix":"q_s_rat_ppc", "hedno_name":"SetReactivePowerRatio", "units": "pu", "register":25093, "type": "float16", "format": "AB", "min_value_pu":"0", "max_value_pu":"1", "fdii": false}
+                    {"emec_prefix":    "p_s_ppc", "hedno_name":       "SetActivePower", "units":  "W", "register":25089, "type": "float16", "format": "AB", "min_value_pu":"0", "max_value_pu":"1", "fdii": false, "type_104": "C_SE_NC_1 "},
+                    {"emec_prefix":"p_s_rat_ppc", "hedno_name":  "SetActivePowerRatio", "units": "pu", "register":25090, "type": "float16", "format": "AB", "min_value_pu":"0", "max_value_pu":"1", "fdii": false, "type_104": "C_SE_NC_1 "},
+                    {"emec_prefix":     "pf_ppc", "hedno_name":       "SetPowerFactor", "units": "pu", "register":25091, "type": "float16", "format": "AB", "min_value_pu":"0", "max_value_pu":"1", "fdii": false, "type_104": "C_SE_NC_1 "},
+                    {"emec_prefix":    "q_s_ppc", "hedno_name":     "SetReactivePower", "units":"var", "register":25092, "type": "float16", "format": "AB", "min_value_pu":"0", "max_value_pu":"1", "fdii": false, "type_104": "C_SE_NC_1 "},
+                    {"emec_prefix":"q_s_rat_ppc", "hedno_name":"SetReactivePowerRatio", "units": "pu", "register":25093, "type": "float16", "format": "AB", "min_value_pu":"0", "max_value_pu":"1", "fdii": false, "type_104": "C_SE_NC_1 "}
                      ],
-        "measurements":[{"emec_prefix":"F", "hedno_name":         "Frequency", "units": "Hz", "register":16442,  "type":"float16", "format":"AB", "min_value_pu":"0.95", "max_value_pu":"1.05", "fdii": false},
-                    {"emec_prefix":   "Ib", "hedno_name":           "Current", "units":  "A", "register":16437,  "type":"float16", "format":"AB", "min_value_pu":   "0", "max_value_pu":   "1", "fdii":  true},
-                    {"emec_prefix":   "Vb", "hedno_name":           "Voltage", "units":  "V", "register":16434,  "type":"float16", "format":"AB", "min_value_pu": "0.9", "max_value_pu": "1.1", "fdii":  true},
-                    {"emec_prefix":  "Prt", "hedno_name":       "ActivePower", "units":  "W", "register":16401,  "type":"float16", "format":"AB", "min_value_pu":   "0", "max_value_pu":   "1", "fdii":  true},
-                    {"emec_prefix":  "Qrt", "hedno_name":     "ReactivePower", "units":"var", "register":16403,  "type":"float16", "format":"AB", "min_value_pu":   "0", "max_value_pu":   "1", "fdii":  true},
-                    {"emec_prefix":  "Pfv", "hedno_name":     "ActivePowerFV", "units":  "W", "register":16418,  "type":"float16", "format":"AB", "min_value_pu":   "0", "max_value_pu":   "1", "fdii": false},
-                    {"emec_prefix": "PRfv", "hedno_name":  "ActivePowerRatio", "units": "pu", "register":16419,  "type":"float16", "format":"AB", "min_value_pu":   "0", "max_value_pu":   "1", "fdii": false},
-                    {"emec_prefix":  "PFP", "hedno_name":       "PowerFacto1", "units": "pu", "register":16420,  "type":"float16", "format":"AB", "min_value_pu":   "0", "max_value_pu":   "1", "fdii": false},
-                    {"emec_prefix":  "Qfv", "hedno_name":   "ReactivePowerFV", "units":"var", "register":16421,  "type":"float16", "format":"AB", "min_value_pu":   "0", "max_value_pu":   "1", "fdii": false},
-                    {"emec_prefix": "QRfv", "hedno_name":"ReactivePowerRatio", "units": "pu", "register":16423,  "type":"float16", "format":"AB", "min_value_pu":   "0", "max_value_pu":   "1", "fdii": false}
+        "measurements":[{"emec_prefix":"F", "hedno_name":         "Frequency", "units": "Hz", "register":16442,  "type":"float16", "format":"AB", "min_value_pu":"0.95", "max_value_pu":"1.05", "fdii": false, "type_104": "M_ME_NC_1"},
+                    {"emec_prefix":   "Ib", "hedno_name":           "Current", "units":  "A", "register":16437,  "type":"float16", "format":"AB", "min_value_pu":   "0", "max_value_pu":   "1", "fdii":  true, "type_104": "M_ME_NC_1"},
+                    {"emec_prefix":   "Vb", "hedno_name":           "Voltage", "units":  "V", "register":16434,  "type":"float16", "format":"AB", "min_value_pu": "0.9", "max_value_pu": "1.1", "fdii":  true, "type_104": "M_ME_NC_1"},
+                    {"emec_prefix":  "Prt", "hedno_name":       "ActivePower", "units":  "W", "register":16401,  "type":"float16", "format":"AB", "min_value_pu":   "0", "max_value_pu":   "1", "fdii":  true, "type_104": "M_ME_NC_1"},
+                    {"emec_prefix":  "Qrt", "hedno_name":     "ReactivePower", "units":"var", "register":16403,  "type":"float16", "format":"AB", "min_value_pu":   "0", "max_value_pu":   "1", "fdii":  true, "type_104": "M_ME_NC_1"},
+                    {"emec_prefix":  "Pfv", "hedno_name":     "ActivePowerFV", "units":  "W", "register":16418,  "type":"float16", "format":"AB", "min_value_pu":   "0", "max_value_pu":   "1", "fdii": false, "type_104": "M_ME_NC_1"},
+                    {"emec_prefix": "PRfv", "hedno_name":  "ActivePowerRatio", "units": "pu", "register":16419,  "type":"float16", "format":"AB", "min_value_pu":   "0", "max_value_pu":   "1", "fdii": false, "type_104": "M_ME_NC_1"},
+                    {"emec_prefix":  "PFP", "hedno_name":       "PowerFacto1", "units": "pu", "register":16420,  "type":"float16", "format":"AB", "min_value_pu":   "0", "max_value_pu":   "1", "fdii": false, "type_104": "M_ME_NC_1"},
+                    {"emec_prefix":  "Qfv", "hedno_name":   "ReactivePowerFV", "units":"var", "register":16421,  "type":"float16", "format":"AB", "min_value_pu":   "0", "max_value_pu":   "1", "fdii": false, "type_104": "M_ME_NC_1"},
+                    {"emec_prefix": "QRfv", "hedno_name":"ReactivePowerRatio", "units": "pu", "register":16423,  "type":"float16", "format":"AB", "min_value_pu":   "0", "max_value_pu":   "1", "fdii": false, "type_104": "M_ME_NC_1"}
                        ]}
 },
 "switches":[

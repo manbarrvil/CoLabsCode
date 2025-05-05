@@ -695,7 +695,7 @@ try:
         Vmes = Vmes + 1e-9
         Imes = Imes + 1e-9
 
-        Vmes[5] = Vmes[5]*0.95
+        # Vmes[5] = Vmes[5]*0.95
         
         mes_p.setRecords(np.where(mes_positions_p.copy()==1)[0])
         mes_q.setRecords(np.where(mes_positions_q.copy()==1)[0])
