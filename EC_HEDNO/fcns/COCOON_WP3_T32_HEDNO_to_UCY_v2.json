@@ -4,13 +4,13 @@
 ], 
 
 "devices": [
-  {"hedno_id":"PV1", "hedno_type":"inverter",  "Sbase":     "999", "Vbase":"0.4", "modbus_ip":  "10.23.163.73", "iec104_port": 2404, "config": "inv", "comm_address": 247,  "reg_0": 0  },
-  {"hedno_id":"PV2", "hedno_type":"inverter",  "Sbase":     "999", "Vbase":"0.4", "modbus_ip": "10.23.163.224", "iec104_port": 2404, "config": "inv", "comm_address": 247,  "reg_0": 25 },
-  {"hedno_id":"PV3", "hedno_type":"inverter",  "Sbase":  "359.34", "Vbase":"0.4", "modbus_ip": "10.23.163.218", "iec104_port": 2404, "config": "inv", "comm_address": 247,  "reg_0": 50 },
-  {"hedno_id":"PV4", "hedno_type":"inverter",  "Sbase":  "999.50", "Vbase":"0.4", "modbus_ip": "10.23.163.210", "iec104_port": 2404, "config": "inv", "comm_address": 247,  "reg_0": 75 },
-  {"hedno_id":"PV5", "hedno_type":"inverter",  "Sbase":  "399.52", "Vbase":"0.4", "modbus_ip": "10.23.163.219", "iec104_port": 2404, "config": "inv", "comm_address": 247,  "reg_0": 100},
-  {"hedno_id":"PV6", "hedno_type":"inverter",  "Sbase":  "499.32", "Vbase":"0.4", "modbus_ip": "10.23.163.254", "iec104_port": 2404, "config": "inv", "comm_address": 247,  "reg_0": 125},
-  {"hedno_id":"poi", "hedno_type":     "poi",  "Sbase":"14202.82", "Vbase": "20", "modbus_ip":  "10.26.225.63", "iec104_port": 2404, "config": "poi", "comm_address": 247,  "reg_0": 0  }
+  {"hedno_id":"PV1", "hedno_type":"inverter",  "Sbase":     "999", "Vbase":"0.4", "modbus_ip":  "10.23.163.73", "iec104_port": 2404, "config": "inv", "comm_address": 247,  "reg_0": 0  , "protocol": "iec104"},
+  {"hedno_id":"PV2", "hedno_type":"inverter",  "Sbase":     "999", "Vbase":"0.4", "modbus_ip": "10.23.163.224", "iec104_port": 2404, "config": "inv", "comm_address": 247,  "reg_0": 25 , "protocol": "iec104"},
+  {"hedno_id":"PV3", "hedno_type":"inverter",  "Sbase":  "359.34", "Vbase":"0.4", "modbus_ip": "10.23.163.218", "iec104_port": 2404, "config": "inv", "comm_address": 247,  "reg_0": 50 , "protocol": "iec104"},
+  {"hedno_id":"PV4", "hedno_type":"inverter",  "Sbase":  "999.50", "Vbase":"0.4", "modbus_ip": "10.23.163.210", "iec104_port": 2404, "config": "inv", "comm_address": 247,  "reg_0": 75 , "protocol": "iec104"},
+  {"hedno_id":"PV5", "hedno_type":"inverter",  "Sbase":  "399.52", "Vbase":"0.4", "modbus_ip": "10.23.163.219", "iec104_port": 2404, "config": "inv", "comm_address": 247,  "reg_0": 100, "protocol": "iec104"},
+  {"hedno_id":"PV6", "hedno_type":"inverter",  "Sbase":  "499.32", "Vbase":"0.4", "modbus_ip": "10.23.163.254", "iec104_port": 2404, "config": "inv", "comm_address": 247,  "reg_0": 125, "protocol": "iec104"},
+  {"hedno_id":"poi", "hedno_type":     "poi",  "Sbase":"14202.82", "Vbase": "20", "modbus_ip":  "10.26.225.63", "iec104_port": 2404, "config": "poi", "comm_address": 247,  "reg_0": 0  , "protocol": "modbus"}
 ], 
 
 "configs":{
