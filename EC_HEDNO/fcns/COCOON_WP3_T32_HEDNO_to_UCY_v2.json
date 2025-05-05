@@ -1,0 +1,52 @@
+{
+"USE_labs":[
+  {"labs_id":"moxa", "labs_type":"gateway",  "modbus_ip":    "192.168.5.3", "iec104_port":2404, "config":   "devices", "comm_address":1,   "reg_0":0}
+], 
+
+"devices": [
+  {"hedno_id":"PV1", "hedno_type":"inverter",  "Sbase":     "999", "Vbase":"0.4", "modbus_ip":  "10.23.163.73", "iec104_port":2404, "config": "inv", "comm_address":247,   "reg_0":0},
+  {"hedno_id":"PV2", "hedno_type":"inverter",  "Sbase":     "999", "Vbase":"0.4", "modbus_ip": "10.23.163.224", "iec104_port":2404, "config": "inv", "comm_address":247,  "reg_0":25},
+  {"hedno_id":"PV3", "hedno_type":"inverter",  "Sbase":  "359.34", "Vbase":"0.4", "modbus_ip": "10.23.163.218", "iec104_port":2404, "config": "inv", "comm_address":247,  "reg_0":50},
+  {"hedno_id":"PV4", "hedno_type":"inverter",  "Sbase":  "999.50", "Vbase":"0.4", "modbus_ip": "10.23.163.210", "iec104_port":2404, "config": "inv", "comm_address":247,  "reg_0":75},
+  {"hedno_id":"PV5", "hedno_type":"inverter",  "Sbase":  "399.52", "Vbase":"0.4", "modbus_ip": "10.23.163.219", "iec104_port":2404, "config": "inv", "comm_address":247, "reg_0":100},
+  {"hedno_id":"PV6", "hedno_type":"inverter",  "Sbase":  "499.32", "Vbase":"0.4", "modbus_ip": "10.23.163.254", "iec104_port":2404, "config": "inv", "comm_address":247, "reg_0":125},
+  {"hedno_id":"poi", "hedno_type":     "poi",  "Sbase":"14202.82", "Vbase": "20", "modbus_ip":  "10.26.225.63", "iec104_port":2404, "config": "poi", "comm_address":247,   "reg_0":0}
+], 
+
+"configs":{
+  "poi":{"measurements":[{"emec_prefix": "Ia", "hedno_name":     "CurrentA", "units":  "A", "register":25114, "type":"float16", "format":"AB", "min_value_pu": "-1", "max_value_pu":  "1", "fdii": true},
+                         {"emec_prefix": "Ib", "hedno_name":     "CurrentB", "units":  "A", "register":25115, "type":"float16", "format":"AB", "min_value_pu": "-1", "max_value_pu":  "1", "fdii": true},
+                         {"emec_prefix": "Ic", "hedno_name":     "CurrentC", "units":  "A", "register":25116, "type":"float16", "format":"AB", "min_value_pu": "-1", "max_value_pu":  "1", "fdii": true},
+                         {"emec_prefix":"Vab", "hedno_name":    "VoltageAB", "units":  "V", "register":25117, "type":"float16", "format":"AB", "min_value_pu":"0.9", "max_value_pu":"1.1", "fdii": true},
+                         {"emec_prefix":"Vbc", "hedno_name":    "VoltageBC", "units":  "V", "register":25118, "type":"float16", "format":"AB", "min_value_pu":"0.9", "max_value_pu":"1.1", "fdii": true},
+                         {"emec_prefix":"Vca", "hedno_name":    "VoltageCA", "units":  "V", "register":25119, "type":"float16", "format":"AB", "min_value_pu":"0.9", "max_value_pu":"1.1", "fdii": true},
+                         {"emec_prefix":  "P", "hedno_name":  "ActivePower", "units":  "W", "register":25120, "type":"float16", "format":"AB", "min_value_pu": "-1", "max_value_pu":  "1", "fdii": true},
+                         {"emec_prefix":  "Q", "hedno_name":"ReactivePower", "units":"var", "register":25121, "type":"float16", "format":"AB", "min_value_pu": "-1", "max_value_pu":  "1", "fdii": true}
+                        ],
+         "setpoints":[
+        ]},
+  "inv":{"setpoints":[
+                    {"emec_prefix":    "p_s_ppc", "hedno_name":       "SetActivePower", "units":  "W", "register":25089, "type": "float16", "format": "AB", "min_value_pu":"0", "max_value_pu":"1", "fdii": false},
+                    {"emec_prefix":"p_s_rat_ppc", "hedno_name":  "SetActivePowerRatio", "units": "pu", "register":25090, "type": "float16", "format": "AB", "min_value_pu":"0", "max_value_pu":"1", "fdii": false},
+                    {"emec_prefix":     "pf_ppc", "hedno_name":       "SetPowerFactor", "units": "pu", "register":25091, "type": "float16", "format": "AB", "min_value_pu":"0", "max_value_pu":"1", "fdii": false},
+                    {"emec_prefix":    "q_s_ppc", "hedno_name":     "SetReactivePower", "units":"var", "register":25092, "type": "float16", "format": "AB", "min_value_pu":"0", "max_value_pu":"1", "fdii": false},
+                    {"emec_prefix":"q_s_rat_ppc", "hedno_name":"SetReactivePowerRatio", "units": "pu", "register":25093, "type": "float16", "format": "AB", "min_value_pu":"0", "max_value_pu":"1", "fdii": false}
+                     ],
+        "measurements":[{"emec_prefix":"F", "hedno_name":         "Frequency", "units": "Hz", "register":16442,  "type":"float16", "format":"AB", "min_value_pu":"0.95", "max_value_pu":"1.05", "fdii": false},
+                    {"emec_prefix":   "Ib", "hedno_name":           "Current", "units":  "A", "register":16437,  "type":"float16", "format":"AB", "min_value_pu":   "0", "max_value_pu":   "1", "fdii":  true},
+                    {"emec_prefix":   "Vb", "hedno_name":           "Voltage", "units":  "V", "register":16434,  "type":"float16", "format":"AB", "min_value_pu": "0.9", "max_value_pu": "1.1", "fdii":  true},
+                    {"emec_prefix":  "Prt", "hedno_name":       "ActivePower", "units":  "W", "register":16401,  "type":"float16", "format":"AB", "min_value_pu":   "0", "max_value_pu":   "1", "fdii":  true},
+                    {"emec_prefix":  "Qrt", "hedno_name":     "ReactivePower", "units":"var", "register":16403,  "type":"float16", "format":"AB", "min_value_pu":   "0", "max_value_pu":   "1", "fdii":  true},
+                    {"emec_prefix":  "Pfv", "hedno_name":     "ActivePowerFV", "units":  "W", "register":16418,  "type":"float16", "format":"AB", "min_value_pu":   "0", "max_value_pu":   "1", "fdii": false},
+                    {"emec_prefix": "PRfv", "hedno_name":  "ActivePowerRatio", "units": "pu", "register":16419,  "type":"float16", "format":"AB", "min_value_pu":   "0", "max_value_pu":   "1", "fdii": false},
+                    {"emec_prefix":  "PFP", "hedno_name":       "PowerFacto1", "units": "pu", "register":16420,  "type":"float16", "format":"AB", "min_value_pu":   "0", "max_value_pu":   "1", "fdii": false},
+                    {"emec_prefix":  "Qfv", "hedno_name":   "ReactivePowerFV", "units":"var", "register":16421,  "type":"float16", "format":"AB", "min_value_pu":   "0", "max_value_pu":   "1", "fdii": false},
+                    {"emec_prefix": "QRfv", "hedno_name":"ReactivePowerRatio", "units": "pu", "register":16423,  "type":"float16", "format":"AB", "min_value_pu":   "0", "max_value_pu":   "1", "fdii": false}
+                       ]}
+},
+"switches":[
+    {"name":"MoxaGateway"}
+]
+      
+}
+
