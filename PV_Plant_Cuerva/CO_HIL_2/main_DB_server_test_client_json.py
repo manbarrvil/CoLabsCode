@@ -42,7 +42,6 @@ if __name__ == '__main__':
             # Tic: Init timer
             tic_read_elec_POI = time.time()
             dict_POI = client_Modbus(ident_emec_id_POI, data_json)
-            # print(dict_POI, '\n')
             meas_POI = [subdiccionario["value"] for subdiccionario in dict_POI.values()]
             # Toc: End Timer
             toc_read_elec_POI = time.time()
@@ -52,7 +51,6 @@ if __name__ == '__main__':
             # Modbus Client SS1
             tic_read_elec_SS1 = time.time()
             dict_SS1 = client_Modbus(ident_emec_id_SS1, data_json)
-            # print(dict_SS1, '\n')
             meas_SS1 = [subdiccionario["value"] for subdiccionario in dict_SS1.values()]
             # Toc: End Timer
             toc_read_elec_SS1 = time.time()
@@ -63,14 +61,12 @@ if __name__ == '__main__':
             # Tic: Init timer
             tic_read_elec_SS2 = time.time()
             dict_SS2 = client_Modbus(ident_emec_id_SS2, data_json)
-            # print(dict_SS2, '\n')
             meas_SS2 = [subdiccionario["value"] for subdiccionario in dict_SS2.values()]
             # Toc: End Timer
             toc_read_elec_SS2 = time.time()
             # Print execution time
             print(f"Execution time read_elec_SS2: {(toc_read_elec_SS2 - tic_read_elec_SS2) * 1000:.2f} ms")
             
-        
             t = datetime.now(timezone.utc)
                         
             '''Writing into the data base with the data read from Modbus''' 
@@ -92,6 +88,7 @@ if __name__ == '__main__':
             latency_global.append(toc_write_DB_CSL_BROKER_INPUT - tic_read_elec_POI)
             
             print("Filling the DB_CSL_BROKER_INPUT table with Modbus TCP/IP measurements...")
+
             meas_POI = []
             meas_SS1 = []
             meas_SS2 = []
